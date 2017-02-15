@@ -1,135 +1,36 @@
-# adminPanel
+# RDash rdash-angular
+## Responsive, bloat free, bootstrap powered admin style dashboard!
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/rdash/rdash-angular?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-**Project Setup**
+rdash-angular is an AngularJS implementation of the RDash admin dashboard. The dashboard uses a small number of modules to get you started, along with some handy directives and controllers to speed up development using the dashboard.
 
-## Installation
+Check out the [live example](http://rdash.github.io/)!
 
-*You need to have [NodeJS](http://nodejs.org/)*
+## Usage
+### Requirements
+* [NodeJS](http://nodejs.org/) (with [NPM](https://www.npmjs.org/))
+* [Bower](http://bower.io)
+* [Gulp](http://gulpjs.com)
 
-*Type below commands in terminal*
+### Installation
+1. Clone the repository: `git clone https://github.com/rdash/rdash-angular.git`
+2. Install the NodeJS dependencies: `npm install`.
+3. Install the Bower dependencies: `bower install`.
+4. Run the gulp build task: `gulp build`.
+5. Run the gulp default task: `gulp`. This will build any changes made automatically, and also run a live reload server on [http://localhost:8888](http://localhost:8888).
 
-```````
-npm install -g yo
+Ensure your preferred web server points towards the `dist` directory.
 
-npm install -g gulp
+### Development
+Continue developing the dashboard further by editing the `src` directory. With the `gulp` command, any file changes made will automatically be compiled into the specific location within the `dist` directory.
 
-npm install -g bower
-```````
+#### Modules & Packages
+By default, rdash-angular includes [`ui.bootstrap`](http://angular-ui.github.io/bootstrap/), [`ui.router`](https://github.com/angular-ui/ui-router) and [`ngCookies`](https://docs.angularjs.org/api/ngCookies). 
 
-### Install [smacss generator](https://github.com/FuelFrontend/generator-smacss)
+If you'd like to include any additional modules/packages not included with rdash-angular, add them to your `bower.json` file and then update the `src/index.html` file, to include them in the minified distribution output.
 
-*Type below commands in terminal*
-
-```````
-npm install -g generator-smacss
-```````
-
-**Clone the repo & cd into it**
-
-
-```````
-sudo npm install
-
-bower install
-```````
-
-**Finally**
-
-*Type below command in terminal*
-
-```````
-gulp
-```````
-
-**Application Directory Structure**
-
-
-````````
-├── app
-│   ├── bower_components
-│   ├── images
-│   ├── js
-│   │   └── lib
-│   │   │   └── third-party-files.js
-│   │   └── controllers
-│   │   └── directives
-│   │   └── services
-│   │   └── filters
-│   │   └── application.js
-│   ├── css
-│   │   └── master.css
-│   ├── partials
-│   │   └── header.html
-│   │   └── footer.html
-│   ├── scss
-│   │   └── modules
-│   │   │   └── module-name.scss
-│   │   └── pages
-│   │   │   └── page-landing.scss
-│   │   └── base.scss
-│   │   └── layout.css
-│   │   └── mixins.css
-│   │   └── reset.css
-│   │   └── variables.css
-│   └── index.html
-├── build
-│   └── build-files
-├── zip
-│   └── compressed-files
-├── node_modules
-├── package.json
-├── gulpfile.js
-├── bower.json
-├── .bowerrc
-├── .gitattributes
-└── .gitignore
-````````
-
-**Quick Commands**
-
-
-* **Clean** _Remove all files from your build folder_
-
-  ```````
-  gulp clean
-  ```````
-
-* **Zip** _Compress you app & save in `zip` folder with timestamp for quick sharing_
-
-  ```````
-  gulp zip
-  ```````
-
-* **Controller** _Creates a controller in `app/js/controllers`_
-
-  ```````
-  yo smacss:controller <name>
-  ```````
-
-* **Service** _Creates a service in `app/js/services`_
-
-  ```````
-  yo smacss:service <name>
-  ```````
-
-* **Directive** _Creates a directive in `app/js/directives`_
-
-  ```````
-  yo smacss:directive <name>
-  ```````
-
-* **Filter** _Creates a filter in `app/js/filters`_
-
-  ```````
-  yo smacss:filter <name>
-  ```````
-
-# Environment
-
-Generator Smacss comes with development and producution modes. In default it runs in development mode.
-
-You can switch to production mode using the following command
-
-```````
-gulp prod
-```````
+## Credits
+* [Elliot Hesp](https://github.com/Ehesp)
+* [Leonel Samayoa](https://github.com/lsamayoa)
+* [Mathew Goldsborough](https://github.com/mgoldsborough)
+* [Ricardo Pascua Jr](https://github.com/rdpascua)
