@@ -3,9 +3,9 @@
  */
 
 angular.module('RDash')
-    .controller('MasterCtrl', ['$scope', '$cookieStore', MasterCtrl]);
+    .controller('MasterCtrl', ['$scope', '$cookieStore', MasterCtrl, 'Auth']);
 
-function MasterCtrl($scope, $cookieStore) {
+function MasterCtrl($scope, $cookieStore, Auth) {
     /**
      * Sidebar Toggle & Cookie Control
      */
@@ -36,4 +36,33 @@ function MasterCtrl($scope, $cookieStore) {
     window.onresize = function() {
         $scope.$apply();
     };
+
+    $scope.addDepartments = function () {
+      console.log("add dept ");
+      //cookieStore
+    //   $scope.getUserId = $cookieStore.get('userId');
+    //   $scope.userToken = $cookieStore.get('token');
+    //   $scope.sessionId = $cookieStore.get('sessionId');
+
+      var departmentInfo = {
+        name:$scope.departmentName,
+        description:$scope.descriptionOfDepartment,
+        isActive: $scope.departmentIsActive,
+      }
+      Auth.addDepartment(departmentInfo)
+      .success(function(data){
+        console.log('departmentInfo', data);
+
+        ngToast.create({
+          className: 'success',
+          content: 'category created'
+        });
+
+       }).error(function(data){
+           ngToast.create({
+              className: 'warning',
+              content: 'Problem '
+           });
+    });
+   };
 }
