@@ -3,9 +3,9 @@
  */
 
 angular.module('RDash')
-    .controller('MasterCtrl', ['$scope', '$cookieStore', MasterCtrl, 'Auth']);
+    .controller('MasterCtrl', ['$scope', '$cookieStore','$http', MasterCtrl]);
 
-function MasterCtrl($scope, $cookieStore, Auth) {
+function MasterCtrl($scope, $cookieStore, $http) {
     /**
      * Sidebar Toggle & Cookie Control
      */
@@ -37,32 +37,31 @@ function MasterCtrl($scope, $cookieStore, Auth) {
         $scope.$apply();
     };
 
-    $scope.addDepartments = function () {
-      console.log("add dept ");
-      //cookieStore
-    //   $scope.getUserId = $cookieStore.get('userId');
-    //   $scope.userToken = $cookieStore.get('token');
-    //   $scope.sessionId = $cookieStore.get('sessionId');
+    //Post Departments
+    $scope.postDepartment = function () {
+              // use $.param jQuery function to serialize data from JSON
+               var data ={
+                 name:$scope.departmentName,
+                  description:$scope.descriptionOfDepartment,
+                  isActive: $scope.departmentIsActive
+               };
 
-      var departmentInfo = {
-        name:$scope.departmentName,
-        description:$scope.descriptionOfDepartment,
-        isActive: $scope.departmentIsActive,
-      }
-      Auth.addDepartment(departmentInfo)
-      .success(function(data){
-        console.log('departmentInfo', data);
+               var config = {
+                   headers : {
+                       'Content-Type': 'application/json'
+                   }
+               }
 
-        ngToast.create({
-          className: 'success',
-          content: 'category created'
-        });
-
-       }).error(function(data){
-           ngToast.create({
-              className: 'warning',
-              content: 'Problem '
-           });
-    });
-   };
+               $http.post('http://ec2-35-164-152-22.us-west-2.compute.amazonaws.com:9000/api/departments', data, config)
+               .success(function (data, status, headers, config) {
+                   $scope.PostDataResponse = data;
+                   console.log("dataa",data);
+               })
+               .error(function (data, status, header, config) {
+                   $scope.ResponseDetails = "Data: " + data +
+                       "<hr />status: " + status +
+                       "<hr />headers: " + header +
+                       "<hr />config: " + config;
+               });
+           };
 }
