@@ -1,0 +1,60 @@
+<div class="row"  ng-controller="MasterCtrl">
+  <div class="col-lg-8">
+      <form ng-submit="postProduct()">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Product Name</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productName" placeholder="Enter Product Name">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Product description</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productDescription" placeholder="Enter Product description">
+          </div>
+          <!-- <div class="form-group">
+            <label for="exampleInputEmail1">Product deparment</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productDepartment" placeholder="Enter Product deparment">
+          </div> -->
+          <!-- <div class="form-group">
+            <label for="exampleInputEmail1">Product Category</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productCategory" placeholder="Enter Product Category">
+          </div> -->
+          <div class="form-group">
+            <label for="sel1">Select Department (select one):</label>
+            <select class="form-control" id="sel1" ng-model="departmentSelected" ng-change="getdepartmentId(departmentSelected)">
+              <option ng-repeat="departments in getDepartmentList"  ng-model="categoryName">{{departments.name}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="sel1">Select Category (select one):</label>
+            <select class="form-control" id="sel1" ng-model="categorySelected" ng-change="getCategoryName(categorySelected)">
+              <option ng-repeat="category in getCategoriesList"  ng-model="categoryName">{{category.name}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Product to be listed in Offer</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productOffer" placeholder="yes/no">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Product Image</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productImageUrl" placeholder="Enter Product Image Url">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Product quantity</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productquantity" placeholder="Enter Product quantity">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Product list Price</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productlistPrice" placeholder="Enter Product listPrice">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Product sale Price</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productSalePrice" placeholder="Enter Product salePrice">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Product isActive</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productisActive" placeholder="Enter isActive true/false">
+          </div>
+
+          <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+</div>

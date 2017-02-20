@@ -15,9 +15,13 @@ angular.module('RDash').config(['$stateProvider', '$urlRouterProvider',
                 url: '/department',
                 templateUrl: 'templates/page_department.html'
             })
-            .state('index', {
-                url: '/',
-                templateUrl: 'templates/dashboard.html'
+            .state('category', {
+                url: '/category',
+                templateUrl: 'templates/page_category.html'
+            })
+            .state('addProduct', {
+                url: '/addProduct',
+                templateUrl: 'templates/page_addProducts.html'
             })
             .state('tables', {
                 url: '/tables',
