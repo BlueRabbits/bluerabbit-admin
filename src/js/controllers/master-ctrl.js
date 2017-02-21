@@ -36,6 +36,8 @@ function MasterCtrl($scope, $cookieStore, $http) {
     window.onresize = function() {
         $scope.$apply();
     };
+    //datepicker
+    //$('#datetimepicker1').datetimepicker();
 
     //Post Departments
     $scope.postDepartment = function () {
@@ -191,5 +193,67 @@ function MasterCtrl($scope, $cookieStore, $http) {
                                      "<hr />config: " + config;
                              });
                          };
+             //get product
+             $scope.getProduct = function () {
+
+                        var config = {
+                            headers : {
+                                'Content-Type': 'application/json'
+                            }
+                        }
+
+                        $http.get('http://ec2-35-164-152-22.us-west-2.compute.amazonaws.com:9000/api/products', config)
+                        .success(function (data, status, headers, config) {
+                            $scope.getProductList = data;
+                            console.log("get products",data);
+
+                        })
+                        .error(function (data, status, header, config) {
+                            $scope.ResponseDetails = "Data: " + data +
+                                "<hr />status: " + status +
+                                "<hr />headers: " + header +
+                                "<hr />config: " + config;
+                        });
+                    };
+                    $scope.getProduct();
+            //post todays deal api
+            $scope.postTodayDeals = function () {
+                      // use $.param jQuery function to serialize data from JSON
+                       var data ={
+                          fromDate:$scope.fromDate,
+                          toDate:$scope.toDate,
+                          toTime: $scope.toTime,
+                          fromTime: $scope.fromTime,
+                          product: $scope.productid
+                       };
+
+                       var config = {
+                           headers : {
+                               'Content-Type': 'application/json'
+                           }
+                       }
+
+                       $http.post('http://ec2-35-164-152-22.us-west-2.compute.amazonaws.com:9000/api/todaysDeal', data, config)
+                       .success(function (data, status, headers, config) {
+                           $scope.todayDealsPost = data;
+                           console.log("dataa",data);
+                       })
+                       .error(function (data, status, header, config) {
+                           $scope.ResponseDetails = "Data: " + data +
+                               "<hr />status: " + status +
+                               "<hr />headers: " + header +
+                               "<hr />config: " + config;
+                       });
+                   };
+                   $scope.getproductId = function(productName){
+                       console.log(productName);
+                       for (var i = 0; i < $scope.getProductList.length; i++) {
+                           if (productName === $scope.getProductList[i].name) {
+                               $scope.productid = $scope.getProductList[i]._id;
+                           }
+
+                       }
+                       console.log( $scope.productid);
+                   }
 
 }
