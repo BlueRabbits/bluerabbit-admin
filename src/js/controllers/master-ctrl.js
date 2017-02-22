@@ -256,4 +256,16 @@ function MasterCtrl($scope, $cookieStore, $http) {
                        console.log( $scope.productid);
                    }
 
+                   $scope.editCategory = function(id,name,departmentId,IsActive){
+                       console.log(id,name,departmentId,IsActive);
+                       $scope.categoryName = name;
+                       $scope.categoryId = departmentId;
+                       $scope.categoryIsActive = IsActive;
+                       //show category Edit button
+                       $scope.showCategoryButton = true;
+                   }
+                   $scope.deleteCategory = function(catId){
+                       console.log("catId",catId);
+                   }
+
 }

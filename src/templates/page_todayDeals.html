@@ -7,29 +7,34 @@
           </div> -->
           <div class="form-group">
               <label for="exampleInputEmail1">fromDate</label>
-               <input type="date" class="form-control"  ng-model="fromDate">
+              <label class="glyphicon glyphicon-asterisk"></label>
+               <input type="date" class="form-control"  ng-model="fromDate" required>
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">toDate </label>
+            <label class="glyphicon glyphicon-asterisk"></label>
             <!-- <input type="text" class="form-control" ng-model="descriptionOfDepartment" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Department Description" required> -->
-             <input type="date" class="form-control"  ng-model="toDate">
+             <input type="date" class="form-control"  ng-model="toDate" required>
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">toTime</label>
+            <label class="glyphicon glyphicon-asterisk"></label>
             <input type="time" class="form-control" ng-model="toTime" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter toTime" required>
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">fromTime</label>
+            <label class="glyphicon glyphicon-asterisk"></label>
             <input type="time" class="form-control" ng-model="fromTime" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter fromTime" required>
           </div>
           <div class="form-group">
-            <label for="sel1">Select Product (select one):</label>
+            <label for="sel1" >Select Product (select one):</label>
+            <label class="glyphicon glyphicon-asterisk"></label>
             <select class="form-control" id="sel1" ng-model="productSelected" ng-change="getproductId(productSelected)">
               <option ng-repeat="products in getProductList"  ng-model="productName">{{products.name}}</option>
             </select>
           </div>
 
-          <button type="submit" ng-click="addDepartments()" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
 </div>
