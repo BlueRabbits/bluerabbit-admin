@@ -37,4 +37,37 @@
           <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
+<div class="col-lg-4">
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th></th>
+        <th></th>
+        <th>Deal ID</th>
+        <th>fromDate</th>
+        <th>toDate</th>
+        <th>toTime</th>
+        <th>fromTime</th>
+        <th>Product ID</th>
+        <th>Product Name</th>
+        <th>Product Category</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="todayDealsList in getTodayDealsList">
+        <td><button class="btn btn-xs btn-success" ng-click="deleteTodayDeals(todayDealsList._id)">Delete</button></td>
+        <td><button class="btn btn-xs btn-success"ng-click="editTodayDeals(todayDealsList._id,todayDealsList.fromDate,todayDealsList.fromTime,todayDealsList.toDate,todayDealsList.toTime,todayDealsList.product._id)">Edit</button></td>
+        <td>{{todayDealsList._id}}</td>
+        <td>{{todayDealsList.fromDate}}</td>
+        <td>{{todayDealsList.fromTime}}</td>
+        <td>{{todayDealsList.toDate}}</td>
+        <td>{{todayDealsList.toTime}}</td>
+        <td>{{todayDealsList.product._id}}</td>
+        <td>{{todayDealsList.product.name}}</td>
+        <td>{{todayDealsList.product.cat}}</td>
+      </tr>
+
+    </tbody>
+    </table>
+</div>
 </div>

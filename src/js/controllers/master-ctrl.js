@@ -216,6 +216,29 @@ function MasterCtrl($scope, $cookieStore, $http) {
                         });
                     };
                     $scope.getProduct();
+                    //get TodaysDeals
+                    $scope.getTodaysDeal = function () {
+
+                               var config = {
+                                   headers : {
+                                       'Content-Type': 'application/json'
+                                   }
+                               }
+
+                               $http.get('http://ec2-35-164-152-22.us-west-2.compute.amazonaws.com:9000/api/todaysDeal', config)
+                               .success(function (data, status, headers, config) {
+                                   $scope.getTodayDealsList = data;
+                                   console.log("get getTodayDealsList",data);
+
+                               })
+                               .error(function (data, status, header, config) {
+                                   $scope.ResponseDetails = "Data: " + data +
+                                       "<hr />status: " + status +
+                                       "<hr />headers: " + header +
+                                       "<hr />config: " + config;
+                               });
+                           };
+                           $scope.getTodaysDeal();
             //post todays deal api
             $scope.postTodayDeals = function () {
                       // use $.param jQuery function to serialize data from JSON
@@ -255,7 +278,7 @@ function MasterCtrl($scope, $cookieStore, $http) {
                        }
                        console.log( $scope.productid);
                    }
-
+                   //edit aand delete category
                    $scope.editCategory = function(id,name,departmentId,IsActive){
                        console.log(id,name,departmentId,IsActive);
                        $scope.categoryName = name;
@@ -266,6 +289,30 @@ function MasterCtrl($scope, $cookieStore, $http) {
                    }
                    $scope.deleteCategory = function(catId){
                        console.log("catId",catId);
+                   }
+                   //edit and delete product
+                   $scope.editProduct = function(id,name,description,prodCat,image,quantity,listPrice,salePrice){
+                       console.log(id,name,description,prodCat,image,quantity,listPrice,salePrice);
+                    //    $scope.categoryName = name;
+                    //    $scope.categoryId = departmentId;
+                    //    $scope.categoryIsActive = IsActive;
+                    //    //show category Edit button
+                    //    $scope.showCategoryButton = true;
+                   }
+                   $scope.deleteProduct = function(productId){
+                       console.log("productId",productId);
+                   }
+                   //edit and delete todaysDeal
+                   $scope.editTodayDeals = function(id,fromDate,fromTime,toDate,toTime,productId){
+                       console.log(id,fromDate,fromTime,toDate,toTime,productId);
+                    //    $scope.categoryName = name;
+                    //    $scope.categoryId = departmentId;
+                    //    $scope.categoryIsActive = IsActive;
+                    //    //show category Edit button
+                    //    $scope.showCategoryButton = true;
+                   }
+                   $scope.deleteTodayDeals = function(dealId){
+                       console.log("dealId",dealId);
                    }
 
 }

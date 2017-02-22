@@ -1,5 +1,5 @@
 <div class="row"  ng-controller="MasterCtrl">
-  <div class="col-lg-8">
+  <div class="col-lg-4">
       <form ng-submit="postProduct()">
           <div class="form-group">
             <label for="exampleInputEmail1">Product Name</label>
@@ -57,4 +57,40 @@
           <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
+
+</div>
+<div class="container">
+  <div class="col-lg-8">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+          <th>Product ID</th>
+          <th>Product Name</th>
+          <th>Product Description</th>
+          <th>Product Category</th>
+          <th>Product Image</th>
+          <th>Product Quantity</th>
+          <th>Product List Price</th>
+          <th>Product Sales Price</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="productList in getProductList">
+        <td><button class="btn btn-xs btn-success" ng-click="deleteProduct(productList._id)">Delete</button></td>
+        <td><button class="btn btn-xs btn-success"ng-click="editProduct(productList._id,productList.name,productList.description,productList.cat,productList.mainImageUrl,productList.quantity,productList.listPrice,productList.salePrice)">Edit</button></td>
+        <td>{{productList._id}}</td>
+        <td>{{productList.name}}</td>
+        <td>{{productList.description}}</td>
+        <td>{{productList.cat}}</td>
+        <td>{{productList.mainImageUrl}}</td>
+        <td>{{productList.quantity}}</td>
+        <td>{{productList.listPrice}}</td>
+        <td>{{productList.salePrice}}</td>
+      </tr>
+
+    </tbody>
+    </table>
+  </div>
 </div>
