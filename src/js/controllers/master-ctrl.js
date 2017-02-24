@@ -161,11 +161,11 @@ function MasterCtrl($scope, $cookieStore, $http) {
                                 cat:$scope.categoryName,
                                 subCat:subcat,
                                  sku: "abcd12345",
-                                p1:$scope.productOffer,
                                 brand: "abcd",
-                                s1: "abcd",
-                                s2: "abcd",
-                                s3: "abcd",
+                                s1: $scope.productImageUrl1,
+                                s2: $scope.productImageUrl2,
+                                s3: $scope.productImageUrl3,
+                                p1:$scope.productOffer,
                                 p2: "abcd",
                                 mainImageUrl:$scope.productImageUrl,
                                 vendorID: 100,
@@ -291,13 +291,26 @@ function MasterCtrl($scope, $cookieStore, $http) {
                        console.log("catId",catId);
                    }
                    //edit and delete product
-                   $scope.editProduct = function(id,name,description,prodCat,image,quantity,listPrice,salePrice){
-                       console.log(id,name,description,prodCat,image,quantity,listPrice,salePrice);
-                    //    $scope.categoryName = name;
-                    //    $scope.categoryId = departmentId;
-                    //    $scope.categoryIsActive = IsActive;
-                    //    //show category Edit button
-                    //    $scope.showCategoryButton = true;
+                   $scope.editProduct = function(id){
+
+                       for (var i = 0; i < $scope.getProductList.length; i++) {
+                         if ($scope.getProductList[i]._id === id) {
+                           $scope.productName = $scope.getProductList[i].name;
+                           $scope.productDescription = $scope.getProductList[i].description;
+                           $scope.departmentSelected = $scope.getProductList[i].dept;
+                           $scope.categorySelected = $scope.getProductList[i].cat;
+                           $scope.productOffer = $scope.getProductList[i].p1;
+                           $scope.productImageUrl = $scope.getProductList[i].mainImageUrl;
+                           $scope.productImageUrl1 = $scope.getProductList[i].s1;
+                           $scope.productImageUrl2 = $scope.getProductList[i].s2;
+                           $scope.productImageUrl3 = $scope.getProductList[i].s3;
+                           $scope.productquantity = $scope.getProductList[i].quantity;
+                           $scope.productlistPrice = $scope.getProductList[i].listPrice;
+                           $scope.productSalePrice = $scope.getProductList[i].salePrice;
+
+                         }
+                       }
+
                    }
                    $scope.deleteProduct = function(productId){
                        console.log("productId",productId);

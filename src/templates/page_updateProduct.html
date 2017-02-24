@@ -61,13 +61,54 @@
             <label for="exampleInputEmail1">Product sale Price</label>
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productSalePrice" placeholder="Enter Product salePrice">
           </div>
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label for="exampleInputEmail1">Product isActive</label>
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productisActive" placeholder="Enter isActive true/false">
-          </div>
+          </div> -->
 
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary">Update</button>
     </form>
 </div>
 
+
+  <div class="col-lg-8">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+          <th>Product ID</th>
+          <th>Product Name</th>
+          <th>Product Description</th>
+          <th>Product Category</th>
+          <th>Product Image</th>
+          <th>Product Image1</th>
+          <th>Product Image2</th>
+          <th>Product Image3</th>
+          <th>Product Quantity</th>
+          <th>Product List Price</th>
+          <th>Product Sales Price</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="productList in getProductList">
+        <td><button class="btn btn-xs btn-success" ng-click="deleteProduct(productList._id)">Delete</button></td>
+        <td><button class="btn btn-xs btn-success"ng-click="editProduct(productList._id,productList.name,productList.description,productList.cat,productList.mainImageUrl,productList.quantity,productList.listPrice,productList.salePrice)">Edit</button></td>
+        <td>{{productList._id}}</td>
+        <td>{{productList.name}}</td>
+        <td>{{productList.description}}</td>
+        <td>{{productList.cat}}</td>
+        <td>{{productList.mainImageUrl}}</td>
+        <td>{{productList.s1}}</td>
+        <td>{{productList.s2}}</td>
+        <td>{{productList.s3}}</td>
+        <td>{{productList.quantity}}</td>
+        <td>{{productList.listPrice}}</td>
+        <td>{{productList.salePrice}}</td>
+        <td>{{productList.salePrice}}</td>
+      </tr>
+
+    </tbody>
+    </table>
+  </div>
 </div>

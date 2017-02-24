@@ -26,6 +26,14 @@ angular.module('RDash').config(['$stateProvider', '$urlRouterProvider',
             .state('addTodayDeals', {
                 url: '/addTodayDeals',
                 templateUrl: 'templates/page_todayDeals.html'
+            })
+            .state('updateCategory', {
+                url: '/updateCategory',
+                templateUrl: 'templates/page_updateCategory.html'
+            })
+            .state('updateProduct', {
+                url: '/updateProduct',
+                templateUrl: 'templates/page_updateProduct.html'
             });
     }
 ]);
