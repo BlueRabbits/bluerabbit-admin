@@ -5,7 +5,8 @@
 angular.module('RDash')
     .controller('MasterCtrl', ['$scope', '$cookieStore','$http', MasterCtrl]);
 
-function MasterCtrl($scope, $cookieStore, $http) {
+function MasterCtrl($scope, $cookieStore, $http, $route) {
+    $scope.$route = $route;
     /**
      * Sidebar Toggle & Cookie Control
      */
@@ -316,13 +317,14 @@ function MasterCtrl($scope, $cookieStore, $http) {
                        console.log("productId",productId);
                    }
                    //edit and delete todaysDeal
-                   $scope.editTodayDeals = function(id,fromDate,fromTime,toDate,toTime,productId){
-                       console.log(id,fromDate,fromTime,toDate,toTime,productId);
-                    //    $scope.categoryName = name;
-                    //    $scope.categoryId = departmentId;
-                    //    $scope.categoryIsActive = IsActive;
-                    //    //show category Edit button
-                    //    $scope.showCategoryButton = true;
+                   $scope.editTodayDeals = function(id){
+                       console.log(id);
+                       for (var i = 0; i < $scope.getTodayDealsList.length; i++) {
+                           if ($scope.getTodayDealsList[i]._id === id) {
+                               $scope.fromDate = $scope.getTodayDealsList[i].fromDate;
+                           }
+                       }
+
                    }
                    $scope.deleteTodayDeals = function(dealId){
                        console.log("dealId",dealId);

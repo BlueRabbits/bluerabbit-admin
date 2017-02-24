@@ -31,6 +31,10 @@ angular.module('RDash').config(['$stateProvider', '$urlRouterProvider',
                 url: '/updateCategory',
                 templateUrl: 'templates/page_updateCategory.html'
             })
+            .state('UpdateTodayDeal', {
+                url: '/UpdateTodayDeal',
+                templateUrl: 'templates/page_UpdateTodayDeal.html'
+            })
             .state('updateProduct', {
                 url: '/updateProduct',
                 templateUrl: 'templates/page_updateProduct.html'
