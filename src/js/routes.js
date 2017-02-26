@@ -7,10 +7,14 @@ angular.module('RDash').config(['$stateProvider', '$urlRouterProvider',
     function($stateProvider, $urlRouterProvider) {
 
         // For unmatched routes
-        $urlRouterProvider.otherwise('/');
+        $urlRouterProvider.otherwise('/login');
 
         // Application routes
         $stateProvider
+          .state('login', {
+                url: '/login',
+                templateUrl: 'templates/page_login.html'
+            })
           .state('department', {
                 url: '/department',
                 templateUrl: 'templates/page_department.html'

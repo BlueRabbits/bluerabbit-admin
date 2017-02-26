@@ -3,10 +3,9 @@
  */
 
 angular.module('RDash')
-    .controller('MasterCtrl', ['$scope', '$cookieStore','$http','$location', MasterCtrl]);
+    .controller('MasterCtrl', ['$scope', '$cookieStore','$http','$location','$state', MasterCtrl]);
 
-function MasterCtrl($scope, $cookieStore, $http, $route,$location) {
-    $scope.$route = $route;
+function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state) {
 
     /**
      * Sidebar Toggle & Cookie Control
@@ -40,6 +39,55 @@ function MasterCtrl($scope, $cookieStore, $http, $route,$location) {
     };
     //datepicker
     //$('#datetimepicker1').datetimepicker();
+    var BASE_URL = "http://ec2-35-164-152-22.us-west-2.compute.amazonaws.com:9000";
+    //var BASE_URL = "http://ec2-54-187-15-116.us-west-2.compute.amazonaws.com:9000";
+    //var BASE_URL = "http://localhost:9000";
+    //var BASE_URL = "http://192.168.0.84:9000";
+
+    var AdminToken = $cookieStore.get('AdminToken');
+    //login
+    $scope.loginAdmin = function () {
+              // use $.param jQuery function to serialize data from JSON
+               var data ={
+                   email: $scope.email,
+                   password: $scope.password
+               };
+
+               var config = {
+                   headers : {
+                       'Content-Type': 'application/json'
+                   }
+               }
+
+               $http.post(BASE_URL + '/auth/local', data, config)
+               .success(function (data, status, headers, config) {
+                   $scope.loginData = data;
+                   console.log("loginData",data);
+                   //cookieStore
+                   $cookieStore.put("AdminToken", data.token);
+                   $cookieStore.put("adminId", data._id);
+                   $cookieStore.put("adminEmailId", $scope.email);
+                   $cookieStore.put('AdminloggedIn', true);
+
+                   window.location.href = '#/updateCategory';
+               })
+               .error(function (data, status, header, config) {
+                   $scope.ResponseDetails = "Data: " + data +
+                       "<hr />status: " + status +
+                       "<hr />headers: " + header +
+                       "<hr />config: " + config;
+               });
+           };
+           //logout
+
+  $scope.logout = function () {
+
+    $cookieStore.remove("adminId");
+    $cookieStore.remove("AdminToken");
+    $cookieStore.remove("adminEmailId");
+    $cookieStore.put('AdminloggedIn', false);
+    window.location.href = '#/login';
+  };
 
     //Post Departments
     $scope.postDepartment = function () {
@@ -52,11 +100,12 @@ function MasterCtrl($scope, $cookieStore, $http, $route,$location) {
 
                var config = {
                    headers : {
+                       'Authorization': 'Bearer '+AdminToken,
                        'Content-Type': 'application/json'
                    }
                }
 
-               $http.post('http://ec2-35-164-152-22.us-west-2.compute.amazonaws.com:9000/api/departments', data, config)
+               $http.post(BASE_URL + '/api/departments', data, config)
                .success(function (data, status, headers, config) {
                    $scope.PostDataResponse = data;
                    console.log("dataa",data);
@@ -79,11 +128,12 @@ function MasterCtrl($scope, $cookieStore, $http, $route,$location) {
 
                       var config = {
                           headers : {
+                              'Authorization': 'Bearer '+AdminToken,
                               'Content-Type': 'application/json'
                           }
                       }
 
-                      $http.post('http://ec2-35-164-152-22.us-west-2.compute.amazonaws.com:9000/api/categories', data, config)
+                      $http.post(BASE_URL + '/api/categories', data, config)
                       .success(function (data, status, headers, config) {
                           $scope.PostDataResponse = data;
                           console.log("dataa",data);
@@ -101,11 +151,12 @@ function MasterCtrl($scope, $cookieStore, $http, $route,$location) {
 
                       var config = {
                           headers : {
+                              'Authorization': 'Bearer '+AdminToken,
                               'Content-Type': 'application/json'
                           }
                       }
 
-                      $http.get('http://ec2-35-164-152-22.us-west-2.compute.amazonaws.com:9000/api/departments', config)
+                      $http.get(BASE_URL + '/api/departments', config)
                       .success(function (data, status, headers, config) {
                           $scope.getDepartmentList = data;
                           console.log("get departments",data);
@@ -124,11 +175,12 @@ function MasterCtrl($scope, $cookieStore, $http, $route,$location) {
 
                       var config = {
                           headers : {
+                              'Authorization': 'Bearer '+AdminToken,
                               'Content-Type': 'application/json'
                           }
                       }
 
-                      $http.get('http://ec2-35-164-152-22.us-west-2.compute.amazonaws.com:9000/api/categories', config)
+                      $http.get(BASE_URL + '/api/categories', config)
                       .success(function (data, status, headers, config) {
                           $scope.getCategoriesList = data;
                           console.log("get Categories",data);
@@ -179,11 +231,12 @@ function MasterCtrl($scope, $cookieStore, $http, $route,$location) {
 
                              var config = {
                                  headers : {
+                                     'Authorization': 'Bearer '+AdminToken,
                                      'Content-Type': 'application/json'
                                  }
                              }
 
-                             $http.post('http://ec2-35-164-152-22.us-west-2.compute.amazonaws.com:9000/api/products', data, config)
+                             $http.post(BASE_URL + '/api/products', data, config)
                              .success(function (data, status, headers, config) {
                                  $scope.PostDataResponse = data;
                                  console.log("dataa",data);
@@ -200,11 +253,12 @@ function MasterCtrl($scope, $cookieStore, $http, $route,$location) {
 
                         var config = {
                             headers : {
+                                'Authorization': 'Bearer '+AdminToken,
                                 'Content-Type': 'application/json'
                             }
                         }
 
-                        $http.get('http://ec2-35-164-152-22.us-west-2.compute.amazonaws.com:9000/api/products', config)
+                        $http.get(BASE_URL + '/api/products', config)
                         .success(function (data, status, headers, config) {
                             $scope.getProductList = data;
                             console.log("get products",data);
@@ -223,11 +277,12 @@ function MasterCtrl($scope, $cookieStore, $http, $route,$location) {
 
                                var config = {
                                    headers : {
+                                       'Authorization': 'Bearer '+AdminToken,
                                        'Content-Type': 'application/json'
                                    }
                                }
 
-                               $http.get('http://ec2-35-164-152-22.us-west-2.compute.amazonaws.com:9000/api/todaysDeal', config)
+                               $http.get(BASE_URL + '/api/todaysDeal', config)
                                .success(function (data, status, headers, config) {
                                    $scope.getTodayDealsList = data;
                                    console.log("get getTodayDealsList",data);
@@ -254,11 +309,12 @@ function MasterCtrl($scope, $cookieStore, $http, $route,$location) {
 
                        var config = {
                            headers : {
+                               'Authorization': 'Bearer '+AdminToken,
                                'Content-Type': 'application/json'
                            }
                        }
 
-                       $http.post('http://ec2-35-164-152-22.us-west-2.compute.amazonaws.com:9000/api/todaysDeal', data, config)
+                       $http.post(BASE_URL + '/api/todaysDeal', data, config)
                        .success(function (data, status, headers, config) {
                            $scope.todayDealsPost = data;
                            console.log("dataa",data);
@@ -301,11 +357,12 @@ function MasterCtrl($scope, $cookieStore, $http, $route,$location) {
 
                        var config = {
                            headers : {
+                               'Authorization': 'Bearer '+AdminToken,
                                'Content-Type': 'application/json'
                            }
                        }
 
-                       $http.put('http://ec2-35-164-152-22.us-west-2.compute.amazonaws.com:9000/api/categories/'+$scope.cat_Id, data, config)
+                       $http.put(BASE_URL + '/api/categories/'+$scope.cat_Id, data, config)
                        .success(function (data, status, headers, config) {
                            $scope.updateCategory = data;
                            console.log("updateCategory",data);
@@ -324,10 +381,11 @@ function MasterCtrl($scope, $cookieStore, $http, $route,$location) {
                        console.log("catId",catId);
                        var config = {
                            headers : {
+                               'Authorization': 'Bearer '+AdminToken,
                                'Content-Type': 'application/json'
                            }
                        }
-                       $http.delete('http://ec2-35-164-152-22.us-west-2.compute.amazonaws.com:9000/api/categories/'+catId, config)
+                       $http.delete(BASE_URL + '/api/categories/'+catId, config)
                        .success(function (data, status, headers, config) {
                            console.log("delete category",data);
                             $scope.getCategory();
@@ -388,11 +446,12 @@ function MasterCtrl($scope, $cookieStore, $http, $route,$location) {
 
                         var config = {
                             headers : {
+                                'Authorization': 'Bearer '+AdminToken,
                                 'Content-Type': 'application/json'
                             }
                         }
 
-                        $http.put('http://ec2-35-164-152-22.us-west-2.compute.amazonaws.com:9000/api/products/'+$scope.productId, data, config)
+                        $http.put(BASE_URL + '/api/products/'+$scope.productId, data, config)
                         .success(function (data, status, headers, config) {
                             $scope.updateProd = data;
                             console.log("updateProduct",data);
@@ -410,10 +469,11 @@ function MasterCtrl($scope, $cookieStore, $http, $route,$location) {
                        console.log("productId",productId);
                        var config = {
                            headers : {
+                               'Authorization': 'Bearer '+AdminToken,
                                'Content-Type': 'application/json'
                            }
                        }
-                       $http.delete('http://ec2-35-164-152-22.us-west-2.compute.amazonaws.com:9000/api/products/'+productId, config)
+                       $http.delete(BASE_URL + '/api/products/'+productId, config)
                        .success(function (data, status, headers, config) {
                            console.log("delete product",data);
                             $scope.getProduct();
@@ -437,6 +497,23 @@ function MasterCtrl($scope, $cookieStore, $http, $route,$location) {
                    }
                    $scope.deleteTodayDeals = function(dealId){
                        console.log("dealId",dealId);
+                       var config = {
+                           headers : {
+                               'Authorization': 'Bearer '+AdminToken,
+                               'Content-Type': 'application/json'
+                           }
+                       }
+                       $http.delete(BASE_URL + '/api/todaysDeal/'+dealId, config)
+                       .success(function (data, status, headers, config) {
+                           console.log("delete product",data);
+                            $scope.getTodaysDeal();
+                       })
+                       .error(function (data, status, header, config) {
+                           $scope.ResponseDetails = "Data: " + data +
+                               "<hr />status: " + status +
+                               "<hr />headers: " + header +
+                               "<hr />config: " + config;
+                       });
                    }
 
 }

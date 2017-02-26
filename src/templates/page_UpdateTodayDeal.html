@@ -50,13 +50,13 @@
         <th>fromTime</th>
         <th>Product ID</th>
         <th>Product Name</th>
-        <th>Product Category</th>
+        <!-- <th>Product Category</th> -->
       </tr>
     </thead>
     <tbody>
       <tr ng-repeat="todayDealsList in getTodayDealsList">
         <td><button class="btn btn-xs btn-success" ng-click="deleteTodayDeals(todayDealsList._id)">Delete</button></td>
-        <td><button class="btn btn-xs btn-success"ng-click="editTodayDeals(todayDealsList._id,todayDealsList.fromDate,todayDealsList.fromTime,todayDealsList.toDate,todayDealsList.toTime,todayDealsList.product._id)">Edit</button></td>
+        <!-- <td><button class="btn btn-xs btn-success"ng-click="editTodayDeals(todayDealsList._id,todayDealsList.fromDate,todayDealsList.fromTime,todayDealsList.toDate,todayDealsList.toTime,todayDealsList.product._id)">Edit</button></td> -->
         <td>{{todayDealsList._id}}</td>
         <td>{{todayDealsList.fromDate}}</td>
         <td>{{todayDealsList.fromTime}}</td>
@@ -64,7 +64,7 @@
         <td>{{todayDealsList.toTime}}</td>
         <td>{{todayDealsList.product._id}}</td>
         <td>{{todayDealsList.product.name}}</td>
-        <td>{{todayDealsList.product.cat}}</td>
+        <!-- <td>{{todayDealsList.product.cat}}</td> -->
       </tr>
 
     </tbody>

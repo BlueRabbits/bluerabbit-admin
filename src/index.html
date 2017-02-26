@@ -23,10 +23,10 @@
   <script type="text/javascript" src="js/dashboard.min.js"></script>
 </head>
 <body ng-controller="MasterCtrl">
-  <div id="page-wrapper" ng-class="{'open': toggle}" ng-cloak>
+  <div id="page-wrapper" ng-class="{'open': toggle}" ng-cloak >
 
     <!-- Sidebar -->
-    <div id="sidebar-wrapper">
+    <div id="sidebar-wrapper"  ng-hide="window.location == '#/login'">
       <ul class="sidebar" style="background-color: #dedede;">
         <li class="sidebar-main">
           <a ng-click="toggleSidebar()" style="background-color: #e40046;">
@@ -70,7 +70,7 @@
           </a>
         </div>
         <div class="col-xs-4">
-          <a href="#">
+          <a  ng-click="logout()">
             LogOut
           </a>
         </div>
@@ -82,7 +82,7 @@
       <div class="page-content">
 
         <!-- Header Bar -->
-        <div class="row header">
+        <div class="row header"  ng-hide="window.location == '#/login'"> 
           <div class="col-xs-12">
             <div class="user pull-right">
               <div class="item dropdown" uib-dropdown>
@@ -90,34 +90,15 @@
                   <img src="img/avatar.jpg">
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
-                  <li class="dropdown-header">
-                    Joe Bloggs
-                  </li>
-                  <li class="divider"></li>
+
                   <li class="link">
-                    <a href="#">
-                      Profile
-                    </a>
-                  </li>
-                  <li class="link">
-                    <a href="#">
-                      Menu Item
-                    </a>
-                  </li>
-                  <li class="link">
-                    <a href="#">
-                      Menu Item
-                    </a>
-                  </li>
-                  <li class="divider"></li>
-                  <li class="link">
-                    <a href="#">
+                    <a href="#" ng-click="logout">
                       Logout
                     </a>
                   </li>
                 </ul>
               </div>
-              <div class="item dropdown" uib-dropdown>
+              <!-- <div class="item dropdown" uib-dropdown>
                <a href="#" class="dropdown-toggle" uib-dropdown-toggle>
                   <i class="fa fa-bell-o"></i>
                 </a>
@@ -130,7 +111,7 @@
                     <a href="#">Server Down!</a>
                   </li>
                 </ul>
-              </div>
+              </div> -->
             </div>
             <div class="meta">
               <div class="page">
