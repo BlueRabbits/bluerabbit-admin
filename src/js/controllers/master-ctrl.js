@@ -3,10 +3,11 @@
  */
 
 angular.module('RDash')
-    .controller('MasterCtrl', ['$scope', '$cookieStore','$http', MasterCtrl]);
+    .controller('MasterCtrl', ['$scope', '$cookieStore','$http','$location', MasterCtrl]);
 
-function MasterCtrl($scope, $cookieStore, $http, $route) {
+function MasterCtrl($scope, $cookieStore, $http, $route,$location) {
     $scope.$route = $route;
+
     /**
      * Sidebar Toggle & Cookie Control
      */
@@ -282,18 +283,65 @@ function MasterCtrl($scope, $cookieStore, $http, $route) {
                    //edit aand delete category
                    $scope.editCategory = function(id,name,departmentId,IsActive){
                        console.log(id,name,departmentId,IsActive);
+                       $scope.cat_Id = id;
                        $scope.categoryName = name;
                        $scope.categoryId = departmentId;
                        $scope.categoryIsActive = IsActive;
                        //show category Edit button
                        $scope.showCategoryButton = true;
                    }
+                   $scope.updateCategory = function(){
+                       //show category Edit button
+                       $scope.showCategoryButton = true;
+                       var data ={
+                          name:$scope.categoryName,
+                          department:$scope.categoryId,
+                          isActive: $scope.categoryIsActive
+                       };
+
+                       var config = {
+                           headers : {
+                               'Content-Type': 'application/json'
+                           }
+                       }
+
+                       $http.put('http://ec2-35-164-152-22.us-west-2.compute.amazonaws.com:9000/api/categories/'+$scope.cat_Id, data, config)
+                       .success(function (data, status, headers, config) {
+                           $scope.updateCategory = data;
+                           console.log("updateCategory",data);
+                           $scope.getCategory();
+                           location.reload(true);
+
+                       })
+                       .error(function (data, status, header, config) {
+                           $scope.ResponseDetails = "Data: " + data +
+                               "<hr />status: " + status +
+                               "<hr />headers: " + header +
+                               "<hr />config: " + config;
+                       });
+                   }
                    $scope.deleteCategory = function(catId){
                        console.log("catId",catId);
+                       var config = {
+                           headers : {
+                               'Content-Type': 'application/json'
+                           }
+                       }
+                       $http.delete('http://ec2-35-164-152-22.us-west-2.compute.amazonaws.com:9000/api/categories/'+catId, config)
+                       .success(function (data, status, headers, config) {
+                           console.log("delete category",data);
+                            $scope.getCategory();
+                       })
+                       .error(function (data, status, header, config) {
+                           $scope.ResponseDetails = "Data: " + data +
+                               "<hr />status: " + status +
+                               "<hr />headers: " + header +
+                               "<hr />config: " + config;
+                       });
                    }
                    //edit and delete product
                    $scope.editProduct = function(id){
-
+                       $scope.productId=id;
                        for (var i = 0; i < $scope.getProductList.length; i++) {
                          if ($scope.getProductList[i]._id === id) {
                            $scope.productName = $scope.getProductList[i].name;
@@ -308,13 +356,74 @@ function MasterCtrl($scope, $cookieStore, $http, $route) {
                            $scope.productquantity = $scope.getProductList[i].quantity;
                            $scope.productlistPrice = $scope.getProductList[i].listPrice;
                            $scope.productSalePrice = $scope.getProductList[i].salePrice;
+                           $scope.productisActive = $scope.getProductList[i].isActive;
 
                          }
                        }
 
                    }
+                   //update product api
+                   $scope.updateProduct = function(){
+                       var subcat = "no subcat";
+                        var data ={
+                           name:$scope.productName,
+                           description:$scope.productDescription,
+                           dept:$scope.departmentSelected,
+                           cat:$scope.categorySelected,
+                           subCat:subcat,
+                            sku: "abcd12345",
+                           brand: "abcd",
+                           s1: $scope.productImageUrl1,
+                           s2: $scope.productImageUrl2,
+                           s3: $scope.productImageUrl3,
+                           p1:$scope.productOffer,
+                           p2: "abcd",
+                           mainImageUrl:$scope.productImageUrl,
+                           vendorID: 100,
+                           quantity:$scope.productquantity,
+                           listPrice:$scope.productlistPrice,
+                           salePrice:$scope.productSalePrice,
+                           isActive: $scope.productisActive
+                        };
+
+                        var config = {
+                            headers : {
+                                'Content-Type': 'application/json'
+                            }
+                        }
+
+                        $http.put('http://ec2-35-164-152-22.us-west-2.compute.amazonaws.com:9000/api/products/'+$scope.productId, data, config)
+                        .success(function (data, status, headers, config) {
+                            $scope.updateProd = data;
+                            console.log("updateProduct",data);
+                            $scope.getProduct();
+                            //location.reload(true);
+                        })
+                        .error(function (data, status, header, config) {
+                            $scope.ResponseDetails = "Data: " + data +
+                                "<hr />status: " + status +
+                                "<hr />headers: " + header +
+                                "<hr />config: " + config;
+                        });
+                   }
                    $scope.deleteProduct = function(productId){
                        console.log("productId",productId);
+                       var config = {
+                           headers : {
+                               'Content-Type': 'application/json'
+                           }
+                       }
+                       $http.delete('http://ec2-35-164-152-22.us-west-2.compute.amazonaws.com:9000/api/products/'+productId, config)
+                       .success(function (data, status, headers, config) {
+                           console.log("delete product",data);
+                            $scope.getProduct();
+                       })
+                       .error(function (data, status, header, config) {
+                           $scope.ResponseDetails = "Data: " + data +
+                               "<hr />status: " + status +
+                               "<hr />headers: " + header +
+                               "<hr />config: " + config;
+                       });
                    }
                    //edit and delete todaysDeal
                    $scope.editTodayDeals = function(id){

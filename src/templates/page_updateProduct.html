@@ -1,6 +1,6 @@
 <div class="row"  ng-controller="MasterCtrl">
   <div class="col-lg-4">
-      <form ng-submit="postProduct()">
+      <form ng-submit="updateProduct()">
           <div class="form-group">
             <label for="exampleInputEmail1">Product Name</label>
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productName" placeholder="Enter Product Name">
@@ -61,10 +61,10 @@
             <label for="exampleInputEmail1">Product sale Price</label>
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productSalePrice" placeholder="Enter Product salePrice">
           </div>
-          <!-- <div class="form-group">
+          <div class="form-group" ng-if="productisActive">
             <label for="exampleInputEmail1">Product isActive</label>
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productisActive" placeholder="Enter isActive true/false">
-          </div> -->
+          </div>
 
           <button type="submit" class="btn btn-primary">Update</button>
     </form>
