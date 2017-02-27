@@ -1,4 +1,4 @@
-<div class="row"  ng-controller="MasterCtrl">
+<div class="row" ng-controller="MasterCtrl">
   <div class="col-lg-4">
       <form ng-submit="updateProduct()">
           <div class="form-group">
@@ -20,13 +20,13 @@
           <div class="form-group">
             <label for="sel1">Select Department (select one):</label>
             <select class="form-control" id="sel1" ng-model="departmentSelected" ng-change="getdepartmentId(departmentSelected)">
-              <option ng-repeat="departments in getDepartmentList"  ng-model="categoryName">{{departments.name}}</option>
+              <option ng-repeat="departments in getDepartmentList" ng-model="categoryName">{{departments.name}}</option>
             </select>
           </div>
           <div class="form-group">
             <label for="sel1">Select Category (select one):</label>
             <select class="form-control" id="sel1" ng-model="categorySelected" ng-change="getCategoryName(categorySelected)">
-              <option ng-repeat="category in getCategoriesList"  ng-model="categoryName">{{category.name}}</option>
+              <option ng-repeat="category in getCategoriesList" ng-model="categoryName">{{category.name}}</option>
             </select>
           </div>
           <div class="form-group">
@@ -93,7 +93,7 @@
     <tbody>
       <tr ng-repeat="productList in getProductList">
         <td><button class="btn btn-xs btn-success" ng-click="deleteProduct(productList._id)">Delete</button></td>
-        <td><button class="btn btn-xs btn-success"ng-click="editProduct(productList._id,productList.name,productList.description,productList.cat,productList.mainImageUrl,productList.quantity,productList.listPrice,productList.salePrice)">Edit</button></td>
+        <td><button class="btn btn-xs btn-success" ng-click="editProduct(productList._id,productList.name,productList.description,productList.cat,productList.mainImageUrl,productList.quantity,productList.listPrice,productList.salePrice)">Edit</button></td>
         <td>{{productList._id}}</td>
         <td>{{productList.name}}</td>
         <td>{{productList.description}}</td>
