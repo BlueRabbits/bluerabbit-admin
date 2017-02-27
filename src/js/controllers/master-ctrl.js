@@ -3,10 +3,15 @@
  */
 
 angular.module('RDash')
-    .controller('MasterCtrl', ['$scope', '$cookieStore','$http','$location','$state', MasterCtrl]);
+    .controller('MasterCtrl', ['$scope', '$cookieStore','$http','$location','$state','$stateParams', MasterCtrl]);
 
-function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state) {
-
+function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $stateParams) {
+      if ($cookieStore.get('AdminToken')) {
+        $scope.showDashboard = true;
+        
+      } else {
+        $scope.showDashboard = false;
+      }
     /**
      * Sidebar Toggle & Cookie Control
      */
@@ -47,6 +52,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state) {
     var AdminToken = $cookieStore.get('AdminToken');
     //login
     $scope.loginAdmin = function () {
+      $scope.showDashboard = true;
               // use $.param jQuery function to serialize data from JSON
                var data ={
                    email: $scope.email,
@@ -63,13 +69,17 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state) {
                .success(function (data, status, headers, config) {
                    $scope.loginData = data;
                    console.log("loginData",data);
+                  //  window.location.reload(true);
                    //cookieStore
                    $cookieStore.put("AdminToken", data.token);
                    $cookieStore.put("adminId", data._id);
                    $cookieStore.put("adminEmailId", $scope.email);
                    $cookieStore.put('AdminloggedIn', true);
 
+
+                   location.reload(true);
                    window.location.href = '#/updateCategory';
+
                })
                .error(function (data, status, header, config) {
                    $scope.ResponseDetails = "Data: " + data +
@@ -86,7 +96,9 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state) {
     $cookieStore.remove("AdminToken");
     $cookieStore.remove("adminEmailId");
     $cookieStore.put('AdminloggedIn', false);
+    location.reload(true);
     window.location.href = '#/login';
+
   };
 
     //Post Departments

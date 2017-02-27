@@ -26,7 +26,7 @@
   <div id="page-wrapper" ng-class="{'open': toggle}" ng-cloak >
 
     <!-- Sidebar -->
-    <div id="sidebar-wrapper"  ng-hide="window.location == '#/login'">
+    <div id="sidebar-wrapper"  ng-show="showDashboard">
       <ul class="sidebar" style="background-color: #dedede;">
         <li class="sidebar-main">
           <a ng-click="toggleSidebar()" style="background-color: #e40046;">
@@ -82,7 +82,7 @@
       <div class="page-content">
 
         <!-- Header Bar -->
-        <div class="row header"  ng-hide="window.location == '#/login'"> 
+        <div class="row header"  ng-show="showDashboard">
           <div class="col-xs-12">
             <div class="user pull-right">
               <div class="item dropdown" uib-dropdown>
@@ -92,7 +92,7 @@
                 <ul class="dropdown-menu dropdown-menu-right">
 
                   <li class="link">
-                    <a href="#" ng-click="logout">
+                    <a ng-click="logout">
                       Logout
                     </a>
                   </li>
