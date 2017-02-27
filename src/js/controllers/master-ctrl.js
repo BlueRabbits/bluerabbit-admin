@@ -6,6 +6,7 @@ angular.module('RDash')
     .controller('MasterCtrl', ['$scope', '$cookieStore','$http','$location','$state','$stateParams', MasterCtrl]);
 
 function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $stateParams) {
+  $scope.showToastMessage = false;
       if ($cookieStore.get('AdminToken')) {
         $scope.showDashboard = true;
 
@@ -123,6 +124,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
                .success(function (data, status, headers, config) {
                    $scope.PostDataResponse = data;
                    console.log("dataa",data);
+                   alert("Department  added");
                })
                .error(function (data, status, header, config) {
                    $scope.ResponseDetails = "Data: " + data +
@@ -151,6 +153,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
                       .success(function (data, status, headers, config) {
                           $scope.PostDataResponse = data;
                           console.log("dataa",data);
+                          alert("New Category Added!!");
                       })
                       .error(function (data, status, header, config) {
                           $scope.ResponseDetails = "Data: " + data +
@@ -254,6 +257,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
                              .success(function (data, status, headers, config) {
                                  $scope.PostDataResponse = data;
                                  console.log("dataa",data);
+                                 alert("New Product Added");
                              })
                              .error(function (data, status, header, config) {
                                  $scope.ResponseDetails = "Data: " + data +
@@ -332,6 +336,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
                        .success(function (data, status, headers, config) {
                            $scope.todayDealsPost = data;
                            console.log("dataa",data);
+                           alert("Product added to Todays Deal");
                        })
                        .error(function (data, status, header, config) {
                            $scope.ResponseDetails = "Data: " + data +
@@ -382,6 +387,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
                            console.log("updateCategory",data);
                            $scope.getCategory();
                            location.reload(true);
+                           alert("Updated Category");
 
                        })
                        .error(function (data, status, header, config) {
@@ -403,6 +409,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
                        .success(function (data, status, headers, config) {
                            console.log("delete category",data);
                             $scope.getCategory();
+                            alert("Deleted category");
                        })
                        .error(function (data, status, header, config) {
                            $scope.ResponseDetails = "Data: " + data +
@@ -413,6 +420,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
                    }
                    //edit and delete product
                    $scope.editProduct = function(id){
+                     $scope.showProductButton = true;
                        $scope.productId=id;
                        for (var i = 0; i < $scope.getProductList.length; i++) {
                          if ($scope.getProductList[i]._id === id) {
@@ -470,6 +478,8 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
                             $scope.updateProd = data;
                             console.log("updateProduct",data);
                             $scope.getProduct();
+                            // $scope.showToastMessage = true;
+                            alert("Updated Product");
                             //location.reload(true);
                         })
                         .error(function (data, status, header, config) {
@@ -491,6 +501,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
                        .success(function (data, status, headers, config) {
                            console.log("delete product",data);
                             $scope.getProduct();
+                            alert("Product Deleted");
                        })
                        .error(function (data, status, header, config) {
                            $scope.ResponseDetails = "Data: " + data +
@@ -521,6 +532,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
                        .success(function (data, status, headers, config) {
                            console.log("delete product",data);
                             $scope.getTodaysDeal();
+                            alert("Deleted Todays Deal")
                        })
                        .error(function (data, status, header, config) {
                            $scope.ResponseDetails = "Data: " + data +
