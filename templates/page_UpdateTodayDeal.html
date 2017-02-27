@@ -1,20 +1,15 @@
 <div class="row" ng-controller="MasterCtrl">
-  <div class="col-lg-4">
+  <!-- <div class="col-lg-4">
       <form ng-submit="UpdateTodayDeals()">
-          <!-- <div class="form-group">
-            <label for="exampleInputEmail1">fromDate</label>
-            <input type="text" class="form-control" ng-model="departmentName" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Department Name" required>
-          </div> -->
           <div class="form-group">
               <label for="exampleInputEmail1">fromDate</label>
               <label class="glyphicon glyphicon-asterisk"></label>
-               <input type="date" class="form-control" ng-model="fromDate" required>
+               <input type="date" class="form-control"  ng-model="fromDate" required>
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">toDate </label>
             <label class="glyphicon glyphicon-asterisk"></label>
-            <!-- <input type="text" class="form-control" ng-model="descriptionOfDepartment" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Department Description" required> -->
-             <input type="date" class="form-control" ng-model="toDate" required>
+             <input type="date" class="form-control"  ng-model="toDate" required>
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">toTime</label>
@@ -27,16 +22,16 @@
             <input type="time" class="form-control" ng-model="fromTime" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter fromTime" required>
           </div>
           <div class="form-group">
-            <label for="sel1">Select Product (select one):</label>
+            <label for="sel1" >Select Product (select one):</label>
             <label class="glyphicon glyphicon-asterisk"></label>
             <select class="form-control" id="sel1" ng-model="productSelected" ng-change="getproductId(productSelected)">
-              <option ng-repeat="products in getProductList" ng-model="productName">{{products.name}}</option>
+              <option ng-repeat="products in getProductList"  ng-model="productName">{{products.name}}</option>
             </select>
           </div>
 
           <button type="submit" class="btn btn-primary">Update</button>
     </form>
-</div>
+</div> -->
 <div class="col-lg-4">
     <table class="table table-bordered">
       <thead>
@@ -48,7 +43,7 @@
         <th>toDate</th>
         <th>toTime</th>
         <th>fromTime</th>
-        <th>Product ID</th>
+        <!-- <th>Product ID</th> -->
         <th>Product Name</th>
         <!-- <th>Product Category</th> -->
       </tr>
