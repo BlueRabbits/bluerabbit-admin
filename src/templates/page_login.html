@@ -1,9 +1,12 @@
 <div class="container" ng-controller="MasterCtrl">
-  <div class="col-md-6">
+  <div class="col-md-8">
     <div class="modal-dialog" style="margin-bottom:0">
         <div class="modal-content">
                     <div class="panel-heading">
                         <h3 class="panel-title">Krazy Meals Admin Panel</h3>
+                    </div>
+                    <div ng-show="erroralert" style="padding-bottom: 12px; color: red; margin: 9px 27px;">
+                      {{errorMessage}}
                     </div>
                     <div class="panel-body">
                         <form role="form" ng-submit="loginAdmin()">

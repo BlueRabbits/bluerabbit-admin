@@ -8,7 +8,7 @@ angular.module('RDash')
 function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $stateParams) {
       if ($cookieStore.get('AdminToken')) {
         $scope.showDashboard = true;
-        
+
       } else {
         $scope.showDashboard = false;
       }
@@ -82,6 +82,8 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
 
                })
                .error(function (data, status, header, config) {
+                  $scope.erroralert = true;
+                   $scope.errorMessage = data.message;
                    $scope.ResponseDetails = "Data: " + data +
                        "<hr />status: " + status +
                        "<hr />headers: " + header +
