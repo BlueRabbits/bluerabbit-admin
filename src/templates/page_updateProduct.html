@@ -61,6 +61,14 @@
             <label for="exampleInputEmail1">Product sale Price</label>
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productSalePrice" placeholder="Enter Product salePrice">
           </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Product discounted Price</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="discountedPrice" placeholder="Enter Product discountedPrice">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Product instock</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="instock" placeholder="instock yes/no" required>
+          </div>
           <div class="form-group" ng-if="productisActive">
             <label for="exampleInputEmail1">Product isActive</label>
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productisActive" placeholder="Enter isActive true/false">
@@ -82,6 +90,7 @@
           <th>Product Description</th>
           <th>Product Category</th>
           <th>Offered Product</th>
+          <th>discounted Price</th>
           <!-- <th>Product Image</th>
           <th>Product Image1</th>
           <th>Product Image2</th>
@@ -100,6 +109,7 @@
         <td>{{productList.description}}</td>
         <td>{{productList.cat}}</td>
         <td>{{productList.p1}}</td>
+        <td>{{productList.discountedPrice}}</td>
         <!-- <td>{{productList.mainImageUrl}}</td>
         <td>{{productList.s1}}</td>
         <td>{{productList.s2}}</td>

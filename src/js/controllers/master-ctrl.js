@@ -45,8 +45,8 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
     };
     //datepicker
     //$('#datetimepicker1').datetimepicker();
-    //var BASE_URL = "http://ec2-35-164-152-22.us-west-2.compute.amazonaws.com:9000";
-    var BASE_URL = "http://ec2-54-187-15-116.us-west-2.compute.amazonaws.com:9000";
+    var BASE_URL = "http://ec2-35-164-152-22.us-west-2.compute.amazonaws.com:9000";
+    //var BASE_URL = "http://ec2-54-187-15-116.us-west-2.compute.amazonaws.com:9000";
     //var BASE_URL = "http://localhost:9000";
     //var BASE_URL = "http://192.168.0.84:9000";
 
@@ -243,6 +243,8 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
                                 quantity:$scope.productquantity,
                                 listPrice:$scope.productlistPrice,
                                 salePrice:$scope.productSalePrice,
+                                discountedPrice: $scope.discountedPrice,
+                                instock:$scope.instock,
                                 isActive: $scope.productisActive
                              };
 
@@ -464,6 +466,8 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
                            $scope.productquantity = $scope.getProductList[i].quantity;
                            $scope.productlistPrice = $scope.getProductList[i].listPrice;
                            $scope.productSalePrice = $scope.getProductList[i].salePrice;
+                           $scope.discountedPrice = $scope.getProductList[i].discountedPrice;
+                           $scope.instock = $scope.getProductList[i].instock;
                            $scope.productisActive = $scope.getProductList[i].isActive;
 
                          }
@@ -491,6 +495,8 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
                            quantity:$scope.productquantity,
                            listPrice:$scope.productlistPrice,
                            salePrice:$scope.productSalePrice,
+                           discountedPrice: $scope.discountedPrice,
+                           instock:$scope.instock,
                            isActive: $scope.productisActive
                         };
 
