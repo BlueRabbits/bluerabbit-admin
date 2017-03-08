@@ -5,15 +5,21 @@
             <label for="exampleInputEmail1">Category Name</label>
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="categoryName" placeholder="Enter Category Name">
           </div>
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label for="exampleInputEmail1">Department Id</label>
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="categoryId" placeholder="Enter Department Id">
-          </div>
-          <div class="form-group">
+          </div> -->
+          <!-- <div class="form-group">
             <label for="exampleInputEmail1">isActive</label>
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="categoryIsActive" placeholder="Enter isActive">
+          </div> -->
+          <div class="form-group">
+            <label for="sel1">Select is Active</label>
+            <select class="form-control" id="sel1" ng-model="categoryIsActive">
+              <option  value="true">true</option>
+              <option  value="false" >false</option>
+            </select>
           </div>
-
           <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
           <button type="submit" class="btn btn-primary" ng-show="showCategoryButton">Update</button>
     </form>
@@ -31,8 +37,10 @@
     </thead>
     <tbody>
       <tr ng-repeat="categoryList in getCategoriesList">
-        <td><button class="btn btn-xs btn-success" ng-click="deleteCategory(categoryList._id)">Delete</button></td>
-        <td><button class="btn btn-xs btn-success"ng-click="editCategory(categoryList._id,categoryList.name,categoryList.department._id,categoryList.isActive)">Edit</button></td>
+        <!-- <td><button class="btn btn-xs btn-success" ng-click="deleteCategory(categoryList._id)">Delete</button></td> -->
+        <!-- <td><button class="btn btn-xs btn-success">Edit</button></td> -->
+        <td><i class="fa fa-pencil-square-o fa-3x" style="color: #e40046; cursor:pointer"  aria-hidden="true" ng-click="editCategory(categoryList._id,categoryList.name,categoryList.department._id,categoryList.isActive)"></i></td>
+        <td><i class="fa fa-trash-o fa-3x" style="color: #e40046; cursor:pointer"  ng-click="deleteCategory(categoryList._id)" aria-hidden="true"></i></td>
         <td>{{categoryList._id}}</td>
         <td>{{categoryList.name}}</td>
         <td>{{categoryList.isActive}}</td>

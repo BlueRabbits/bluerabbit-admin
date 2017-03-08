@@ -5,13 +5,20 @@
             <label for="exampleInputEmail1">Category Name</label>
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="categoryName" placeholder="Enter Category Name" required>
           </div>
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label for="exampleInputEmail1">Department Id</label>
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="categoryId" placeholder="Enter Department Id" required>
-          </div>
-          <div class="form-group">
+          </div> -->
+          <!-- <div class="form-group">
             <label for="exampleInputEmail1">isActive</label>
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="categoryIsActive" placeholder="Enter isActive" required>
+          </div> -->
+          <div class="form-group">
+            <label for="sel1">Select is Active</label>
+            <select class="form-control" id="sel1" ng-model="categoryIsActive">
+              <option  value="true">true</option>
+              <option  value="false" >false</option>
+            </select>
           </div>
 
           <button type="submit" class="btn btn-primary">Submit</button>

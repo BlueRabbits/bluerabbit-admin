@@ -139,7 +139,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
                      // use $.param jQuery function to serialize data from JSON
                       var data ={
                          name:$scope.categoryName,
-                         department:$scope.categoryId,
+                         department:1,
                          isActive: $scope.categoryIsActive
                       };
 
@@ -401,7 +401,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
                        $scope.showCategoryButton = true;
                        var data ={
                           name:$scope.categoryName,
-                          department:$scope.categoryId,
+                          department:1,
                           isActive: $scope.categoryIsActive
                        };
 
