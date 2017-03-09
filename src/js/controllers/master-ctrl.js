@@ -3,9 +3,9 @@
  */
 
 angular.module('RDash')
-    .controller('MasterCtrl', ['$scope', '$cookieStore','$http','$location','$state','$stateParams', MasterCtrl]);
+    .controller('MasterCtrl', ['$scope', '$cookieStore','$http','$location','$state','$stateParams','$filter', MasterCtrl]);
 
-function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $stateParams) {
+function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $stateParams, $filter) {
   $scope.showToastMessage = false;
       if ($cookieStore.get('AdminToken')) {
         $scope.showDashboard = true;
@@ -576,5 +576,160 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
                                "<hr />config: " + config;
                        });
                    }
+                   //get all orders
+
+                   $scope.getAllOrders = function () {
+
+                              var config = {
+                                  headers : {
+                                      'Authorization': 'Bearer '+AdminToken,
+                                      'Content-Type': 'application/json'
+                                  }
+                              }
+
+                              $http.get(BASE_URL + '/api/orders', config)
+                              .success(function (data, status, headers, config) {
+                                  $scope.getAllOrdersList = data;
+                                  console.log("get getAllOrdersList",data);
+
+                              })
+                              .error(function (data, status, header, config) {
+                                  $scope.ResponseDetails = "Data: " + data +
+                                      "<hr />status: " + status +
+                                      "<hr />headers: " + header +
+                                      "<hr />config: " + config;
+                              });
+                          };
+                          $scope.getAllOrders();
+
+                          //get all order status
+                          $scope.getAllOrderStatus = function () {
+
+                                     var config = {
+                                         headers : {
+                                             'Authorization': 'Bearer '+AdminToken,
+                                             'Content-Type': 'application/json'
+                                         }
+                                     }
+
+                                     $http.get(BASE_URL + '/api/orderStatus', config)
+                                     .success(function (data, status, headers, config) {
+                                         $scope.getAllOrdersStatusList = data;
+                                         console.log("get getAllOrdersStatusList",data);
+
+
+                                     })
+                                     .error(function (data, status, header, config) {
+                                         $scope.ResponseDetails = "Data: " + data +
+                                             "<hr />status: " + status +
+                                             "<hr />headers: " + header +
+                                             "<hr />config: " + config;
+                                     });
+                                 };
+                                 $scope.getAllOrderStatus();
+                                 //get order status changed value
+                                 $scope.orderStatusChangedValue = function(id){
+                                   console.log("orderStatusname",id);
+                                   $scope.selectedOrderStatusId = id;
+                                   for (var i = 0; i < $scope.getAllOrdersStatusList.length; i++) {
+                                     if ($scope.getAllOrdersStatusList[i]._id ==  id) {
+                                        $scope.orderStatusObj = $scope.getAllOrdersStatusList[i];
+                                     }
+                                   }
+                                
+
+                                 }
+
+
+                                 //edit order staus by order id
+
+                                 $scope.editOrderStatus = function(order_id){
+
+
+
+                                     var data ={
+
+                                         "orderStatus": $scope.orderStatusObj
+
+                                    };
+
+                                     var config = {
+                                         headers : {
+                                             'Authorization': 'Bearer '+AdminToken,
+                                             'Content-Type': 'application/json'
+                                         }
+                                     }
+
+                                     $http.put(BASE_URL + '/api/orders/'+order_id, data, config)
+                                     .success(function (data, status, headers, config) {
+                                         $scope.updateCategory = data;
+                                         console.log("updateCategory",data);
+                                         $scope.getAllOrders();
+                                         alert("Updated orders");
+
+                                     })
+                                     .error(function (data, status, header, config) {
+                                         $scope.ResponseDetails = "Data: " + data +
+                                             "<hr />status: " + status +
+                                             "<hr />headers: " + header +
+                                             "<hr />config: " + config;
+                                     });
+                                 }
+                                 //invoice modal window
+                                 $scope.invoiceDetails = function(order_id){
+                                   console.log(order_id);
+                                   var config = {
+                                       headers : {
+                                           'Authorization': 'Bearer '+AdminToken,
+                                           'Content-Type': 'application/json'
+                                       }
+                                   }
+
+                                   $http.get(BASE_URL + '/api/orders/'+order_id, config)
+                                   .success(function (data, status, headers, config) {
+                                       $scope.getByorderId = data;
+                                       console.log("$scope.getByorderId",$scope.getByorderId);
+
+                                   })
+                                   .error(function (data, status, header, config) {
+                                       $scope.ResponseDetails = "Data: " + data +
+                                           "<hr />status: " + status +
+                                           "<hr />headers: " + header +
+                                           "<hr />config: " + config;
+                                   });
+                                 }
+                                 //print invoive
+                                 $scope.printInvoice = function(){
+                                   var contents = $('#printArea').html();
+                                        var frame = $('#printframe')[0].contentWindow.document;
+
+                                        // show the modal div
+                                        $('#invoiceModal').css({'display':'block'});
+
+                                        // open the frame document and add the contents
+                                        frame.open();
+                                        frame.write(contents);
+                                        frame.close();
+
+                                        // print just the modal div
+                                        $('#printframe')[0].contentWindow.print();
+                                 }
+                                 //export to excel
+                                 $scope.exportToExcel = function(){
+                                   window.open('data:application/vnd.ms-excel,' + $('#orderDetailExport').html());
+
+                                 }
+
+                                 //date filter
+                                 $scope.filterBydate = function(toDate){
+                                   console.log(toDate);
+
+                                   //date formatting
+
+                                  //  $scope.toDateFilter = toDate;
+                                 }
+                                 $scope.filterValue=function(obj){
+                                         $filter('date')(obj.orderDate, 'MM/dd/yyyy') == $filter('date')($scope.todate, 'MM/dd/yyyy');
+                                      }
 
 }

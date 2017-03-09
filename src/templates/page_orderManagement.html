@@ -1,0 +1,165 @@
+<div class="row"  ng-controller="MasterCtrl">
+  <div class="container">
+        <div class="row">
+          <button class="btn btn-primary" ng-click="exportToExcel()">Export</button>
+      </div>
+      <div class="col-sm-2">
+          <div><label>From</label> <input type="date" ng-model="fromdate"></div>
+          <div><label>To</label> <input type="date" ng-model="todate" ng-change="filterBydate(todate)"></div>
+      </div>
+  </div>
+  <div class="col-lg-4">
+      <table class="table table-bordered" id="orderDetailExport">
+        <thead>
+        <tr>
+
+          <th>Order ID</th>
+          <th>Order Date</th>
+          <th>User ID</th>
+          <th>Order Amount</th>
+          <th>Payment Mode</th>
+          <th>Invoice</th>
+          <th>Order Status</th>
+          <th>Change Order Status</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="orderDetails in getAllOrdersList">
+          <!-- <td><button class="btn btn-xs btn-success" ng-click="deleteCategory(categoryList._id)">Delete</button></td> -->
+          <!-- <td><button class="btn btn-xs btn-success">Edit</button></td> -->
+          <!-- <td><i class="fa fa-pencil-square-o fa-3x" style="color: #e40046; cursor:pointer"  aria-hidden="true" ng-click="editCategory(categoryList._id,categoryList.name,categoryList.department._id,categoryList.isActive)"></i></td>
+          <td><i class="fa fa-trash-o fa-3x" style="color: #e40046; cursor:pointer"  ng-click="deleteCategory(categoryList._id)" aria-hidden="true"></i></td> -->
+          <td>{{orderDetails._id}}</td>
+          <td>{{orderDetails.orderDate | date:'yyyy-MM-dd'}}</td>
+          <td>{{orderDetails.userID}}</td>
+          <td>{{orderDetails.orderAmount}}</td>
+          <td>COD</td>
+          <td><i class="fa fa-files-o fa-3x" aria-hidden="true" data-toggle="modal" data-target="#invoiceModal" ng-click="invoiceDetails(orderDetails._id)"></i></td>
+          <td>{{orderDetails.orderStatus.name}}</td>
+          <td>
+            <select class="form-control" style="width:160px !important;" id="sel1" ng-model="orderStatusSelected" ng-change="orderStatusChangedValue(orderStatusSelected)" >
+              <option ng-repeat="orderStatusNames in getAllOrdersStatusList" value="{{ orderStatusNames._id }}">{{orderStatusNames.name}}</option>
+            </select>
+          </td>
+          <td>
+            <button type="submit" class="btn btn-primary" ng-click="editOrderStatus(orderDetails._id, orderDetails.orderStatus._id, orderDetails.orderStatus.name)">Update</button>
+          </td>
+        </tr>
+
+      </tbody>
+      </table>
+  </div>
+  <!-- load invoice modal windo  -->
+  <div class="modal fade" id="invoiceModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="margin-left: 250px;">
+      <div class="modal-content" style="width: 900px !important;">
+        <div class="modal-body">
+          <div class="container" id="printArea">
+      <div class="row">
+          <div class="col-md-8">
+      		<div class="invoice-title">
+      			<h2>Invoice</h2><h3 class="pull-right">Order # {{getByorderId._id}}</h3>
+      		</div>
+      		<hr>
+      		<div class="row">
+      			<div class="col-xs-6">
+      				<address>
+      				<strong>Billed To:</strong><br>
+      					{{getByorderId.address.name}}<br>
+      					{{getByorderId.address.houseNo}}<br>
+      					{{getByorderId.address.streetName}}<br>
+      					{{getByorderId.address.city}}{{getByorderId.address.country}}
+      				</address>
+      			</div>
+      			<div class="col-xs-6 text-right">
+              <address>
+                <strong>Order Date:</strong>
+                {{getByorderId.orderDate | date}}
+              </address>
+      			</div>
+      		</div>
+      		<div class="row">
+      			<div class="col-xs-6">
+      				<address>
+      					<strong>Payment Method: COD</strong><br>
+
+      				</address>
+      			</div>
+      			<!-- <div class="col-xs-6 text-right">
+      				<address>
+      					<strong>Order Date:</strong><br>
+      					March 7, 2014<br><br>
+      				</address>
+      			</div> -->
+      		</div>
+      	</div>
+      </div>
+
+      <div class="row">
+      	<div class="col-md-8">
+      		<div class="panel panel-default">
+      			<div class="panel-heading">
+      				<h3 class="panel-title"><strong>Order summary</strong></h3>
+      			</div>
+      			<div class="panel-body">
+      				<div class="table-responsive">
+      					<table class="table table-condensed">
+      						<thead>
+                                  <tr>
+          							<td><strong>Item</strong></td>
+          							<td class="text-center"><strong>Price</strong></td>
+          							<td class="text-center"><strong>Quantity</strong></td>
+          							<td class="text-right"><strong>Totals</strong></td>
+                                  </tr>
+      						</thead>
+      						<tbody>
+      							<!-- foreach ($order->lineItems as $line) or some such thing here -->
+      							<tr ng-repeat="items in getByorderId.itmes">
+      								<td>{{items.product.name}}</td>
+      								<td class="text-center">AED {{items.product.salePrice}}</td>
+      								<td class="text-center">{{items.quantity}}</td>
+      								<td class="text-right">AED {{items.totalProductAmount}}</td>
+      							</tr>
+      							<!-- <tr>
+      								<td class="thick-line"></td>
+      								<td class="thick-line"></td>
+      								<td class="thick-line text-center"><strong>Subtotal</strong></td>
+      								<td class="thick-line text-right">AED 670.99</td>
+      							</tr> -->
+      							<!-- <tr>
+      								<td class="no-line"></td>
+      								<td class="no-line"></td>
+      								<td class="no-line text-center"><strong>Shipping</strong></td>
+      								<td class="no-line text-right">AED 15</td>
+      							</tr> -->
+      							<tr>
+      								<td class="no-line"></td>
+      								<td class="no-line"></td>
+      								<td class="no-line text-center"><strong>Total</strong></td>
+      								<td class="no-line text-right">AED {{getByorderId.orderAmount}}</td>
+      							</tr>
+      						</tbody>
+      					</table>
+
+      				</div>
+      			</div>
+      		</div>
+      	</div>
+      </div>
+  </div>
+  <button class="btn btn-primary" ng-click="printInvoice()">Print</button>
+<!-- sample  -->
+<div id="modal" hidden>
+    <iframe id="printframe">
+
+    </iframe>
+</div>
+<!-- sample  -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- load invoice modal windo  -->
+
+</div>
