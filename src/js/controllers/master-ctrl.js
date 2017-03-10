@@ -14,6 +14,12 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
       } else {
         $scope.showDashboard = false;
       }
+      //allow two logins
+      if ($cookieStore.get('adminName') === 'superadmin') {
+        $scope.showOrderManagement = true;
+      } else {
+        $scope.showOrderManagement = false;
+      }
     /**
      * Sidebar Toggle & Cookie Control
      */
@@ -76,12 +82,17 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
                    //cookieStore
                    $cookieStore.put("AdminToken", data.token);
                    $cookieStore.put("adminId", data._id);
+                   $cookieStore.put("adminName", data.name);
                    $cookieStore.put("adminEmailId", $scope.email);
                    $cookieStore.put('AdminloggedIn', true);
 
 
                    location.reload(true);
-                   window.location.href = '#/updateCategory';
+                   if ($cookieStore.get('adminName') === 'superadmin') {
+
+                      window.location.href = '#/orderManagement';
+                   }
+
 
                })
                .error(function (data, status, header, config) {
