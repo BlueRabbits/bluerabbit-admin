@@ -1,0 +1,28 @@
+<div class="row" ng-controller="MasterCtrl">
+
+<div class="col-lg-4">
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th></th>
+        <th></th>
+        <th>User ID</th>
+        <th>User Name</th>
+        <th>User Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="userList in getAllUserList">
+        <!-- <td><button class="btn btn-xs btn-success" ng-click="deleteCategory(categoryList._id)">Delete</button></td> -->
+        <td><button class="btn btn-xs btn-success">Edit</button></td>
+        <td><i class="fa fa-pencil-square-o fa-3x" style="color: #e40046; cursor:pointer" aria-hidden="true" ng-click="editCategory(categoryList._id,categoryList.name,categoryList.department._id,categoryList.isActive)"></i></td>
+        <td><i class="fa fa-trash-o fa-3x" style="color: #e40046; cursor:pointer" ng-click="deleteCategory(categoryList._id)" aria-hidden="true"></i></td>
+        <td>{{categoryList._id}}</td>
+        <td>{{categoryList.name}}</td>
+        <td>{{categoryList.isActive}}</td>
+      </tr>
+
+    </tbody>
+    </table>
+</div>
+</div>

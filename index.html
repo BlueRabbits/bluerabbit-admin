@@ -24,37 +24,41 @@
             <span class="menu-icon glyphicon glyphicon-transfer"></span>
           </a>
         </li>
-        <li class="sidebar-title"><span>Create</span></li>
+        <li class="sidebar-title" ng-hide="showOrderManagement"><span>Create</span></li>
         <!-- <li class="sidebar-list">
           <a href="#/department" ng-class="{active:isActive('#/department')}"> Department <span class="menu-icon fa fa-tachometer"></span></a>
         </li> -->
-        <li class="sidebar-list">
+        <li class="sidebar-list" ng-hide="showOrderManagement">
           <a href="#/category"> Category <span class="menu-icon fa fa-table"></span></a>
         </li>
-        <li class="sidebar-list">
+        <li class="sidebar-list" ng-hide="showOrderManagement">
           <a href="#/addProduct"> Product <span class="menu-icon fa fa-table"></span></a>
         </li>
-        <li class="sidebar-list">
+        <li class="sidebar-list" ng-hide="showOrderManagement">
           <a href="#/addTodayDeals"> Today Deals <span class="menu-icon fa fa-table"></span></a>
         </li>
-          <li class="sidebar-title"><span>Update/Delete</span></li>
+          <li class="sidebar-title" ng-hide="showOrderManagement"><span>Update/Delete</span></li>
           <li class="sidebar-list">
-            <a href="#/updateCategory">Update Category <span class="menu-icon fa fa-table"></span></a>
+            <a href="#/updateCategory" ng-hide="showOrderManagement">Update Category <span class="menu-icon fa fa-table"></span></a>
           </li>
           <li class="sidebar-list">
-            <a href="#/updateProduct">Update Product <span class="menu-icon fa fa-table"></span></a>
+            <a href="#/updateProduct" ng-hide="showOrderManagement">Update Product <span class="menu-icon fa fa-table"></span></a>
           </li>
           <li class="sidebar-list">
-            <a href="#/UpdateTodayDeal">Update Today Deals <span class="menu-icon fa fa-table"></span></a>
+            <a href="#/UpdateTodayDeal" ng-hide="showOrderManagement">Update Today Deals <span class="menu-icon fa fa-table"></span></a>
           </li>
-          <li class="sidebar-title"><span>Order Details</span></li>
+          <li class="sidebar-title" ><span>Order Details</span></li>
           <li class="sidebar-list">
-            <a href="#/orderManagement">Order Management <span class="menu-icon fa fa-table"></span></a>
+            <a ng-style="{'background-color':orderColor}" href="#/orderManagement">Order Management <span class="menu-icon fa fa-table"></span></a>
+          </li>
+          <li class="sidebar-title" ng-hide="showOrderManagement"><span>User Details</span></li>
+          <li class="sidebar-list" ng-hide="showOrderManagement">
+            <a href="#/userDetails">User Management <span class="menu-icon fa fa-table"></span></a>
           </li>
       </ul>
       <div class="sidebar-footer" style="background-color: #e40046;">
         <div class="col-xs-4">
-          <a href="https://github.com/rdash/rdash-angular" target="_blank">
+          <a href="" target="_blank">
             About
           </a>
         </div>

@@ -1,12 +1,20 @@
 <div class="row" ng-controller="MasterCtrl">
   <div class="container">
-        <div class="row">
-          <button class="btn btn-primary" ng-click="exportToExcel()">Export</button>
+
+      <div class="col-md-2">
+          <!-- <div><label>From</label> <input type="date" ng-model="fromdate"></div> -->
+        <label style="position: relative;right: 46px;bottom: -5px">  Filter</label><input style="position: relative;bottom: 22px" type="date" ng-model="todate" ng-change="filterBydate(todate)">
       </div>
-      <div class="col-sm-2">
-          <div><label>From</label> <input type="date" ng-model="fromdate"></div>
-          <div><label>To</label> <input type="date" ng-model="todate" ng-change="filterBydate(todate)"></div>
-      </div>
+      <div class="col-md-2">
+        <button class="btn" style="color: white;background-color: #e40046; cursor:pointer" ng-click="showAllOrders()">Show All</button>
+    </div>
+    <div class="col-md-2">
+      <button class="btn btn-primary" style="color: white;background-color: #e40046; cursor:pointer" ng-click="exportToExcel()">Export</button>
+  </div>
+      <!-- <div class="col-sm-2">
+          <div><label>fromTime</label> <input type="time" ng-model="fromTime"></div>
+          <div><label>toTime</label> <input type="time" ng-model="toTime" ></div>
+      </div> -->
   </div>
   <div class="col-lg-4">
       <table class="table table-bordered" id="orderDetailExport">
@@ -25,13 +33,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="orderDetails in getAllOrdersList">
+        <tr ng-repeat="orderDetails in getAllOrdersList | filter:dateList">
           <!-- <td><button class="btn btn-xs btn-success" ng-click="deleteCategory(categoryList._id)">Delete</button></td> -->
           <!-- <td><button class="btn btn-xs btn-success">Edit</button></td> -->
           <!-- <td><i class="fa fa-pencil-square-o fa-3x" style="color: #e40046; cursor:pointer"  aria-hidden="true" ng-click="editCategory(categoryList._id,categoryList.name,categoryList.department._id,categoryList.isActive)"></i></td>
           <td><i class="fa fa-trash-o fa-3x" style="color: #e40046; cursor:pointer"  ng-click="deleteCategory(categoryList._id)" aria-hidden="true"></i></td> -->
           <td>{{orderDetails._id}}</td>
-          <td>{{orderDetails.orderDate | date:'yyyy-MM-dd'}}</td>
+          <td ng-model="orderdates">{{orderDetails.orderDate | date}}</td>
           <td>{{orderDetails.userID}}</td>
           <td>{{orderDetails.orderAmount}}</td>
           <td>COD</td>
@@ -43,7 +51,7 @@
             </select>
           </td>
           <td>
-            <button type="submit" class="btn btn-primary" ng-click="editOrderStatus(orderDetails._id, orderDetails.orderStatus._id, orderDetails.orderStatus.name)">Update</button>
+            <button type="submit" style="color: white;background-color: #e40046; cursor:pointer" class="btn" ng-click="editOrderStatus(orderDetails._id, orderDetails.orderStatus._id, orderDetails.orderStatus.name)">Update</button>
           </td>
         </tr>
 
