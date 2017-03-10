@@ -46,6 +46,10 @@ angular.module('RDash').config(['$stateProvider', '$urlRouterProvider',
             .state('orderManagement', {
                 url: '/orderManagement',
                 templateUrl: 'templates/page_orderManagement.html'
+            })
+            .state('userDetails', {
+                url: '/userDetails',
+                templateUrl: 'templates/page_UserDetails.html'
             });
     }
 ]);

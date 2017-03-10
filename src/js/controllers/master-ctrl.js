@@ -7,6 +7,7 @@ angular.module('RDash')
 
 function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $stateParams, $filter) {
   $scope.showToastMessage = false;
+  console.log("$cookieStore.get('AdminToken')",$cookieStore.get('AdminToken'));
       if ($cookieStore.get('AdminToken')) {
         $scope.showDashboard = true;
 
@@ -636,7 +637,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
                                         $scope.orderStatusObj = $scope.getAllOrdersStatusList[i];
                                      }
                                    }
-                                
+
 
                                  }
 
@@ -722,14 +723,86 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
 
                                  //date filter
                                  $scope.filterBydate = function(toDate){
-                                   console.log(toDate);
-
-                                   //date formatting
+                                   console.log("toDate",toDate);
+                                  //  var now = new Date();
+                                  //  var isoDate = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString();
+                                  //  isoDate = new Date(toDate).toISOString();
+                                  //  console.log("isoDate",isoDate);
+                                  //  $scope.utcdateFilter = isoDate;
+                                   //date from api utc to local date
+                                   for (var i = 0; i < $scope.getAllOrdersList.length; i++) {
+                                     $scope.ordatesList = $scope.getAllOrdersList[i].orderDate;
+                                   }
+                                   console.log("$scope.ordatesList",$scope.ordatesList);
+                                   var date = new Date($scope.ordatesList );
+                                   date.toString();
+                                   console.log("dateList",date);
+                                   // IDEA:
+                                   if (date == toDate) {
+                                     $scope.dateList = $scope.ordatesList;
+                                     console.log("$scope.dateList",$scope.dateList);
+                                   }
 
                                   //  $scope.toDateFilter = toDate;
                                  }
-                                 $scope.filterValue=function(obj){
-                                         $filter('date')(obj.orderDate, 'MM/dd/yyyy') == $filter('date')($scope.todate, 'MM/dd/yyyy');
-                                      }
+                                 //get all users
+                                 $scope.getAllUsers = function(){
+                                   var config = {
+                                       headers : {
+
+                                           'Content-Type': 'application/json'
+                                       }
+                                   }
+
+                                   $http.get(BASE_URL + '/api/users', config)
+                                   .success(function (data, status, headers, config) {
+                                       $scope.getAllUserList = data;
+                                       console.log("get getAllUserList",data);
+
+
+                                   })
+                                   .error(function (data, status, header, config) {
+                                       $scope.ResponseDetails = "Data: " + data +
+                                           "<hr />status: " + status +
+                                           "<hr />headers: " + header +
+                                           "<hr />config: " + config;
+                                   });
+                                 }
+                                  $scope.getAllUsers();
+                                  //Update users activate
+                                  // $scope.userActiveChange = function(name){
+                                  //   console.log("name",name);
+                                  //   console.log("isActiveSelected",$scope.isActiveSelected);
+                                  // }
+                                  $scope.updateUser = function(userid,sel){
+                                    console.log("sel",$scope.sel);
+                                    $scope.selectedValue = $('#sel11 :selected').val();
+                                    var config = {
+                                        headers : {
+
+                                            'Content-Type': 'application/json'
+                                        }
+                                    }
+
+                                    var data ={
+
+                                        "isactive": sel
+
+                                   };
+
+                                    $http.put(BASE_URL + '/api/users/'+userid,data, config)
+                                    .success(function (data, status, headers, config) {
+                                        $scope.getIsActiveUpdated = data;
+                                        console.log("get getAllUserList",data);
+                                        $scope.getAllUsers();
+
+                                    })
+                                    .error(function (data, status, header, config) {
+                                        $scope.ResponseDetails = "Data: " + data +
+                                            "<hr />status: " + status +
+                                            "<hr />headers: " + header +
+                                            "<hr />config: " + config;
+                                    });
+                                  }
 
 }
