@@ -1,5 +1,5 @@
 <div class="row" ng-controller="MasterCtrl">
-  <div class="col-lg-4">
+  <div class="col-lg-4" ng-show="showProductButton">
       <form ng-submit="updateProduct()">
           <div class="form-group">
             <label for="exampleInputEmail1">Product Name</label>
@@ -74,7 +74,7 @@
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productisActive" placeholder="Enter isActive true/false">
           </div>
 
-          <button type="submit" class="btn btn-primary" ng-show="showProductButton">Update</button>
+          <button type="submit" class="btn btn-primary">Update</button>
     </form>
 </div>
 
@@ -102,8 +102,11 @@
     </thead>
     <tbody>
       <tr ng-repeat="productList in getProductList">
-        <td><button class="btn btn-xs btn-success" ng-click="deleteProduct(productList._id)">Delete</button></td>
-        <td><button class="btn btn-xs btn-success" ng-click="editProduct(productList._id,productList.name,productList.description,productList.cat,productList.mainImageUrl,productList.quantity,productList.listPrice,productList.salePrice)">Edit</button></td>
+        <!-- <td><button class="btn btn-xs btn-success" ng-click="deleteProduct(productList._id)">Delete</button></td> -->
+        <!-- <td><button class="btn btn-xs btn-success"ng-click="editProduct(productList._id,productList.name,productList.description,productList.cat,productList.mainImageUrl,productList.quantity,productList.listPrice,productList.salePrice)">Edit</button></td> -->
+
+        <td><i class="fa fa-pencil-square-o fa-3x" style="color: #e40046; cursor:pointer" aria-hidden="true" ng-click="editProduct(productList._id,productList.name,productList.description,productList.cat,productList.mainImageUrl,productList.quantity,productList.listPrice,productList.salePrice)"></i></td>
+        <td><i class="fa fa-trash-o fa-3x" style="color: #e40046; cursor:pointer" ng-click="deleteProduct(productList._id)" aria-hidden="true"></i></td>
         <td>{{productList._id}}</td>
         <td>{{productList.name}}</td>
         <td>{{productList.description}}</td>
