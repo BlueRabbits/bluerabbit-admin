@@ -17,6 +17,8 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
       //allow two logins
       if ($cookieStore.get('adminName') === 'superadmin') {
         $scope.showOrderManagement = true;
+        $scope.orderHeight = '0px';
+        $scope.orderColor = '#2d3e63';
       } else {
         $scope.showOrderManagement = false;
       }
@@ -88,9 +90,15 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
 
 
                    location.reload(true);
+
+                  //  window.location.href = '#/category';
                    if ($cookieStore.get('adminName') === 'superadmin') {
 
                       window.location.href = '#/orderManagement';
+                   }
+                   if ($cookieStore.get('adminName') === 'admin') {
+
+                      window.location.href = '#/category';
                    }
 
 
@@ -735,6 +743,8 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
                                  //date filter
                                  $scope.filterBydate = function(toDate){
                                    console.log("toDate",toDate);
+                                   var todayDate = new Date(toDate).toString().split(" ").slice(0, 4).join(" ");
+                                  console.log("todayDate",todayDate);
                                   //  var now = new Date();
                                   //  var isoDate = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString();
                                   //  isoDate = new Date(toDate).toISOString();
@@ -743,18 +753,37 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
                                    //date from api utc to local date
                                    for (var i = 0; i < $scope.getAllOrdersList.length; i++) {
                                      $scope.ordatesList = $scope.getAllOrdersList[i].orderDate;
+                                     console.log("$scope.ordatesList",$scope.ordatesList);
+                                     var date = new Date($scope.ordatesList );
+                                     date.toString();
+
+                                     var orderListdate1 = new Date($scope.ordatesList).toString().split(" ").slice(0, 4).join(" ");
+
+                                     console.log("ordatesList",orderListdate1);
+                                     // IDEA:
+                                     if (todayDate == orderListdate1) {
+                                       $scope.dateList = $scope.ordatesList;
+                                       console.log("$scope.dateList",$scope.ordatesList);
+                                     }
                                    }
-                                   console.log("$scope.ordatesList",$scope.ordatesList);
-                                   var date = new Date($scope.ordatesList );
-                                   date.toString();
-                                   console.log("dateList",date);
-                                   // IDEA:
-                                   if (date == toDate) {
-                                     $scope.dateList = $scope.ordatesList;
-                                     console.log("$scope.dateList",$scope.dateList);
-                                   }
+                                  //  console.log("$scope.ordatesList",$scope.ordatesList);
+                                  //  var date = new Date($scope.ordatesList );
+                                  //  date.toString();
+                                   //
+                                  //  var orderListdate1 = new Date($scope.ordatesList).toString().split(" ").slice(0, 4).join(" ");
+                                   //
+                                  //  console.log("ordatesList",orderListdate1);
+                                  //  // IDEA:
+                                  //  if (todayDate == orderListdate1) {
+                                  //    $scope.dateList = $scope.ordatesList;
+                                  //    console.log("$scope.dateList",$scope.ordatesList);
+                                  //  }
 
                                   //  $scope.toDateFilter = toDate;
+                                 }
+                                 //show all orders
+                                 $scope.showAllOrders = function(){
+                                   $scope.dateList = "";
                                  }
                                  //get all users
                                  $scope.getAllUsers = function(){
