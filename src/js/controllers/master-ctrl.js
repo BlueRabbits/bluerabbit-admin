@@ -277,7 +277,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
                    }
                    if ($cookieStore.get('adminName') === 'admin') {
 
-                      window.location.href = '#/category';
+                      window.location.href = '#/overView';
                    }
 
 
