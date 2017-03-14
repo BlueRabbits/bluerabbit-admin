@@ -1,5 +1,30 @@
 <div class="row" ng-controller="MasterCtrl">
-  <div class="col-lg-4">
+  <div class="col-lg-10">
+      <table class="table table-bordered">
+        <thead style="text-align:center">
+        <tr>
+          <th></th>
+          <th></th>
+          <th>Category ID</th>
+          <th>Category Name</th>
+          <!-- <th>Category Is Active</th> -->
+        </tr>
+      </thead>
+      <tbody style="text-align:center">
+        <tr ng-repeat="categoryList in getCategoriesList">
+          <!-- <td><button class="btn btn-xs btn-success" ng-click="deleteCategory(categoryList._id)">Delete</button></td> -->
+          <!-- <td><button class="btn btn-xs btn-success">Edit</button></td> -->
+          <td><i class="fa fa-pencil-square-o fa-2x" style="color: #e40046; cursor:pointer" aria-hidden="true" ng-click="editCategory(categoryList._id,categoryList.name,categoryList.department._id,categoryList.isActive)"></i></td>
+          <td><i class="fa fa-trash-o fa-2x" style="color: #e40046; cursor:pointer" ng-click="deleteCategory(categoryList._id)" aria-hidden="true"></i></td>
+          <td>{{categoryList._id}}</td>
+          <td>{{categoryList.name}}</td>
+          <!-- <td>{{categoryList.isActive}}</td> -->
+        </tr>
+
+      </tbody>
+      </table>
+  </div>
+  <div class="col-lg-4" ng-show="showCategoryButton">
       <form ng-submit="updateCategory()">
           <div class="form-group">
             <label for="exampleInputEmail1">Category Name</label>
@@ -13,40 +38,16 @@
             <label for="exampleInputEmail1">isActive</label>
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="categoryIsActive" placeholder="Enter isActive">
           </div> -->
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label for="sel1">Select is Active</label>
             <select class="form-control" id="sel1" ng-model="categoryIsActive">
-              <option value="true">true</option>
-              <option value="false">false</option>
+              <option  value="true">true</option>
+              <option  value="false" >false</option>
             </select>
-          </div>
+          </div> -->
           <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
-          <button type="submit" class="btn btn-primary" ng-show="showCategoryButton">Update</button>
+          <button type="submit" class="btn btn-primary">Update</button>
     </form>
 </div>
-<div class="col-lg-4">
-    <table class="table table-bordered">
-      <thead>
-      <tr>
-        <th></th>
-        <th></th>
-        <th>Category ID</th>
-        <th>Category Name</th>
-        <th>Category Is Active</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="categoryList in getCategoriesList">
-        <!-- <td><button class="btn btn-xs btn-success" ng-click="deleteCategory(categoryList._id)">Delete</button></td> -->
-        <!-- <td><button class="btn btn-xs btn-success">Edit</button></td> -->
-        <td><i class="fa fa-pencil-square-o fa-3x" style="color: #e40046; cursor:pointer" aria-hidden="true" ng-click="editCategory(categoryList._id,categoryList.name,categoryList.department._id,categoryList.isActive)"></i></td>
-        <td><i class="fa fa-trash-o fa-3x" style="color: #e40046; cursor:pointer" ng-click="deleteCategory(categoryList._id)" aria-hidden="true"></i></td>
-        <td>{{categoryList._id}}</td>
-        <td>{{categoryList.name}}</td>
-        <td>{{categoryList.isActive}}</td>
-      </tr>
 
-    </tbody>
-    </table>
-</div>
 </div>

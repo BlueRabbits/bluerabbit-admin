@@ -1,4 +1,51 @@
 <div class="row" ng-controller="MasterCtrl">
+  <div class="col-lg-8">
+    <table class="table table-bordered" style="text-align:center">
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+          <th>Product ID</th>
+          <th>Product Name</th>
+          <!-- <th>Product Description</th> -->
+          <th>Product Category</th>
+          <th>Offered Product</th>
+          <th>discounted Price</th>
+          <!-- <th>Product Image</th>
+          <th>Product Image1</th>
+          <th>Product Image2</th>
+          <th>Product Image3</th>
+          <th>Product Quantity</th>
+          <th>Product List Price</th>
+          <th>Product Sales Price</th> -->
+        </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="productList in getProductList">
+        <!-- <td><button class="btn btn-xs btn-success" ng-click="deleteProduct(productList._id)">Delete</button></td> -->
+        <!-- <td><button class="btn btn-xs btn-success"ng-click="editProduct(productList._id,productList.name,productList.description,productList.cat,productList.mainImageUrl,productList.quantity,productList.listPrice,productList.salePrice)">Edit</button></td> -->
+
+        <td><i class="fa fa-pencil-square-o fa-2x" style="color: #e40046; cursor:pointer" aria-hidden="true" ng-click="editProduct(productList._id,productList.name,productList.description,productList.cat,productList.mainImageUrl,productList.quantity,productList.listPrice,productList.salePrice)"></i></td>
+        <td><i class="fa fa-trash-o fa-2x" style="color: #e40046; cursor:pointer" ng-click="deleteProduct(productList._id)" aria-hidden="true"></i></td>
+        <td>{{productList._id}}</td>
+        <td>{{productList.name}}</td>
+        <!-- <td>{{productList.description}}</td> -->
+        <td>{{productList.cat}}</td>
+        <td>{{productList.p1}}</td>
+        <td>{{productList.discountedPrice}}</td>
+        <!-- <td>{{productList.mainImageUrl}}</td>
+        <td>{{productList.s1}}</td>
+        <td>{{productList.s2}}</td>
+        <td>{{productList.s3}}</td>
+        <td>{{productList.quantity}}</td>
+        <td>{{productList.listPrice}}</td>
+        <td>{{productList.salePrice}}</td>
+        <td>{{productList.salePrice}}</td> -->
+      </tr>
+
+    </tbody>
+    </table>
+  </div>
   <div class="col-lg-4" ng-show="showProductButton">
       <form ng-submit="updateProduct()">
           <div class="form-group">
@@ -75,55 +122,10 @@
           </div>
 
           <button type="submit" class="btn btn-primary">Update</button>
+          <button type="button" class="btn btn-primary" ng-click="cancelProduct()">Cancel</button>
     </form>
 </div>
 
 
-  <div class="col-lg-8">
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th></th>
-          <th></th>
-          <th>Product ID</th>
-          <th>Product Name</th>
-          <th>Product Description</th>
-          <th>Product Category</th>
-          <th>Offered Product</th>
-          <th>discounted Price</th>
-          <!-- <th>Product Image</th>
-          <th>Product Image1</th>
-          <th>Product Image2</th>
-          <th>Product Image3</th>
-          <th>Product Quantity</th>
-          <th>Product List Price</th>
-          <th>Product Sales Price</th> -->
-        </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="productList in getProductList">
-        <!-- <td><button class="btn btn-xs btn-success" ng-click="deleteProduct(productList._id)">Delete</button></td> -->
-        <!-- <td><button class="btn btn-xs btn-success"ng-click="editProduct(productList._id,productList.name,productList.description,productList.cat,productList.mainImageUrl,productList.quantity,productList.listPrice,productList.salePrice)">Edit</button></td> -->
 
-        <td><i class="fa fa-pencil-square-o fa-3x" style="color: #e40046; cursor:pointer" aria-hidden="true" ng-click="editProduct(productList._id,productList.name,productList.description,productList.cat,productList.mainImageUrl,productList.quantity,productList.listPrice,productList.salePrice)"></i></td>
-        <td><i class="fa fa-trash-o fa-3x" style="color: #e40046; cursor:pointer" ng-click="deleteProduct(productList._id)" aria-hidden="true"></i></td>
-        <td>{{productList._id}}</td>
-        <td>{{productList.name}}</td>
-        <td>{{productList.description}}</td>
-        <td>{{productList.cat}}</td>
-        <td>{{productList.p1}}</td>
-        <td>{{productList.discountedPrice}}</td>
-        <!-- <td>{{productList.mainImageUrl}}</td>
-        <td>{{productList.s1}}</td>
-        <td>{{productList.s2}}</td>
-        <td>{{productList.s3}}</td>
-        <td>{{productList.quantity}}</td>
-        <td>{{productList.listPrice}}</td>
-        <td>{{productList.salePrice}}</td>
-        <td>{{productList.salePrice}}</td> -->
-      </tr>
-
-    </tbody>
-    </table>
-  </div>
 </div>
