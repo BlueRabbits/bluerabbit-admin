@@ -338,7 +338,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
                       var data ={
                          name:$scope.categoryName,
                          department:1,
-                         isActive: $scope.categoryIsActive
+                         isActive: true
                       };
 
                       var config = {
@@ -600,7 +600,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
                        var data ={
                           name:$scope.categoryName,
                           department:1,
-                          isActive: $scope.categoryIsActive
+                          isActive: true
                        };
 
                        var config = {
@@ -721,6 +721,23 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
                                 "<hr />headers: " + header +
                                 "<hr />config: " + config;
                         });
+                   }
+                   $scope.cancelProduct = function(){
+                     $scope.productName = "";
+                     $scope.productDescription= "";
+                     $scope.departmentSelected= "";
+                     $scope.categorySelected= "";
+                     $scope.productImageUrl1= "";
+                     $scope.productImageUrl2= "";
+                     $scope.productImageUrl3= "";
+                     $scope.productOffer= "";
+                    $scope.productImageUrl= "";
+                    $scope.productquantity= "";
+                    $scope.productlistPrice= "";
+                    $scope.productSalePrice= "";
+                     $scope.discountedPrice= "";
+                     $scope.instock= "";
+                     $scope.productisActive= "";
                    }
                    $scope.deleteProduct = function(productId){
                        console.log("productId",productId);
