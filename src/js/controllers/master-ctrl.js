@@ -22,6 +22,184 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
       } else {
         $scope.showOrderManagement = false;
       }
+
+
+      // if (window.location.hash == '#/category') {
+      //   $scope.myObj = {
+      //        "color" : "white",
+      //        "border-left": "3px solid #e99d1a",
+      //        "text-indent": "22px",
+      //         "background": "#2d3e63"
+      //
+      //    }
+      // }
+      // if (window.location.hash == '#/addProduct') {
+      //   $scope.myObj1 = {
+      //        "color" : "white",
+      //        "border-left": "3px solid #e99d1a",
+      //        "text-indent": "22px",
+      //         "background": "#2d3e63"
+      //
+      //    }
+      //    $scope.myObj ="";
+      //    $scope.myObj2 ="";
+      // }
+    $scope.categoryHighlight =function(){
+      $scope.activeCat ='active';
+      $scope.activeProd ='false';
+      // if (window.location.hash == '#/category') {
+      $scope.myObjProd = {};
+      $scope.myUpdateOrder = {};
+      $scope.myObjBanner = {};
+        $scope.myObj = {
+             "color" : "white",
+             "border-left": "3px solid #e99d1a",
+             "text-indent": "22px",
+              "background": "#2d3e63"
+
+         }
+      //  }
+    }
+    $scope.productHighlight =function(){
+      $scope.activeProd ='active';
+      $scope.activeCat ='false';
+      $scope.myObj = {};
+      $scope.myUpdateOrder = {};
+      $scope.myObjBanner = {};
+      // if (window.location.hash == '#/addProduct') {
+        $scope.myObjProd = {
+             "color" : "white",
+             "border-left": "3px solid #e99d1a",
+             "text-indent": "22px",
+              "background": "#2d3e63"
+
+         }
+      //  }
+    }
+    $scope.bannerHighlight =function(){
+      $scope.activeProd ='false';
+      $scope.activeCat ='false';
+      $scope.activeBanner = 'active';
+      $scope.myObj = {};
+      $scope.myObjProd = {};
+      $scope.myUpdateOrder = {};
+        $scope.myObjBanner = {
+             "color" : "white",
+             "border-left": "3px solid #e99d1a",
+             "text-indent": "22px",
+              "background": "#2d3e63"
+
+         }
+    }
+    $scope.updateCategoryHighlight =function(){
+      $scope.activeProd ='false';
+      $scope.activeCat ='false';
+      $scope.activeBanner = 'false';
+      $scope.activeUpdateCat = 'active';
+      $scope.myObj = {};
+      $scope.myObjProd = {};
+      $scope.myObjBanner = {};
+      $scope.myUpdateBan = {};
+      $scope.myUpdateOrder = {};
+        $scope.myUpdateProd = {};
+        $scope.myUpdateCat = {
+             "color" : "white",
+             "border-left": "3px solid #e99d1a",
+             "text-indent": "22px",
+              "background": "#2d3e63"
+
+         }
+    }
+    $scope.updateProductHighlight =function(){
+      $scope.activeProd ='false';
+      $scope.activeCat ='false';
+      $scope.activeBanner = 'false';
+      $scope.activeUpdateCat = 'false';
+      $scope.activeUpdateProd = 'active';
+      $scope.myObj = {};
+      $scope.myObjProd = {};
+      $scope.myObjBanner = {};
+      $scope.myUpdateCat = {};
+      $scope.myUpdateOrder = {};
+        $scope.myUpdateProd = {
+             "color" : "white",
+             "border-left": "3px solid #e99d1a",
+             "text-indent": "22px",
+              "background": "#2d3e63"
+
+         }
+    }
+    $scope.updateBannerHighlight =function(){
+      $scope.activeProd ='false';
+      $scope.activeCat ='false';
+      $scope.activeBanner = 'false';
+      $scope.activeUpdateCat = 'false';
+      $scope.activeUpdateProd = 'false';
+      $scope.activeUpdateBan = 'active';
+      $scope.activeUpdateOrder = 'false';
+      $scope.myObj = {};
+      $scope.myObjProd = {};
+      $scope.myObjBanner = {};
+      $scope.myUpdateCat = {};
+      $scope.myUpdateProd = {};
+      $scope.myUpdateOrder = {};
+        $scope.myUpdateBan = {
+             "color" : "white",
+             "border-left": "3px solid #e99d1a",
+             "text-indent": "22px",
+              "background": "#2d3e63"
+
+         }
+    }
+    $scope.updateOrderHighlight =function(){
+      $scope.activeProd ='false';
+      $scope.activeCat ='false';
+      $scope.activeBanner = 'false';
+      $scope.activeUpdateCat = 'false';
+      $scope.activeUpdateProd = 'false';
+      $scope.activeUpdateBan = 'false';
+      $scope.activeUpdateUser = 'false';
+      $scope.activeUpdateOrder = 'active';
+      $scope.myObj = {};
+      $scope.myObjProd = {};
+      $scope.myObjBanner = {};
+      $scope.myUpdateCat = {};
+      $scope.myUpdateProd = {};
+      $scope.myUpdateBan = {};
+        $scope.myUpdateUser = {};
+        $scope.myUpdateOrder = {
+             "color" : "white",
+             "border-left": "3px solid #e99d1a",
+             "text-indent": "22px",
+              "background": "#2d3e63"
+
+         }
+    }
+    $scope.updateUserHighlight =function(){
+      $scope.activeProd ='false';
+      $scope.activeCat ='false';
+      $scope.activeBanner = 'false';
+      $scope.activeUpdateCat = 'false';
+      $scope.activeUpdateProd = 'false';
+      $scope.activeUpdateBan = 'false';
+      $scope.activeUpdateOrder = 'false';
+      $scope.activeUpdateUser = 'active';
+      $scope.myObj = {};
+      $scope.myObjProd = {};
+      $scope.myObjBanner = {};
+      $scope.myUpdateCat = {};
+      $scope.myUpdateProd = {};
+      $scope.myUpdateBan = {};
+      $scope.myUpdateOrder = {};
+        $scope.myUpdateUser = {
+             "color" : "white",
+             "border-left": "3px solid #e99d1a",
+             "text-indent": "22px",
+              "background": "#2d3e63"
+
+         }
+    }
+      console.log("$state.current.name",window.location.hash);
     /**
      * Sidebar Toggle & Cookie Control
      */

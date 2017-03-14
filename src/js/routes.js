@@ -21,7 +21,8 @@ angular.module('RDash').config(['$stateProvider', '$urlRouterProvider',
             })
             .state('category', {
                 url: '/category',
-                templateUrl: 'templates/page_category.html'
+                templateUrl: 'templates/page_category.html',
+                name:'category',
             })
             .state('addProduct', {
                 url: '/addProduct',
