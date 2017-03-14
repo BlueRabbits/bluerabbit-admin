@@ -1,4 +1,5 @@
 <div class="row"  ng-controller="MasterCtrl">
+
   <div class="container">
 
       <div class="col-md-2">
@@ -16,48 +17,111 @@
           <div><label>toTime</label> <input type="time" ng-model="toTime" ></div>
       </div> -->
   </div>
-  <div class="col-lg-12">
-      <table class="table table-bordered" id="orderDetailExport">
-        <thead style="text-align: center;">
-        <tr>
 
-          <th>Order ID</th>
-          <th>Order Date</th>
-          <th>User ID</th>
-          <th>Order Amount</th>
-          <th>Payment Mode</th>
-          <th>Invoice</th>
-          <th>Order Status</th>
-          <th>Change Order Status</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody style="text-align: center;">
-        <tr ng-repeat="orderDetails in getAllOrdersList | filter:dateList">
-          <!-- <td><button class="btn btn-xs btn-success" ng-click="deleteCategory(categoryList._id)">Delete</button></td> -->
-          <!-- <td><button class="btn btn-xs btn-success">Edit</button></td> -->
-          <!-- <td><i class="fa fa-pencil-square-o fa-3x" style="color: #e40046; cursor:pointer"  aria-hidden="true" ng-click="editCategory(categoryList._id,categoryList.name,categoryList.department._id,categoryList.isActive)"></i></td>
-          <td><i class="fa fa-trash-o fa-3x" style="color: #e40046; cursor:pointer"  ng-click="deleteCategory(categoryList._id)" aria-hidden="true"></i></td> -->
-          <td>{{orderDetails._id}}</td>
-          <td ng-model="orderdates">{{orderDetails.orderDate | date}}</td>
-          <td>{{orderDetails.userID}}</td>
-          <td>{{orderDetails.orderAmount}}</td>
-          <td>COD</td>
-          <td><i class="fa fa-files-o fa-3x" aria-hidden="true" data-toggle="modal" data-target="#invoiceModal" ng-click="invoiceDetails(orderDetails._id)"></i></td>
-          <td>{{orderDetails.orderStatus.name}}</td>
-          <td>
-            <select class="form-control" style="width:160px !important;" id="sel1" ng-model="orderStatusSelected" ng-change="orderStatusChangedValue(orderStatusSelected)" >
-              <option ng-repeat="orderStatusNames in getAllOrdersStatusList" value="{{ orderStatusNames._id }}">{{orderStatusNames.name}}</option>
-            </select>
-          </td>
-          <td>
-            <button type="button" style="color: white;background-color: #e40046; cursor:pointer" class="btn" ng-disabled="!orderStatusSelected" ng-click="editOrderStatus(orderDetails._id, orderDetails.orderStatus._id, orderDetails.orderStatus.name)">Update</button>
-          </td>
-        </tr>
+  <!-- tabs -->
+  <ul class="nav nav-tabs">
+  <!-- <li class="active"><a data-toggle="tab" href="#home">Home</a></li> -->
+  <li><a data-toggle="tab" data-target="#menu1">Live Orders</a></li>
+  <li><a data-toggle="tab" data-target="#menu2">Past Orders</a></li>
+</ul>
 
-      </tbody>
-      </table>
+<div class="tab-content">
+  <!-- <div id="home" class="tab-pane fade in active">
+    <h3>HOME</h3>
+    <p>Some content.</p>
+  </div> -->
+  <div id="menu1" class="tab-pane fade">
+    <div class="col-lg-12">
+        <table class="table table-bordered" id="orderDetailExport">
+          <thead style="text-align: center;">
+          <tr>
+
+            <th>Order ID</th>
+            <th>Order Date</th>
+            <th>User ID</th>
+            <th>Order Amount</th>
+            <th>Payment Mode</th>
+            <th>Invoice</th>
+            <th>Order Status</th>
+            <th>Change Order Status</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody style="text-align: center;">
+          <tr ng-repeat="orderDetails in getAllOrdersList | filter:dateList">
+            <!-- <td><button class="btn btn-xs btn-success" ng-click="deleteCategory(categoryList._id)">Delete</button></td> -->
+            <!-- <td><button class="btn btn-xs btn-success">Edit</button></td> -->
+            <!-- <td><i class="fa fa-pencil-square-o fa-3x" style="color: #e40046; cursor:pointer"  aria-hidden="true" ng-click="editCategory(categoryList._id,categoryList.name,categoryList.department._id,categoryList.isActive)"></i></td>
+            <td><i class="fa fa-trash-o fa-3x" style="color: #e40046; cursor:pointer"  ng-click="deleteCategory(categoryList._id)" aria-hidden="true"></i></td> -->
+            <td>{{orderDetails._id}}</td>
+            <td ng-model="orderdates">{{orderDetails.orderDate | date}}&nbsp;&nbsp;{{orderDetails.orderDate | date : "shortTime" }}</td>
+            <td>{{orderDetails.userID}}</td>
+            <td>{{orderDetails.orderAmount}}</td>
+            <td>COD</td>
+            <td><i class="fa fa-files-o fa-3x" aria-hidden="true" data-toggle="modal" data-target="#invoiceModal" ng-click="invoiceDetails(orderDetails._id)"></i></td>
+            <td>{{orderDetails.orderStatus.name}}</td>
+            <td>
+              <select class="form-control" style="width:160px !important;" id="sel1" ng-model="orderStatusSelected" ng-change="orderStatusChangedValue(orderStatusSelected)" >
+                <option ng-repeat="orderStatusNames in getAllOrdersStatusList" value="{{ orderStatusNames._id }}">{{orderStatusNames.name}}</option>
+              </select>
+            </td>
+            <td>
+              <button type="button" style="color: white;background-color: #e40046; cursor:pointer" class="btn" ng-disabled="!orderStatusSelected" ng-click="editOrderStatus(orderDetails._id, orderDetails.orderStatus._id, orderDetails.orderStatus.name)">Update</button>
+            </td>
+          </tr>
+
+        </tbody>
+        </table>
+    </div>
   </div>
+  <div id="menu2" class="tab-pane fade">
+    <div class="col-lg-12">
+        <table class="table table-bordered" id="orderDetailExport">
+          <thead style="text-align: center;">
+          <tr>
+
+            <th>Order ID</th>
+            <th>Order Date</th>
+            <th>User ID</th>
+            <th>Order Amount</th>
+            <th>Payment Mode</th>
+            <th>Invoice</th>
+            <th>Order Status</th>
+            <th>Change Order Status</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody style="text-align: center;">
+          <tr ng-repeat="orderDetails in getAllOrdersList | filter:{orderStatus:{name:'Completed'}}">
+            <!-- <td><button class="btn btn-xs btn-success" ng-click="deleteCategory(categoryList._id)">Delete</button></td> -->
+            <!-- <td><button class="btn btn-xs btn-success">Edit</button></td> -->
+            <!-- <td><i class="fa fa-pencil-square-o fa-3x" style="color: #e40046; cursor:pointer"  aria-hidden="true" ng-click="editCategory(categoryList._id,categoryList.name,categoryList.department._id,categoryList.isActive)"></i></td>
+            <td><i class="fa fa-trash-o fa-3x" style="color: #e40046; cursor:pointer"  ng-click="deleteCategory(categoryList._id)" aria-hidden="true"></i></td> -->
+            <td>{{orderDetails._id}}</td>
+            <td ng-model="orderdates">{{orderDetails.orderDate | date}}&nbsp;&nbsp;{{orderDetails.orderDate | date : "shortTime" }}</td>
+            <td>{{orderDetails.userID}}</td>
+            <td>{{orderDetails.orderAmount}}</td>
+            <td>COD</td>
+            <td><i class="fa fa-files-o fa-3x" aria-hidden="true" data-toggle="modal" data-target="#invoiceModal" ng-click="invoiceDetails(orderDetails._id)"></i></td>
+            <td>{{orderDetails.orderStatus.name }}</td>
+            <td>
+              <select class="form-control" style="width:160px !important;" id="sel1" ng-model="orderStatusSelected" ng-change="orderStatusChangedValue(orderStatusSelected)" >
+                <option ng-repeat="orderStatusNames in getAllOrdersStatusList" value="{{ orderStatusNames._id }}">{{orderStatusNames.name}}</option>
+              </select>
+            </td>
+            <td>
+              <button type="button" style="color: white;background-color: #e40046; cursor:pointer" class="btn" ng-disabled="!orderStatusSelected" ng-click="editOrderStatus(orderDetails._id, orderDetails.orderStatus._id, orderDetails.orderStatus.name)">Update</button>
+            </td>
+          </tr>
+
+        </tbody>
+        </table>
+    </div>
+
+</div>
+  <!-- tabs -->
+
+
   <!-- load invoice modal windo  -->
   <div class="modal fade" id="invoiceModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" style="margin-left: 250px;">
@@ -164,7 +228,7 @@
 <!-- sample  -->
 <div id="modal" hidden>
     <iframe id="printframe">
-      
+
     </iframe>
 </div>
 <!-- sample  -->
