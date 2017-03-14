@@ -806,6 +806,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
                               $http.get(BASE_URL + '/api/orders', config)
                               .success(function (data, status, headers, config) {
                                   $scope.getAllOrdersList = data;
+                                  $scope.getAllOrdersListLength = data.length;
                                   console.log("get getAllOrdersList",data);
 
                               })
@@ -999,7 +1000,8 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
                                    $http.get(BASE_URL + '/api/users', config)
                                    .success(function (data, status, headers, config) {
                                        $scope.getAllUserList = data;
-                                       console.log("get getAllUserList",data);
+                                       $scope.allusersLength = data.length;
+                                       console.log("get getAllUserList",data.length);
 
 
                                    })
@@ -1046,5 +1048,31 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
                                             "<hr />config: " + config;
                                     });
                                   }
+                                  //get all feedbacks
+                                  $scope.getAllFeedbacks = function(){
+                                    var config = {
+                                        headers : {
+
+                                            'Content-Type': 'application/json',
+                                            'Authorization': 'Bearer '+AdminToken
+                                        }
+                                    }
+
+                                    $http.get(BASE_URL + '/api/order/feedback', config)
+                                    .success(function (data, status, headers, config) {
+                                        $scope.getAllFeedbacks = data;
+                                        $scope.getAllFeedbacksLength = data.length;
+                                        console.log("get getAllFeedbacks",data);
+
+
+                                    })
+                                    .error(function (data, status, header, config) {
+                                        $scope.ResponseDetails = "Data: " + data +
+                                            "<hr />status: " + status +
+                                            "<hr />headers: " + header +
+                                            "<hr />config: " + config;
+                                    });
+                                  }
+                                   $scope.getAllFeedbacks();
 
 }

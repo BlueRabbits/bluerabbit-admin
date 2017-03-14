@@ -48,6 +48,14 @@ angular.module('RDash').config(['$stateProvider', '$urlRouterProvider',
                 url: '/orderManagement',
                 templateUrl: 'templates/page_orderManagement.html'
             })
+            .state('overView', {
+                url: '/overView',
+                templateUrl: 'templates/overView.html'
+            })
+            .state('feedbacks', {
+                url: '/feedbacks',
+                templateUrl: 'templates/feedbacks.html'
+            })
             .state('userDetails', {
                 url: '/userDetails',
                 templateUrl: 'templates/page_UserDetails.html'
