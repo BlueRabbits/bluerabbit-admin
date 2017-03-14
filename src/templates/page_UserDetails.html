@@ -1,15 +1,16 @@
 <div class="row" ng-controller="MasterCtrl">
 
-<div class="col-lg-4">
-    <table class="table table-bordered">
-      <thead>
-      <tr>
+<div class="col-lg-10">
+    <table class="table table-bordered" style="text-align:center;">
+      <thead >
+      <tr style="text-align:center;">
         <!-- <th></th>
         <th></th> -->
         <th>User ID</th>
         <th>User Name</th>
         <th>User Email</th>
-        <th>is Active</th>
+        <th>Status</th>
+        <th>Change Status</th>
       </tr>
     </thead>
     <tbody>
@@ -25,12 +26,12 @@
         <td>
 
             <select  ng-model="sel" style="width:160px !important;" >
-                <option  value="true">true</option>
-                <option  value="false" >false</option>
+                <option  value="true">active</option>
+                <option  value="false" >inactive</option>
              </select>
-             {{sel}}
+
         </td>
-        <td><button class="btn btn-xs btn-success"  ng-click="updateUser(userList._id,sel)">Update</button></td>
+        <td><button class="btn btn-xs btn-success" ng-disabled="!sel" ng-click="updateUser(userList._id,sel)">Update</button></td>
       </tr>
 
     </tbody>

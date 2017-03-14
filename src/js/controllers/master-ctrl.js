@@ -7,6 +7,7 @@ angular.module('RDash')
 
 function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $stateParams, $filter) {
   $scope.showToastMessage = false;
+  $scope.adminName = $cookieStore.get('adminName');
   console.log("$cookieStore.get('AdminToken')",$cookieStore.get('AdminToken'));
       if ($cookieStore.get('AdminToken')) {
         $scope.showDashboard = true;
@@ -917,17 +918,23 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
                                  $scope.printInvoice = function(){
                                    var contents = $('#printArea').html();
                                         var frame = $('#printframe')[0].contentWindow.document;
-
+                                        var originalContents = document.body.html;
                                         // show the modal div
                                         $('#invoiceModal').css({'display':'block'});
 
                                         // open the frame document and add the contents
                                         frame.open();
-                                        frame.write(contents);
+                                        frame.write('<!DOCTYPE html><html><head><title>Customer copy of bill</title>'
+                                                                  +'<link rel="stylesheet" >'
+                                                                  +'</head><body><div>'
+                                                                  +'<table class="table table-condensed">'
+                                                                  + contents + '</table></div></html>');
                                         frame.close();
 
                                         // print just the modal div
                                         $('#printframe')[0].contentWindow.print();
+                                         document.body.html = originalContents;
+
                                  }
                                  //export to excel
                                  $scope.exportToExcel = function(){

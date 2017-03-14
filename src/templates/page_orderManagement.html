@@ -3,12 +3,12 @@
 
       <div class="col-md-2">
           <!-- <div><label>From</label> <input type="date" ng-model="fromdate"></div> -->
-        <label style="position: relative;right: 46px;bottom: -5px;">  Filter</label><input style="position: relative;bottom: 22px;" type="date" ng-model="todate" ng-change="filterBydate(todate)">
+        <label >  Filter</label><input style="position: relative;bottom: 26px;left:46px;" type="date" ng-model="todate" ng-change="filterBydate(todate)">
       </div>
-      <div class="col-md-2">
+      <div class="col-md-4 col-md-offset-1">
         <button class="btn" style="color: white;background-color: #e40046; cursor:pointer" ng-click="showAllOrders()">Show All</button>
     </div>
-    <div class="col-md-2">
+    <div class="pull-right">
       <button class="btn btn-primary" style="color: white;background-color: #e40046; cursor:pointer" ng-click="exportToExcel()">Export</button>
   </div>
       <!-- <div class="col-sm-2">
@@ -16,9 +16,9 @@
           <div><label>toTime</label> <input type="time" ng-model="toTime" ></div>
       </div> -->
   </div>
-  <div class="col-lg-4">
+  <div class="col-lg-12">
       <table class="table table-bordered" id="orderDetailExport">
-        <thead>
+        <thead style="text-align: center;">
         <tr>
 
           <th>Order ID</th>
@@ -32,7 +32,7 @@
           <th></th>
         </tr>
       </thead>
-      <tbody>
+      <tbody style="text-align: center;">
         <tr ng-repeat="orderDetails in getAllOrdersList | filter:dateList">
           <!-- <td><button class="btn btn-xs btn-success" ng-click="deleteCategory(categoryList._id)">Delete</button></td> -->
           <!-- <td><button class="btn btn-xs btn-success">Edit</button></td> -->
@@ -51,7 +51,7 @@
             </select>
           </td>
           <td>
-            <button type="submit" style="color: white;background-color: #e40046; cursor:pointer" class="btn" ng-click="editOrderStatus(orderDetails._id, orderDetails.orderStatus._id, orderDetails.orderStatus.name)">Update</button>
+            <button type="button" style="color: white;background-color: #e40046; cursor:pointer" class="btn" ng-disabled="!orderStatusSelected" ng-click="editOrderStatus(orderDetails._id, orderDetails.orderStatus._id, orderDetails.orderStatus.name)">Update</button>
           </td>
         </tr>
 
@@ -62,6 +62,10 @@
   <div class="modal fade" id="invoiceModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" style="margin-left: 250px;">
       <div class="modal-content" style="width: 900px !important;">
+        <div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal">&times;</button>
+         <!-- <h4 class="modal-title">Modal Header</h4> -->
+       </div>
         <div class="modal-body">
           <div class="container" id="printArea">
       <div class="row">
@@ -160,7 +164,7 @@
 <!-- sample  -->
 <div id="modal" hidden>
     <iframe id="printframe">
-
+      
     </iframe>
 </div>
 <!-- sample  -->
