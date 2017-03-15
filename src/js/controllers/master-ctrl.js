@@ -45,6 +45,30 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
       //    $scope.myObj ="";
       //    $scope.myObj2 ="";
       // }
+
+    $scope.dashHighlight =function(){
+      $scope.activeDash ='active';
+      $scope.activeCat ='false';
+      $scope.activeProd ='false';
+      // if (window.location.hash == '#/category') {
+      $scope.myObjProd = {};
+      $scope.myUpdateOrder = {};
+      $scope.myObjBanner = {};
+        $scope.myObj = {};
+      $scope.myUpdateBan = {};
+      $scope.myUpdateOrder = {};
+        $scope.myUpdateProd = {};
+
+        $scope.myoverViewObj = {
+             "color" : "white",
+             "border-left": "3px solid #e99d1a",
+             "text-indent": "22px",
+             "background": "#2d3e63"
+
+         }
+      //  }
+    }
+
     $scope.categoryHighlight =function(){
       $scope.activeCat ='active';
       $scope.activeProd ='false';
@@ -52,11 +76,16 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
       $scope.myObjProd = {};
       $scope.myUpdateOrder = {};
       $scope.myObjBanner = {};
+      $scope.myoverViewObj = {};
+      $scope.myUpdateBan = {};
+      $scope.myUpdateOrder = {};
+        $scope.myUpdateProd = {};
+
         $scope.myObj = {
              "color" : "white",
              "border-left": "3px solid #e99d1a",
              "text-indent": "22px",
-              "background": "#2d3e63"
+             "background": "#2d3e63"
 
          }
       //  }
@@ -67,6 +96,10 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
       $scope.myObj = {};
       $scope.myUpdateOrder = {};
       $scope.myObjBanner = {};
+$scope.myoverViewObj = {};
+      $scope.myUpdateBan = {};
+      $scope.myUpdateOrder = {};
+        $scope.myUpdateProd = {};
       // if (window.location.hash == '#/addProduct') {
         $scope.myObjProd = {
              "color" : "white",
@@ -84,6 +117,10 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
       $scope.myObj = {};
       $scope.myObjProd = {};
       $scope.myUpdateOrder = {};
+      $scope.myoverViewObj = {};
+      $scope.myUpdateBan = {};
+      $scope.myUpdateOrder = {};
+        $scope.myUpdateProd = {};
         $scope.myObjBanner = {
              "color" : "white",
              "border-left": "3px solid #e99d1a",
@@ -98,6 +135,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
       $scope.activeBanner = 'false';
       $scope.activeUpdateCat = 'active';
       $scope.myObj = {};
+      $scope.myoverViewObj = {};
       $scope.myObjProd = {};
       $scope.myObjBanner = {};
       $scope.myUpdateBan = {};
@@ -118,10 +156,12 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
       $scope.activeUpdateCat = 'false';
       $scope.activeUpdateProd = 'active';
       $scope.myObj = {};
+      $scope.myoverViewObj = {};
       $scope.myObjProd = {};
       $scope.myObjBanner = {};
       $scope.myUpdateCat = {};
       $scope.myUpdateOrder = {};
+      $scope.myUpdateBan = {};
         $scope.myUpdateProd = {
              "color" : "white",
              "border-left": "3px solid #e99d1a",
@@ -142,6 +182,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
       $scope.myObjProd = {};
       $scope.myObjBanner = {};
       $scope.myUpdateCat = {};
+      $scope.myoverViewObj = {};
       $scope.myUpdateProd = {};
       $scope.myUpdateOrder = {};
         $scope.myUpdateBan = {
@@ -164,6 +205,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
       $scope.myObj = {};
       $scope.myObjProd = {};
       $scope.myObjBanner = {};
+      $scope.myoverViewObj = {};
       $scope.myUpdateCat = {};
       $scope.myUpdateProd = {};
       $scope.myUpdateBan = {};
@@ -188,6 +230,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
       $scope.myObj = {};
       $scope.myObjProd = {};
       $scope.myObjBanner = {};
+      $scope.myoverViewObj = {};
       $scope.myUpdateCat = {};
       $scope.myUpdateProd = {};
       $scope.myUpdateBan = {};
@@ -428,7 +471,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
                              var data ={
                                 name:$scope.productName,
                                 description:$scope.productDescription,
-                                dept:$scope.deptName,
+                                dept:"nonveg",
                                 cat:$scope.categoryName,
                                 subCat:subcat,
                                  sku: "abcd12345",
@@ -739,6 +782,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
                      $scope.discountedPrice= "";
                      $scope.instock= "";
                      $scope.productisActive= "";
+                     $scope.showProductButton = false;
                    }
                    $scope.deleteProduct = function(productId){
                        console.log("productId",productId);
@@ -882,7 +926,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
                                          $scope.updateCategory = data;
                                          console.log("updateCategory",data);
                                          $scope.getAllOrders();
-                                         alert("Updated orders");
+                                         alert("OrderNo"+order_id+" is Updated");
 
                                      })
                                      .error(function (data, status, header, config) {
@@ -1063,8 +1107,18 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
                                         $scope.getAllFeedbacks = data;
                                         $scope.getAllFeedbacksLength = data.length;
                                         console.log("get getAllFeedbacks",data);
-
-
+                                        // for (var i = 0; i < $scope.getAllFeedbacks.length; i++) {
+                                        //   $scope.userIdFeedback = $scope.getAllFeedbacks[i].userID;
+                                        //     }
+                                        //     for (var i = 0; i < $scope.getAllUserList.length; i++) {
+                                        //         if ($scope.getAllUserList[i]._id == $scope.userIdFeedback) {
+                                        //         $scope.names =   $scope.getAllUserList[i].name;
+                                        //           $scope.getAllUserList[i].mobile_number;
+                                        //           $scope.getAllUserList[i].email;
+                                        //           console.log("$scope.getAllUserList[i].name;",$scope.getAllUserList[i].name);
+                                        //         }
+                                        //
+                                        //   }
                                     })
                                     .error(function (data, status, header, config) {
                                         $scope.ResponseDetails = "Data: " + data +
@@ -1074,5 +1128,15 @@ function MasterCtrl($scope, $cookieStore, $http, $route ,$location, $state, $sta
                                     });
                                   }
                                    $scope.getAllFeedbacks();
+                                   $scope.userNamesFeeback = function(userid){
+                                     for (var i = 0; i < $scope.getAllUserList.length; i++) {
+                                         if ($scope.getAllUserList[i]._id === userid) {
+                                         $scope.names =   $scope.getAllUserList[i].name;
+                                           $scope.mobiles = $scope.getAllUserList[i].mobile_number;
+                                           $scope.emails = $scope.getAllUserList[i].email;
+                                           console.log("$scope.getAllUserList[i].name;",$scope.getAllUserList[i].name);
+                                         }
 
+                                   }
+                                   }
 }

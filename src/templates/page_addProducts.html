@@ -2,11 +2,11 @@
   <div class="col-lg-4">
       <form ng-submit="postProduct()">
           <div class="form-group">
-            <label for="exampleInputEmail1">Product Name</label>
+            <label for="exampleInputEmail1">Product Name <span style="color: #e40046;font-size: 10px;" class="glyphicon glyphicon-asterisk" aria-hidden="true"></span></label>
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productName" placeholder="Enter Product Name" required>
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">Product description</label>
+            <label for="exampleInputEmail1">Product Description <span style="color: #e40046;font-size: 10px;" class="glyphicon glyphicon-asterisk" aria-hidden="true"></span></label>
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productDescription" placeholder="Enter Product description" required>
           </div>
           <!-- <div class="form-group">
@@ -17,60 +17,60 @@
             <label for="exampleInputEmail1">Product Category</label>
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productCategory" placeholder="Enter Product Category">
           </div> -->
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label for="sel1">Select Department (select one):</label>
             <select class="form-control" id="sel1" ng-model="departmentSelected" ng-change="getdepartmentId(departmentSelected)">
               <option ng-repeat="departments in getDepartmentList"  ng-model="categoryName">{{departments.name}}</option>
             </select>
-          </div>
+          </div> -->
           <div class="form-group">
-            <label for="sel1">Select Category (select one):</label>
+            <label for="sel1">Select Category (Select One):<span style="color: #e40046;font-size: 10px;" class="glyphicon glyphicon-asterisk" aria-hidden="true"></span></label>
             <select class="form-control" id="sel1" ng-model="categorySelected" ng-change="getCategoryName(categorySelected)">
               <option ng-repeat="category in getCategoriesList"  ng-model="categoryName">{{category.name}}</option>
             </select>
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">Product to be listed in Offer</label>
+            <label for="exampleInputEmail1">Product To Be Listed In Offer</label>
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productOffer" placeholder="yes/no" required>
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">Product Image</label>
+            <label for="exampleInputEmail1">Product Image<span style="color: #e40046;font-size: 10px;" class="glyphicon glyphicon-asterisk" aria-hidden="true"></span></label>
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productImageUrl" placeholder="Enter Product Image Url" required>
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">Product Image 1</label>
+            <label for="exampleInputEmail1">Product Image 1<span style="color: #e40046;font-size: 10px;" class="glyphicon glyphicon-asterisk" aria-hidden="true"></span></label>
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productImageUrl1" placeholder="Enter Product Image Url1" required>
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">Product Image 2</label>
+            <label for="exampleInputEmail1">Product Image 2<span style="color: #e40046;font-size: 10px;" class="glyphicon glyphicon-asterisk" aria-hidden="true"></span></label>
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productImageUrl2" placeholder="Enter Product Image Url2" required>
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">Product Image 3</label>
+            <label for="exampleInputEmail1">Product Image 3<span style="color: #e40046;font-size: 10px;" class="glyphicon glyphicon-asterisk" aria-hidden="true"></span></label>
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productImageUrl3" placeholder="Enter Product Image Url3" required>
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">Product quantity</label>
+            <label for="exampleInputEmail1">Product Quantity<span style="color: #e40046;font-size: 10px;" class="glyphicon glyphicon-asterisk" aria-hidden="true"></span></label>
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productquantity" placeholder="Enter Product quantity" required>
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">Product list Price</label>
+            <label for="exampleInputEmail1">Product List Price<span style="color: #e40046;font-size: 10px;" class="glyphicon glyphicon-asterisk" aria-hidden="true"></span></label>
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productlistPrice" placeholder="Enter Product listPrice" required>
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">Product sale Price</label>
+            <label for="exampleInputEmail1">Product Sale Price<span style="color: #e40046;font-size: 10px;" class="glyphicon glyphicon-asterisk" aria-hidden="true"></span></label>
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productSalePrice" placeholder="Enter Product salePrice" required>
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">Product discountedPrice</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="discountedPrice" placeholder="Enter Product salePrice" required>
+            <label for="exampleInputEmail1">Product Discounted Price</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="discountedPrice" placeholder="Enter Product discountedPrice" >
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">Product instock</label>
+            <label for="exampleInputEmail1">Product In Stock<span style="color: #e40046;font-size: 10px;" class="glyphicon glyphicon-asterisk" aria-hidden="true"></span></label>
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="instock" placeholder="instock yes/no" required>
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">Product isActive</label>
+            <label for="exampleInputEmail1">Product Is Active</label>
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productisActive" placeholder="Enter isActive true/false" required>
           </div>
 
