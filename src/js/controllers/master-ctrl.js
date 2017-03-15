@@ -243,6 +243,33 @@ $scope.myoverViewObj = {};
 
          }
     }
+    $scope.locationHighlight =function(){
+      $scope.activeProd ='false';
+      $scope.activeCat ='false';
+      $scope.activeBanner = 'false';
+      $scope.activeUpdateCat = 'false';
+      $scope.activeUpdateProd = 'false';
+      $scope.activeUpdateBan = 'false';
+      $scope.activeUpdateOrder = 'false';
+      $scope.activeUpdateUser = 'false';
+      $scope.activeUpdateLoc = 'active';
+      $scope.myObj = {};
+      $scope.myObjProd = {};
+      $scope.myObjBanner = {};
+      $scope.myoverViewObj = {};
+      $scope.myUpdateCat = {};
+      $scope.myUpdateProd = {};
+      $scope.myUpdateBan = {};
+      $scope.myUpdateOrder = {};
+      $scope.myUpdateUser= {};
+        $scope.myUpdateLoc = {
+             "color" : "white",
+             "border-left": "3px solid #e99d1a",
+             "text-indent": "22px",
+              "background": "#2d3e63"
+
+         }
+    }
       console.log("$state.current.name",window.location.hash);
     /**
      * Sidebar Toggle & Cookie Control
@@ -564,7 +591,7 @@ $scope.myoverViewObj = {};
                     };
                     $scope.getProduct();
                     //get TodaysDeals
-                    $scope.getTodaysDeal = function () {
+                    $scope.getBanner = function () {
 
                                var config = {
                                    headers : {
@@ -573,10 +600,10 @@ $scope.myoverViewObj = {};
                                    }
                                }
 
-                               $http.get(BASE_URL + '/api/todaysDeal', config)
+                               $http.get(BASE_URL + '/api/banner', config)
                                .success(function (data, status, headers, config) {
-                                   $scope.getTodayDealsList = data;
-                                   console.log("get getTodayDealsList",data);
+                                   $scope.getBanner = data;
+                                   console.log("get getBanner",data);
 
                                })
                                .error(function (data, status, header, config) {
@@ -586,16 +613,14 @@ $scope.myoverViewObj = {};
                                        "<hr />config: " + config;
                                });
                            };
-                           $scope.getTodaysDeal();
+                           $scope.getBanner();
             //post todays deal api
-            $scope.postTodayDeals = function () {
+            $scope.postBanner = function () {
                       // use $.param jQuery function to serialize data from JSON
                        var data ={
-                          fromDate:$scope.fromDate,
-                          toDate:$scope.toDate,
-                          toTime: $scope.toTime,
-                          fromTime: $scope.fromTime,
-                          product: $scope.productid
+                          banner_image:$scope.banner_image,
+                          name:$scope.banner_name,
+                          desc: $scope.banner_desc
                        };
 
                        var config = {
@@ -605,11 +630,11 @@ $scope.myoverViewObj = {};
                            }
                        }
 
-                       $http.post(BASE_URL + '/api/todaysDeal', data, config)
+                       $http.post(BASE_URL + '/api/banner', data, config)
                        .success(function (data, status, headers, config) {
-                           $scope.todayDealsPost = data;
+                           $scope.postBanner = data;
                            console.log("dataa",data);
-                           alert("Product added to Todays Deal");
+                           alert("Banner Created");
                        })
                        .error(function (data, status, header, config) {
                            $scope.ResponseDetails = "Data: " + data +
@@ -815,7 +840,7 @@ $scope.myoverViewObj = {};
                        }
 
                    }
-                   $scope.deleteTodayDeals = function(dealId){
+                   $scope.deleteBanner = function(dealId){
                        console.log("dealId",dealId);
                        var config = {
                            headers : {
@@ -823,11 +848,11 @@ $scope.myoverViewObj = {};
                                'Content-Type': 'application/json'
                            }
                        }
-                       $http.delete(BASE_URL + '/api/todaysDeal/'+dealId, config)
+                       $http.delete(BASE_URL + '/api/banner/'+dealId, config)
                        .success(function (data, status, headers, config) {
                            console.log("delete product",data);
-                            $scope.getTodaysDeal();
-                            alert("Deleted Todays Deal")
+                            $scope.getBanner();
+                            alert("Deleted Banner")
                        })
                        .error(function (data, status, header, config) {
                            $scope.ResponseDetails = "Data: " + data +
@@ -1139,4 +1164,59 @@ $scope.myoverViewObj = {};
 
                                    }
                                    }
+                                   //google maps
+                                   // var places = new google.maps.places.Autocomplete(document.getElementById('txtPlaces'));
+$scope.loadGoogleMap = function () {
+  var places = new google.maps.places.Autocomplete(document.getElementById('txtPlaces'));
+  google.maps.event.addListener(places, 'place_changed', function () {
+      var place = places.getPlace();
+      var address = place.formatted_address;
+      var latitude = place.geometry.location.lat();
+      var longitude = place.geometry.location.lng();
+      var id = place.id;
+      var placeId = place.place_id;
+      // var mesg = "Address: " + address;
+      // mesg += "\nLongitude: " + longitude;
+      // mesg += "\nLatitude: " + latitude;
+
+      $scope.address = address;
+      $scope.latitude = latitude;
+      $scope.longitude = longitude;
+      console.log('address',$scope.address);
+      console.log('latitude',$scope.latitude);
+      console.log('longitude',$scope.longitude);
+
+  });
+
+}
+$scope.loadGoogleMap();
+//postLocation
+$scope.postLocation = function(){
+  var data ={
+     lat:$scope.latitude,
+     lng:$scope.longitude,
+     name: $scope.address,
+     place_id: "ChIJeQ08aCoVXz4Rf-s_ZKsCaFQ"
+  };
+
+  var config = {
+      headers : {
+          'Authorization': 'Bearer '+AdminToken,
+          'Content-Type': 'application/json'
+      }
+  }
+
+  $http.post(BASE_URL + '/api/deliver/Location', data, config)
+  .success(function (data, status, headers, config) {
+      $scope.postLocationDeliver = data;
+      console.log("dataa",data);
+      alert("Places we deliver added ");
+  })
+  .error(function (data, status, header, config) {
+      $scope.ResponseDetails = "Data: " + data +
+          "<hr />status: " + status +
+          "<hr />headers: " + header +
+          "<hr />config: " + config;
+  });
+}
 }

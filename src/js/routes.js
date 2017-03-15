@@ -56,6 +56,10 @@ angular.module('RDash').config(['$stateProvider', '$urlRouterProvider',
                 url: '/feedbacks',
                 templateUrl: 'templates/feedbacks.html'
             })
+            .state('locationDeliver', {
+                url: '/locationDeliver',
+                templateUrl: 'templates/locationDeliver.html'
+            })
             .state('userDetails', {
                 url: '/userDetails',
                 templateUrl: 'templates/page_UserDetails.html'

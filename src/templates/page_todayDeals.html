@@ -1,22 +1,30 @@
 <div class="row" ng-controller="MasterCtrl">
   <div class="col-lg-4">
-      <form ng-submit="postTodayDeals()">
-          <!-- <div class="form-group">
-            <label for="exampleInputEmail1">fromDate</label>
-            <input type="text" class="form-control" ng-model="departmentName" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Department Name" required>
-          </div> -->
+      <form ng-submit="postBanner()">
           <div class="form-group">
+            <label for="exampleInputEmail1">Banner Image</label>
+            <input type="text" class="form-control" ng-model="banner_image" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Image URL" required>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">fromDate</label>
+            <input type="text" class="form-control" ng-model="banner_name" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Banner Name" >
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">fromDate</label>
+            <input type="text" class="form-control" ng-model="banner_desc" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Banner Desc" >
+          </div>
+          <!-- <div class="form-group">
               <label for="exampleInputEmail1">fromDate</label>
               <label class="glyphicon glyphicon-asterisk"></label>
                <input type="date" class="form-control"  ng-model="fromDate" required>
-          </div>
-          <div class="form-group">
+          </div> -->
+          <!-- <div class="form-group">
             <label for="exampleInputEmail1">toDate </label>
             <label class="glyphicon glyphicon-asterisk"></label>
-            <!-- <input type="text" class="form-control" ng-model="descriptionOfDepartment" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Department Description" required> -->
+
              <input type="date" class="form-control"  ng-model="toDate" required>
-          </div>
-          <div class="form-group">
+          </div> -->
+          <!-- <div class="form-group">
             <label for="exampleInputEmail1">toTime</label>
             <label class="glyphicon glyphicon-asterisk"></label>
             <input type="time" class="form-control" ng-model="toTime" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter toTime" required>
@@ -32,7 +40,7 @@
             <select class="form-control" id="sel1" ng-model="productSelected" ng-change="getproductId(productSelected)">
               <option ng-repeat="products in getProductList"  ng-model="productName">{{products.name}}</option>
             </select>
-          </div>
+          </div> -->
 
           <button type="submit" class="btn btn-primary">Submit</button>
     </form>
