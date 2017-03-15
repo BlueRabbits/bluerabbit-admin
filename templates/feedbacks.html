@@ -6,6 +6,9 @@
           <!-- <th></th>
           <th></th> -->
           <th>User ID</th>
+          <th>User Name</th>
+          <th>User Phone</th>
+          <th>User Email</th>
           <th>Feedbacks</th>
           <!-- <th>Category Is Active</th> -->
         </tr>
@@ -17,6 +20,9 @@
           <!-- <td><i class="fa fa-pencil-square-o fa-2x" style="color: #e40046; cursor:pointer"  aria-hidden="true" ng-click="editCategory(categoryList._id,categoryList.name,categoryList.department._id,categoryList.isActive)"></i></td>
           <td><i class="fa fa-trash-o fa-2x" style="color: #e40046; cursor:pointer"  ng-click="deleteCategory(categoryList._id)" aria-hidden="true"></i></td> -->
           <td>{{feedback.userID}}</td>
+          <td ng-init="userNamesFeeback(feedback.userID)">{{names}}</td>
+          <td>{{mobiles}}</td>
+          <td>{{emails}}</td>
           <td>{{feedback.feedBackComments}}</td>
           <!-- <td>{{categoryList.isActive}}</td> -->
         </tr>

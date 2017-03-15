@@ -6,11 +6,11 @@
       <tr style="text-align:center">
         <!-- <th></th>
         <th></th> -->
-        <th>User ID</th>
-        <th>User Name</th>
-        <th>User Email</th>
-        <th>Status</th>
-        <th>Change Status</th>
+        <th style="text-align:center">User ID</th>
+        <th style="text-align:center">User Name</th>
+        <th style="text-align:center">User Email</th>
+        <th style="text-align:center">Status</th>
+        <th style="text-align:center">Change Status</th>
       </tr>
     </thead>
     <tbody>
@@ -26,6 +26,7 @@
         <td>
 
             <select ng-model="sel" style="width:160px !important">
+                <option ng-selected="true" value="true">Select status</option>
                 <option value="true">active</option>
                 <option value="false">inactive</option>
              </select>
