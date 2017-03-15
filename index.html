@@ -59,6 +59,10 @@
           <li class="sidebar-list" ng-hide="showOrderManagement" ng-style="myUpdateUser" ng-class="{'active':activeUpdateUser}" ng-click="updateUserHighlight()">
             <a href="#/userDetails" style="color: black; background-color:white " >User Management <span class="menu-icon fa fa-user"></span></a>
           </li>
+          <li class="sidebar-title" ng-hide="showOrderManagement" style="font-size: 17px;color: rgb(45, 62, 99);"><span>Location Details</span></li>
+          <li class="sidebar-list" ng-hide="showOrderManagement" ng-style="myUpdateLoc" ng-class="{'active':activeUpdateLoc}" ng-click="locationHighlight()">
+            <a href="#/locationDeliver" style="color: black; background-color:white " >Add Location Deliver<span class="menu-icon "></span></a>
+          </li>
       </ul>
       <div class="sidebar-footer" style="background-color: #e40046;">
         <!-- <div class="col-xs-4">
@@ -136,5 +140,6 @@
       </div><!-- End Page Content -->
     </div><!-- End Content Wrapper -->
   </div><!-- End Page Wrapper -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChoS60FgfOLNWyEO_OYZ4ElvJ4UCzVLVA&libraries=places"></script>
 </body>
 </html>
