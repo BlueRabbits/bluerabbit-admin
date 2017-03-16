@@ -1,6 +1,6 @@
 <div class="row"  ng-controller="MasterCtrl">
-  <div class="col-lg-8">
-    <table class="table table-bordered" style="text-align:center">
+  <div class="col-lg-8" >
+    <table class="table table-bordered" style="text-align:center;">
       <thead>
         <tr>
           <th style="text-align:center;font-size: 16px;">Edit</th>
@@ -46,7 +46,7 @@
     </tbody>
     </table>
   </div>
-  <div class="col-lg-4" ng-show="showProductButton">
+  <div class="col-lg-4" ng-show="showProductButton" style="  border: 4px solid #e40046!important;">
       <form ng-submit="updateProduct()" >
           <div class="form-group">
             <label for="exampleInputEmail1">Product Name</label>
@@ -121,8 +121,8 @@
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productisActive" placeholder="Enter isActive true/false">
           </div>
 
-          <button type="submit" class="btn btn-primary" >Update</button>
-          <button type="button" class="btn btn-primary" ng-click="cancelProduct()" >Cancel</button>
+          <button type="submit" class="btn" style="background-color: #e40046;" >Update</button>
+          <button type="button" class="btn" style="background-color: #e40046;" ng-click="cancelProduct()" >Cancel</button>
     </form>
 </div>
 

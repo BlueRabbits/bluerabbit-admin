@@ -100,6 +100,7 @@ $scope.myoverViewObj = {};
       $scope.myUpdateBan = {};
       $scope.myUpdateOrder = {};
         $scope.myUpdateProd = {};
+          $scope.myUpdateLoc = {};
       // if (window.location.hash == '#/addProduct') {
         $scope.myObjProd = {
              "color" : "white",
@@ -121,6 +122,7 @@ $scope.myoverViewObj = {};
       $scope.myUpdateBan = {};
       $scope.myUpdateOrder = {};
         $scope.myUpdateProd = {};
+          $scope.myUpdateLoc = {};
         $scope.myObjBanner = {
              "color" : "white",
              "border-left": "3px solid #e99d1a",
@@ -141,6 +143,7 @@ $scope.myoverViewObj = {};
       $scope.myUpdateBan = {};
       $scope.myUpdateOrder = {};
         $scope.myUpdateProd = {};
+          $scope.myUpdateLoc = {};
         $scope.myUpdateCat = {
              "color" : "white",
              "border-left": "3px solid #e99d1a",
@@ -162,6 +165,7 @@ $scope.myoverViewObj = {};
       $scope.myUpdateCat = {};
       $scope.myUpdateOrder = {};
       $scope.myUpdateBan = {};
+        $scope.myUpdateLoc = {};
         $scope.myUpdateProd = {
              "color" : "white",
              "border-left": "3px solid #e99d1a",
@@ -185,6 +189,7 @@ $scope.myoverViewObj = {};
       $scope.myoverViewObj = {};
       $scope.myUpdateProd = {};
       $scope.myUpdateOrder = {};
+        $scope.myUpdateLoc = {};
         $scope.myUpdateBan = {
              "color" : "white",
              "border-left": "3px solid #e99d1a",
@@ -210,6 +215,8 @@ $scope.myoverViewObj = {};
       $scope.myUpdateProd = {};
       $scope.myUpdateBan = {};
         $scope.myUpdateUser = {};
+          $scope.myUpdateLoc = {};
+        $scope.myoverViewObj = {};
         $scope.myUpdateOrder = {
              "color" : "white",
              "border-left": "3px solid #e99d1a",
@@ -235,6 +242,7 @@ $scope.myoverViewObj = {};
       $scope.myUpdateProd = {};
       $scope.myUpdateBan = {};
       $scope.myUpdateOrder = {};
+      $scope.myUpdateLoc = {};
         $scope.myUpdateUser = {
              "color" : "white",
              "border-left": "3px solid #e99d1a",
@@ -744,6 +752,7 @@ $scope.myoverViewObj = {};
                    }
                    //update product api
                    $scope.updateProduct = function(){
+                     $scope.showProductButton = false;
                        var subcat = "no subcat";
                         var data ={
                            name:$scope.productName,
@@ -851,8 +860,9 @@ $scope.myoverViewObj = {};
                        $http.delete(BASE_URL + '/api/banner/'+dealId, config)
                        .success(function (data, status, headers, config) {
                            console.log("delete product",data);
+                             confirm("Deleted Banner");
                             $scope.getBanner();
-                            alert("Deleted Banner")
+
                        })
                        .error(function (data, status, header, config) {
                            $scope.ResponseDetails = "Data: " + data +

@@ -47,7 +47,7 @@
     </thead>
     <tbody>
       <tr ng-repeat="bannerList in getBanner">
-        <td><button class="btn btn-xs btn-success" ng-click="deleteBanner(bannerList._id)">Delete</button></td>
+        <td><button class="btn btn-xs" style="background-color: #e40046;" ng-click="deleteBanner(bannerList._id)">Delete</button></td>
         <!-- <td><button class="btn btn-xs btn-success"ng-click="editTodayDeals(todayDealsList._id,todayDealsList.fromDate,todayDealsList.fromTime,todayDealsList.toDate,todayDealsList.toTime,todayDealsList.product._id)">Edit</button></td> -->
         <td>{{bannerList._id}}</td>
         <td>{{bannerList.name}}</td>
