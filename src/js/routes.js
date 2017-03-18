@@ -7,7 +7,7 @@ angular.module('RDash').config(['$stateProvider', '$urlRouterProvider',
     function($stateProvider, $urlRouterProvider) {
 
         // For unmatched routes
-        $urlRouterProvider.otherwise('/');
+        $urlRouterProvider.otherwise('/login');
 
         // Application routes
         $stateProvider
@@ -59,6 +59,10 @@ angular.module('RDash').config(['$stateProvider', '$urlRouterProvider',
             .state('locationDeliver', {
                 url: '/locationDeliver',
                 templateUrl: 'templates/locationDeliver.html'
+            })
+            .state('scoutLoc', {
+                url: '/scoutLoc',
+                templateUrl: 'templates/scoutLoc.html'
             })
             .state('userDetails', {
                 url: '/userDetails',

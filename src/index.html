@@ -62,20 +62,23 @@
           <li class="sidebar-list">
             <a href="#/updateProduct" ng-hide="showOrderManagement" style="color: black; background-color:white "  ng-style="myUpdateProd" ng-class="{'active':activeUpdateProd}" ng-click="updateProductHighlight()">Update Product <span class="menu-icon fa fa-tasks"></span></a>
           </li>
-          <li class="sidebar-list">
+          <!-- <li class="sidebar-list">
             <a href="#/UpdateTodayDeal" ng-hide="showOrderManagement" style="color: black; background-color:white "  ng-style="myUpdateBan" ng-class="{'active':activeUpdateBan}" ng-click="updateBannerHighlight()">Update Banner<span class="menu-icon fa fa-slideshare"></span></a>
-          </li>
-          <li class="sidebar-title"  style="font-size: 17px;color: rgb(45, 62, 99);"><span>Order Details</span></li>
+          </li> -->
+          <li class="sidebar-title"  style="font-size: 17px;color: rgb(45, 62, 99);"><span>Management</span></li>
           <li class="sidebar-list">
             <a  href="#/orderManagement" style="color: black; background-color:white "  ng-style="myUpdateOrder" ng-class="{'active':activeUpdateOrder}" ng-click="updateOrderHighlight()">Order Management <span class="menu-icon fa fa-list-ol"></span></a>
           </li>
-          <li class="sidebar-title" ng-hide="showOrderManagement" style="font-size: 17px;color: rgb(45, 62, 99);"><span>User Details</span></li>
+          <!-- <li class="sidebar-title" ng-hide="showOrderManagement" style="font-size: 17px;color: rgb(45, 62, 99);"><span>User Details</span></li> -->
           <li class="sidebar-list" ng-hide="showOrderManagement" ng-style="myUpdateUser" ng-class="{'active':activeUpdateUser}" ng-click="updateUserHighlight()">
             <a href="#/userDetails" style="color: black;" >User Management <span class="menu-icon fa fa-user"></span></a>
           </li>
           <li class="sidebar-title" ng-hide="showOrderManagement" style="font-size: 17px;color: rgb(45, 62, 99);"><span>Location Details</span></li>
           <li class="sidebar-list" ng-hide="showOrderManagement" ng-style="myUpdateLoc" ng-class="{'active':activeUpdateLoc}" ng-click="locationHighlight()">
-            <a href="#/locationDeliver" style="color: black; " >Add Location Deliver<span class="menu-icon "></span></a>
+            <a href="#/locationDeliver" style="color: black; " >Location Deliver<span class="menu-icon "></span></a>
+          </li>
+          <li class="sidebar-list" ng-hide="showOrderManagement" ng-style="myUpdateScoutLoc" ng-class="{'active':activeUpdateScoutLoc}" ng-click="ScoutlocationHighlight()">
+            <a href="#/scoutLoc" style="color: black; " >Scout Location<span class="menu-icon "></span></a>
           </li>
       </ul>
       <div class="sidebar-footer" style="background-color: #e40046;">

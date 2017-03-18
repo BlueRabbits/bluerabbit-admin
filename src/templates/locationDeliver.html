@@ -11,3 +11,29 @@
 
     </form>
 </div>
+<div class="col-lg-8">
+    <table class="table table-bordered">
+      <thead style="text-align:center">
+      <tr >
+        <!-- <th style="text-align:center;font-size: 16px;">Edit</th> -->
+        <th style="text-align:center; font-size: 16px;">Delete</th>
+        <th style="text-align:center; font-size: 16px;">Location ID</th>
+        <th style="text-align:center; font-size: 16px;">Location Name</th>
+        <!-- <th>Category Is Active</th> -->
+      </tr>
+    </thead>
+    <tbody style="text-align:center">
+      <tr ng-repeat="deliverLoc in getAllLocationDeliver">
+        <!-- <td><button class="btn btn-xs btn-success" ng-click="deleteCategory(categoryList._id)">Delete</button></td> -->
+        <!-- <td><button class="btn btn-xs btn-success">Edit</button></td> -->
+        <!-- <td><i class="fa fa-pencil-square-o fa-2x" style="color: #e40046; cursor:pointer"  aria-hidden="true" ng-click="editCategory(categoryList._id,categoryList.name,categoryList.department._id,categoryList.isActive)"></i></td> -->
+        <td><i class="fa fa-trash-o fa-2x" style="color: #e40046; cursor:pointer"  ng-click="deleteLocactionDeliver(deliverLoc._id)" aria-hidden="true"></i></td>
+        <td>{{deliverLoc._id}}</td>
+        <td>{{deliverLoc.name}}</td>
+        <!-- <td>{{categoryList.isActive}}</td> -->
+      </tr>
+
+    </tbody>
+    </table>
+</div>
+</div>
