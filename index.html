@@ -17,7 +17,7 @@
   <div id="page-wrapper" ng-class="{'open': toggle}" ng-cloak >
 
     <!-- Sidebar -->
-    <div id="sidebar-wrapper"  ng-show="showDashboard">
+    <div id="sidebar-wrapper" ng-hide="hideDashboard"  ng-show="showDashboard">
       <ul class="sidebar" style="background-color: white;">
         <li class="sidebar-main">
           <a ng-click="toggleSidebar()" style="background-color: #e40046;">
@@ -58,6 +58,9 @@
           <!-- <li class="sidebar-title" ng-hide="showOrderManagement" style="font-size: 17px;color: rgb(45, 62, 99);"><span>User Details</span></li> -->
           <li class="sidebar-list" ng-hide="showOrderManagement" ng-style="myUpdateUser" ng-class="{'active':activeUpdateUser}" ng-click="updateUserHighlight()">
             <a href="#/userDetails" style="color: black;" >User Management <span class="menu-icon fa fa-user"></span></a>
+          </li>
+          <li class="sidebar-list" ng-hide="showOrderManagement" ng-style="myUpdateShipping" ng-class="{'active':activeUpdateShipping}" ng-click="updateShippingHighlight()">
+            <a href="#/updateDeliveryCost" style="color: black;" >Shipping Cost <span class="menu-icon fa fa-list-ol"></span></a>
           </li>
           <li class="sidebar-title" ng-hide="showOrderManagement" style="font-size: 17px;color: rgb(45, 62, 99);"><span>Location Details</span></li>
           <li class="sidebar-list" ng-hide="showOrderManagement" ng-style="myUpdateLoc" ng-class="{'active':activeUpdateLoc}" ng-click="locationHighlight()">
