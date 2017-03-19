@@ -9,6 +9,12 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
     $scope.showToastMessage = false;
     $scope.adminName = $cookieStore.get('adminName');
     console.log("$cookieStore.get('AdminToken')", $cookieStore.get('AdminToken'));
+    if (!$cookieStore.get("AdminToken") ) {
+      // no logged user, we should be going to #login
+      window.location.href = '#/login';
+      $scope.showDashboard = false;
+    }
+    
     if ($cookieStore.get('AdminToken')) {
         $scope.showDashboard = true;
 
@@ -1031,8 +1037,10 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
             });
     }
     //invoice modal window
-    $scope.invoiceDetails = function(order_id) {
-        console.log(order_id);
+    $scope.invoiceDetails = function(order_id, user_email, user_phone) {
+        console.log(order_id, user_email, user_phone);
+        $scope.user_email = user_email;
+        $scope.user_phone = user_phone;
         var config = {
             headers: {
                 'Authorization': 'Bearer ' + AdminToken,

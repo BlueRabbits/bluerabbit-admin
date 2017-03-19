@@ -72,7 +72,7 @@
             <td ng-repeat="">{{userByOrder.name}}</td>
             <td>{{orderDetails.orderAmount}}</td>
             <td>COD</td>
-            <td><i class="fa fa-files-o fa-3x" aria-hidden="true" data-toggle="modal" data-target="#invoiceModal" ng-click="invoiceDetails(orderDetails._id)"></i></td>
+            <td><i class="fa fa-files-o fa-3x" aria-hidden="true" data-toggle="modal" data-target="#invoiceModal" ng-click="invoiceDetails(orderDetails._id,orderDetails.userID.email,orderDetails.userID.mobile_number)"></i></td>
             <td>{{orderDetails.orderStatus.description}}</td>
             <td>
               <select class="form-control" style="width:160px !important;" id="sel1" ng-model="orderStatusSelected" ng-change="orderStatusChangedValue(orderStatusSelected)" >
@@ -91,7 +91,7 @@
             <td >{{orderDetails.userID.mobile_number}}</td>
             <td>{{orderDetails.orderAmount}}</td>
             <td>COD</td>
-            <td><i class="fa fa-files-o fa-3x" aria-hidden="true" data-toggle="modal" data-target="#invoiceModal" ng-click="invoiceDetails(orderDetails._id)"></i></td>
+            <td><i class="fa fa-files-o fa-3x" aria-hidden="true" data-toggle="modal" data-target="#invoiceModal" ng-click="invoiceDetails(orderDetails._id,orderDetails.userID.email,orderDetails.userID.mobile_number)"></i></td>
             <td>{{orderDetails.orderStatus.description}}</td>
             <td>
               <select class="form-control" style="width:160px !important;" id="sel1" ng-model="orderStatusSelected" ng-change="orderStatusChangedValue(orderStatusSelected)" >
@@ -139,7 +139,7 @@
             <td >{{orderDetails.userID.mobile_number}}</td>
             <td>{{orderDetails.orderAmount}}</td>
             <td>COD</td>
-            <td><i class="fa fa-files-o fa-3x" aria-hidden="true" data-toggle="modal" data-target="#invoiceModal" ng-click="invoiceDetails(orderDetails._id)"></i></td>
+            <td><i class="fa fa-files-o fa-3x" aria-hidden="true" data-toggle="modal" data-target="#invoiceModal" ng-click="invoiceDetails(orderDetails._id,orderDetails.userID.email,orderDetails.userID.mobile_number)"></i></td>
             <td>{{orderDetails.orderStatus.description }}</td>
             <!-- <td>
               <select class="form-control" style="width:160px !important;" id="sel1" ng-model="orderStatusSelected" ng-change="orderStatusChangedValue(orderStatusSelected)" >
@@ -162,7 +162,7 @@
             <td >{{orderDetails.userID.mobile_number}}</td>
             <td>{{orderDetails.orderAmount}}</td>
             <td>COD</td>
-            <td><i class="fa fa-files-o fa-3x" aria-hidden="true" data-toggle="modal" data-target="#invoiceModal" ng-click="invoiceDetails(orderDetails._id)"></i></td>
+            <td><i class="fa fa-files-o fa-3x" aria-hidden="true" data-toggle="modal" data-target="#invoiceModal" ng-click="invoiceDetails(orderDetails._id,orderDetails.userID.email,orderDetails.userID.mobile_number)"></i></td>
             <td>{{orderDetails.orderStatus.description }}</td>
             <!-- <td>
               <select class="form-control" style="width:160px !important;" id="sel1" ng-model="orderStatusSelected" ng-change="orderStatusChangedValue(orderStatusSelected)" >
@@ -207,11 +207,13 @@
       					{{getByorderId.address.streetName}}<br>
       					{{getByorderId.address.city}}{{getByorderId.address.country}}
       				</address>
+              {{user_email}}<br>
+              {{user_phone}}
       			</div>
       			<div class="col-xs-6 text-right">
               <address>
                 <strong>Order Date:</strong>
-                {{getByorderId.orderDate | date}}
+                {{getByorderId.orderDate | date}}&nbsp;{{getByorderId.orderDate | date : "shortTime" }}
               </address>
       			</div>
       		</div>
