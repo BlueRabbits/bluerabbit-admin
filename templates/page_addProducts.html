@@ -31,7 +31,12 @@
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Product To Be Listed In Offer</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productOffer" placeholder="yes/no" required>
+            <!-- <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productOffer" placeholder="yes/no" required> -->
+            <select class="form-control" ng-model="productOffer" required="">
+                <option ng-selected="true" value="true">Select yes/no</option>
+                <option value="yes">yes</option>
+                <option value="no">no</option>
+             </select>
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Product Image<span style="color: #e40046;font-size: 10px" class="glyphicon glyphicon-asterisk" aria-hidden="true"></span></label>

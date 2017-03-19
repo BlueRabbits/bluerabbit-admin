@@ -9,6 +9,8 @@
         <th style="text-align:center">User ID</th>
         <th style="text-align:center">User Name</th>
         <th style="text-align:center">User Email</th>
+        <th style="text-align:center">Device Type</th>
+        <th style="text-align:center">Mobile Number</th>
         <th style="text-align:center">Status</th>
         <th style="text-align:center">Change Status</th>
       </tr>
@@ -22,7 +24,13 @@
         <td>{{userList._id}}</td>
         <td>{{userList.name}}</td>
         <td>{{userList.email}}</td>
+        <td ng-if="userList.device_type">{{userList.device_type}}</td>
+        <td ng-if="!userList.device_type">WEB</td>
+        <td ng-if="userList.mobile_number">{{userList.mobile_number}}</td>
+        <td ng-if="!userList.mobile_number">NA</td>
         <td>{{userList.isactive}}</td>
+        <!-- <td ng-show="{{userList.isactive = 'true'}}">Active</td>
+        <td ng-show="{{userList.isactive = 'false'}}">InActive</td> -->
         <td>
 
             <select ng-model="sel" style="width:160px !important">
