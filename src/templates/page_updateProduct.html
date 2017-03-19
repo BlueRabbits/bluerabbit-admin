@@ -48,6 +48,12 @@
   </div>
   <div class="col-lg-4" ng-show="showProductButton" style="  border: 4px solid #e40046!important;">
       <form ng-submit="updateProduct()" >
+        <div class="form-group">
+          <label for="sel1">Select Category (select one):</label>
+          <select class="form-control" id="sel1" ng-model="categorySelected" ng-change="getCategoryName(categorySelected)">
+            <option ng-repeat="category in getCategoriesList"  ng-model="categoryName">{{category.name}}</option>
+          </select>
+        </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Product Name</label>
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productName" placeholder="Enter Product Name">
@@ -64,21 +70,21 @@
             <label for="exampleInputEmail1">Product Category</label>
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productCategory" placeholder="Enter Product Category">
           </div> -->
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label for="sel1">Select Department (select one):</label>
             <select class="form-control" id="sel1" ng-model="departmentSelected" ng-change="getdepartmentId(departmentSelected)">
               <option ng-repeat="departments in getDepartmentList"  ng-model="categoryName">{{departments.name}}</option>
             </select>
-          </div>
-          <div class="form-group">
-            <label for="sel1">Select Category (select one):</label>
-            <select class="form-control" id="sel1" ng-model="categorySelected" ng-change="getCategoryName(categorySelected)">
-              <option ng-repeat="category in getCategoriesList"  ng-model="categoryName">{{category.name}}</option>
-            </select>
-          </div>
+          </div> -->
+
           <div class="form-group">
             <label for="exampleInputEmail1">Product to be listed in Offer</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productOffer" placeholder="yes/no">
+            <!-- <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productOffer" placeholder="yes/no"> -->
+            <select class="form-control" ng-model="productOffer" >
+                <option ng-selected="true" value="true">Select yes/no</option>
+                <option value="yes">yes</option>
+                <option  value="no" >no</option>
+             </select>
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Product Image</label>

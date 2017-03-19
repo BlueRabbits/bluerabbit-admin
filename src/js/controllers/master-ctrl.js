@@ -804,7 +804,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
         var data = {
             name: $scope.productName,
             description: $scope.productDescription,
-            dept: $scope.departmentSelected,
+            dept: "nonveg",
             cat: $scope.categorySelected,
             subCat: subcat,
             sku: "abcd12345",
@@ -977,6 +977,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
         for (var i = 0; i < $scope.getAllOrdersStatusList.length; i++) {
             if ($scope.getAllOrdersStatusList[i]._id == id) {
                 $scope.orderStatusObj = $scope.getAllOrdersStatusList[i];
+                console.log("$scope.orderStatusObj",$scope.orderStatusObj);
             }
         }
 
