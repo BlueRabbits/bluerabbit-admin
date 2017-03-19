@@ -102,6 +102,25 @@
               <button type="button" style="color: white;background-color: #e40046; cursor:pointer" class="btn" ng-disabled="!orderStatusSelected" ng-click="editOrderStatus(orderDetails._id, orderDetails.orderStatus._id, orderDetails.orderStatus.name)">Update</button>
             </td>
           </tr>
+          <tr ng-repeat="orderDetails in getAllOrdersList | filter:{orderStatus:{name: 'Out For Delivery'}} | filter:searchFilter | filter:dateList | orderBy : '-orderDate'">
+            <td>{{orderDetails._id}}</td>
+            <td ng-model="orderdates">{{orderDetails.orderDate | date}}&nbsp;&nbsp;{{orderDetails.orderDate | date : "shortTime" }}</td>
+            <td >{{orderDetails.userID.name}}</td>
+            <td >{{orderDetails.userID.email}}</td>
+            <td >{{orderDetails.userID.mobile_number}}</td>
+            <td>{{orderDetails.orderAmount}}</td>
+            <td>COD</td>
+            <td><i class="fa fa-files-o fa-3x" aria-hidden="true" data-toggle="modal" data-target="#invoiceModal" ng-click="invoiceDetails(orderDetails._id,orderDetails.userID.email,orderDetails.userID.mobile_number)"></i></td>
+            <td>{{orderDetails.orderStatus.description}}</td>
+            <td>
+              <select class="form-control" style="width:160px !important;" id="sel1" ng-model="orderStatusSelected" ng-change="orderStatusChangedValue(orderStatusSelected)" >
+                <option ng-repeat="orderStatusNames in getAllOrdersStatusList" value="{{ orderStatusNames._id }}">{{orderStatusNames.description}}</option>
+              </select>
+            </td>
+            <td>
+              <button type="button" style="color: white;background-color: #e40046; cursor:pointer" class="btn" ng-disabled="!orderStatusSelected" ng-click="editOrderStatus(orderDetails._id, orderDetails.orderStatus._id, orderDetails.orderStatus.name)">Update</button>
+            </td>
+          </tr>
 
         </tbody>
         </table>
@@ -127,7 +146,7 @@
           </tr>
         </thead>
         <tbody style="text-align: center;">
-          <tr ng-repeat="orderDetails in getAllOrdersList  | filter:{orderStatus:{name: 'Completed'}} | filter:searchFilter | orderBy : '-orderDate'">
+          <tr ng-repeat="orderDetails in getAllOrdersList  | filter:{orderStatus:{name: 'Completed'}}  | orderBy : '-orderDate'">
             <!-- <td><button class="btn btn-xs btn-success" ng-click="deleteCategory(categoryList._id)">Delete</button></td> -->
             <!-- <td><button class="btn btn-xs btn-success">Edit</button></td> -->
             <!-- <td><i class="fa fa-pencil-square-o fa-3x" style="color: #e40046; cursor:pointer"  aria-hidden="true" ng-click="editCategory(categoryList._id,categoryList.name,categoryList.department._id,categoryList.isActive)"></i></td>
@@ -150,7 +169,7 @@
               <button type="button" style="color: white;background-color: #e40046; cursor:pointer" class="btn" ng-disabled="!orderStatusSelected" ng-click="editOrderStatus(orderDetails._id, orderDetails.orderStatus._id, orderDetails.orderStatus.name)">Update</button>
             </td> -->
           </tr>
-          <tr ng-repeat="orderDetails in getAllOrdersList  | filter:{orderStatus:{name: 'Cancelled'}} | filter:searchFilter | orderBy : '-orderDate'">
+          <tr ng-repeat="orderDetails in getAllOrdersList  | filter:{orderStatus:{name: 'Cancelled'}}  | orderBy : '-orderDate'">
             <!-- <td><button class="btn btn-xs btn-success" ng-click="deleteCategory(categoryList._id)">Delete</button></td> -->
             <!-- <td><button class="btn btn-xs btn-success">Edit</button></td> -->
             <!-- <td><i class="fa fa-pencil-square-o fa-3x" style="color: #e40046; cursor:pointer"  aria-hidden="true" ng-click="editCategory(categoryList._id,categoryList.name,categoryList.department._id,categoryList.isActive)"></i></td>
@@ -207,8 +226,8 @@
       					{{getByorderId.address.streetName}}<br>
       					{{getByorderId.address.city}}{{getByorderId.address.country}}
       				</address>
-              {{user_email}}<br>
-              {{user_phone}}
+              Mail : {{user_email}}<br>
+              Number : {{user_phone}}
       			</div>
       			<div class="col-xs-6 text-right">
               <address>
@@ -276,6 +295,9 @@
       							<tr>
       								<td class="no-line"></td>
       								<td class="no-line"></td>
+      								<td class="no-line"></td>
+      								<!-- <td class="no-line"></td> -->
+                      
       								<td class="no-line text-center"><strong>Total</strong></td>
       								<td class="no-line text-right">AED {{getByorderId.orderAmount}}</td>
       							</tr>

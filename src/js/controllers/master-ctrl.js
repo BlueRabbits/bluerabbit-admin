@@ -74,6 +74,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
         $scope.myUpdateProd = {};
         $scope.myUpdateLoc = {};
         $scope.myUpdateScoutLoc = {};
+        $scope.myUpdateShipping = {};
 
         $scope.myoverViewObj = {
             "color": "white",
@@ -98,6 +99,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
         $scope.myUpdateProd = {};
         $scope.myUpdateLoc = {};
         $scope.myUpdateScoutLoc = {};
+        $scope.myUpdateShipping = {};
 
         $scope.myObj = {
             "color": "white",
@@ -121,6 +123,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
         $scope.myUpdateLoc = {};
         $scope.myUpdateLoc = {};
         $scope.myUpdateScoutLoc = {};
+        $scope.myUpdateShipping = {};
         // if (window.location.hash == '#/addProduct') {
         $scope.myObjProd = {
             "color": "white",
@@ -145,6 +148,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
         $scope.myUpdateLoc = {};
         $scope.myUpdateLoc = {};
         $scope.myUpdateScoutLoc = {};
+        $scope.myUpdateShipping = {};
         $scope.myObjBanner = {
             "color": "white",
             "border-left": "3px solid #e99d1a",
@@ -168,6 +172,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
         $scope.myUpdateLoc = {};
         $scope.myUpdateLoc = {};
         $scope.myUpdateScoutLoc = {};
+        $scope.myUpdateShipping = {};
         $scope.myUpdateCat = {
             "color": "white",
             "border-left": "3px solid #e99d1a",
@@ -192,6 +197,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
         $scope.myUpdateLoc = {};
         $scope.myUpdateLoc = {};
         $scope.myUpdateScoutLoc = {};
+        $scope.myUpdateShipping = {};
         $scope.myUpdateProd = {
             "color": "white",
             "border-left": "3px solid #e99d1a",
@@ -218,6 +224,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
         $scope.myUpdateLoc = {};
         $scope.myUpdateLoc = {};
         $scope.myUpdateScoutLoc = {};
+        $scope.myUpdateShipping = {};
         $scope.myUpdateBan = {
             "color": "white",
             "border-left": "3px solid #e99d1a",
@@ -247,6 +254,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
         $scope.myoverViewObj = {};
         $scope.myUpdateLoc = {};
         $scope.myUpdateScoutLoc = {};
+        $scope.myUpdateShipping = {};
         $scope.myUpdateOrder = {
             "color": "white",
             "border-left": "3px solid #e99d1a",
@@ -274,6 +282,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
         $scope.myUpdateOrder = {};
         $scope.myUpdateLoc = {};
         $scope.myUpdateScoutLoc = {};
+        $scope.myUpdateShipping = {};
         $scope.myUpdateUser = {
             "color": "white",
             "border-left": "3px solid #e99d1a",
@@ -302,6 +311,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
         $scope.myUpdateOrder = {};
         $scope.myUpdateUser = {};
         $scope.myUpdateScoutLoc = {};
+        $scope.myUpdateShipping = {};
         $scope.myUpdateLoc = {
             "color": "white",
             "border-left": "3px solid #e99d1a",
@@ -331,7 +341,39 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
         $scope.myUpdateOrder = {};
         $scope.myUpdateUser = {};
         $scope.myUpdateLoc ={};
+        $scope.myUpdateShipping = {};
         $scope.myUpdateScoutLoc = {
+            "color": "white",
+            "border-left": "3px solid #e99d1a",
+            "text-indent": "22px",
+            "background": "#2d3e63"
+
+        }
+    }
+    $scope.updateShippingHighlight = function() {
+        $scope.activeProd = 'false';
+        $scope.activeCat = 'false';
+        $scope.activeBanner = 'false';
+        $scope.activeUpdateCat = 'false';
+        $scope.activeUpdateProd = 'false';
+        $scope.activeUpdateBan = 'false';
+        $scope.activeUpdateOrder = 'false';
+        $scope.activeUpdateUser = 'false';
+        $scope.activeUpdateLoc = 'false';
+        $scope.activeUpdateScoutLoc = 'false';
+        $scope.activeUpdateShipping = 'active';
+        $scope.myObj = {};
+        $scope.myObjProd = {};
+        $scope.myObjBanner = {};
+        $scope.myoverViewObj = {};
+        $scope.myUpdateCat = {};
+        $scope.myUpdateProd = {};
+        $scope.myUpdateBan = {};
+        $scope.myUpdateOrder = {};
+        $scope.myUpdateUser = {};
+        $scope.myUpdateLoc ={};
+        $scope.myUpdateScoutLoc = {};
+        $scope.myUpdateShipping = {
             "color": "white",
             "border-left": "3px solid #e99d1a",
             "text-indent": "22px",
@@ -349,7 +391,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
 
     $scope.pastOrders = function(){
         $scope.liveOrders = {};
-        
+
     }
 
     console.log("$state.current.name", window.location.hash);
@@ -786,11 +828,17 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
                 'Content-Type': 'application/json'
             }
         }
+        var action = confirm("Deleted category");
+        if(action === false) {
+          return false; // this would do
+      } else {
+
+
         $http.delete(BASE_URL + '/api/categories/' + catId, config)
             .success(function(data, status, headers, config) {
                 console.log("delete category", data);
                 $scope.getCategory();
-                alert("Deleted category");
+
             })
             .error(function(data, status, header, config) {
                 $scope.ResponseDetails = "Data: " + data +
@@ -798,6 +846,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
                     "<hr />headers: " + header +
                     "<hr />config: " + config;
             });
+        }
     }
     //edit and delete product
     $scope.editProduct = function(id) {
@@ -901,11 +950,15 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
                 'Content-Type': 'application/json'
             }
         }
+        var action = confirm("Product to be Deleted");
+        if(action === false) {
+          return false; // this would do
+      } else {
         $http.delete(BASE_URL + '/api/products/' + productId, config)
             .success(function(data, status, headers, config) {
                 console.log("delete product", data);
                 $scope.getProduct();
-                alert("Product Deleted");
+
             })
             .error(function(data, status, header, config) {
                 $scope.ResponseDetails = "Data: " + data +
@@ -913,6 +966,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
                     "<hr />headers: " + header +
                     "<hr />config: " + config;
             });
+        }
     }
     //edit and delete todaysDeal
     $scope.editTodayDeals = function(id) {
@@ -932,10 +986,14 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
                 'Content-Type': 'application/json'
             }
         }
+        var action = confirm("Banner to be deleted");
+        if(action === false) {
+          return false; // this would do
+      } else {
         $http.delete(BASE_URL + '/api/banner/' + dealId, config)
             .success(function(data, status, headers, config) {
                 console.log("delete product", data);
-                confirm("Deleted Banner");
+
                 $scope.getBanner();
 
             })
@@ -945,6 +1003,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
                     "<hr />headers: " + header +
                     "<hr />config: " + config;
             });
+        }
     }
     //get all orders
 
@@ -1356,10 +1415,13 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
                 'Content-Type': 'application/json'
             }
         }
+        var action = confirm("Deleted"+locId+"Location we deliver");
+        if(action === false) {
+          return false; // this would do
+      } else {
         $http.delete(BASE_URL + '/api/deliver/Location/' + locId, config)
             .success(function(data, status, headers, config) {
                 console.log("delete deleteLocactionDeliver", data);
-                alert("Deleted"+locId+"Location we deliver");
                 window.location.reload(true);
             })
             .error(function(data, status, header, config) {
@@ -1368,6 +1430,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
                     "<hr />headers: " + header +
                     "<hr />config: " + config;
             });
+        }
 
     }
     $scope.getAllLocationDeliver();
@@ -1396,5 +1459,64 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
             });
     }
     $scope.getListScoutLoc();
+    //get delivery cost
+    $scope.getDeliveryCost = function() {
+        var config = {
+            headers: {
+
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + AdminToken
+            }
+        }
+
+        $http.get(BASE_URL + '/api/admin/config', config)
+            .success(function(data, status, headers, config) {
+                $scope.getDeliveryCost = data;
+
+                console.log("get getDeliveryCost", data);
+
+            })
+            .error(function(data, status, header, config) {
+                $scope.ResponseDetails = "Data: " + data +
+                    "<hr />status: " + status +
+                    "<hr />headers: " + header +
+                    "<hr />config: " + config;
+            });
+    }
+    $scope.getDeliveryCost();
+    //update delivery cost
+    $scope.updateDeliveryCost = function() {
+        var data = {
+            minimumOrderAmount: $scope.minimumCost,
+            deliveryOrderAmount: $scope.deliveryCost
+        };
+
+        var config = {
+            headers: {
+                'Authorization': 'Bearer ' + AdminToken,
+                'Content-Type': 'application/json'
+            }
+        }
+
+        $http.put(BASE_URL + '/api/admin/config/1', data, config)
+            .success(function(data, status, headers, config) {
+                $scope.updatedDeliverycost = data;
+                console.log("dataa", data);
+                $scope.getDeliveryCost();
+                alert("DeliveryCost Updated ");
+                $scope.minimumCost ="";
+                $scope.deliveryCost ="";
+
+
+                // window.location.reload(true);
+            })
+            .error(function(data, status, header, config) {
+                $scope.ResponseDetails = "Data: " + data +
+                    "<hr />status: " + status +
+                    "<hr />headers: " + header +
+                    "<hr />config: " + config;
+            });
+
+    }
 
 }
