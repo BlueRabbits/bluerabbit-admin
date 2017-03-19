@@ -934,6 +934,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
                 $scope.getAllOrdersList = data;
                 $scope.getAllOrdersListLength = data.length;
                 console.log("get getAllOrdersList", data);
+                $scope.getAllUsers();
 
             })
             .error(function(data, status, header, config) {
@@ -944,7 +945,17 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
             });
     };
     $scope.getAllOrders();
+    //usersdetails of that order
+    $scope.getUserinfoOrders = function(userId){
+        console.log("$scope.",$scope.getAllUserList);
+        for (var i = 0; i < $scope.getAllUserList.length; i++) {
+            if ($scope.getAllUserList[i]._id = userId) {
+                $scope.userByOrder = $scope.getAllUserList[i];
+                console.log("$scope.userByOrder",$scope.userByOrder);
+            }
+        }
 
+    }
     //get all order status
     $scope.getAllOrderStatus = function() {
 

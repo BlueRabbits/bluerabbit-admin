@@ -38,7 +38,9 @@
 
             <th  style="text-align: center;">Order ID</th>
             <th  style="text-align: center;">Order Date</th>
-            <th  style="text-align: center;">User ID</th>
+            <th  style="text-align: center;">User Name</th>
+            <th  style="text-align: center;">User EmailId</th>
+            <th  style="text-align: center;">User Phone</th>
             <th  style="text-align: center;">Order Amount</th>
             <th  style="text-align: center;">Payment Mode</th>
             <th  style="text-align: center;">Invoice</th>
@@ -48,34 +50,40 @@
           </tr>
         </thead>
         <tbody style="text-align: center;">
-          <tr ng-repeat="orderDetails in getAllOrdersList | filter:{orderStatus:{name: 'Order Placed'}}">
-            <td>{{orderDetails._id}}</td>
+          <tr ng-repeat="orderDetails in getAllOrdersList | filter:{orderStatus:{name: 'Booked'}}">
+            <td >{{orderDetails._id}}</td>
             <td ng-model="orderdates">{{orderDetails.orderDate | date}}&nbsp;&nbsp;{{orderDetails.orderDate | date : "shortTime" }}</td>
-            <td>{{orderDetails.userID}}</td>
+            <!-- <td >{{orderDetails.userID._id}}</td> -->
+            <td >{{orderDetails.userID.name}}</td>
+            <td >{{orderDetails.userID.email}}</td>
+            <td >{{orderDetails.userID.mobile_number}}</td>
+            <td ng-repeat="">{{userByOrder.name}}</td>
             <td>{{orderDetails.orderAmount}}</td>
             <td>COD</td>
             <td><i class="fa fa-files-o fa-3x" aria-hidden="true" data-toggle="modal" data-target="#invoiceModal" ng-click="invoiceDetails(orderDetails._id)"></i></td>
-            <td>{{orderDetails.orderStatus.name}}</td>
+            <td>{{orderDetails.orderStatus.description}}</td>
             <td>
               <select class="form-control" style="width:160px !important;" id="sel1" ng-model="orderStatusSelected" ng-change="orderStatusChangedValue(orderStatusSelected)" >
-                <option ng-repeat="orderStatusNames in getAllOrdersStatusList" value="{{ orderStatusNames._id }}">{{orderStatusNames.name}}</option>
+                <option ng-repeat="orderStatusNames in getAllOrdersStatusList" value="{{ orderStatusNames._id }}">{{orderStatusNames.description}}</option>
               </select>
             </td>
             <td>
               <button type="button" style="color: white;background-color: #e40046; cursor:pointer" class="btn" ng-disabled="!orderStatusSelected" ng-click="editOrderStatus(orderDetails._id, orderDetails.orderStatus._id, orderDetails.orderStatus.name)">Update</button>
             </td>
           </tr>
-          <tr ng-repeat="orderDetails in getAllOrdersList | filter:{orderStatus:{name: 'Accepted'}}">
+          <tr ng-repeat="orderDetails in getAllOrdersList | filter:{orderStatus:{name: 'Processed'}}">
             <td>{{orderDetails._id}}</td>
             <td ng-model="orderdates">{{orderDetails.orderDate | date}}&nbsp;&nbsp;{{orderDetails.orderDate | date : "shortTime" }}</td>
-            <td>{{orderDetails.userID}}</td>
+            <td >{{orderDetails.userID.name}}</td>
+            <td >{{orderDetails.userID.email}}</td>
+            <td >{{orderDetails.userID.mobile_number}}</td>
             <td>{{orderDetails.orderAmount}}</td>
             <td>COD</td>
             <td><i class="fa fa-files-o fa-3x" aria-hidden="true" data-toggle="modal" data-target="#invoiceModal" ng-click="invoiceDetails(orderDetails._id)"></i></td>
-            <td>{{orderDetails.orderStatus.name}}</td>
+            <td>{{orderDetails.orderStatus.description}}</td>
             <td>
               <select class="form-control" style="width:160px !important;" id="sel1" ng-model="orderStatusSelected" ng-change="orderStatusChangedValue(orderStatusSelected)" >
-                <option ng-repeat="orderStatusNames in getAllOrdersStatusList" value="{{ orderStatusNames._id }}">{{orderStatusNames.name}}</option>
+                <option ng-repeat="orderStatusNames in getAllOrdersStatusList" value="{{ orderStatusNames._id }}">{{orderStatusNames.description}}</option>
               </select>
             </td>
             <td>
@@ -95,7 +103,9 @@
 
             <th  style="text-align: center;">Order ID</th>
             <th  style="text-align: center;">Order Date</th>
-            <th  style="text-align: center;">User ID</th>
+            <th  style="text-align: center;">User Name</th>
+            <th  style="text-align: center;">User EmailId</th>
+            <th  style="text-align: center;">User Phone</th>
             <th  style="text-align: center;">Order Amount</th>
             <th style="text-align: center;">Payment Mode</th>
             <th  style="text-align: center;">Invoice</th>
@@ -105,18 +115,20 @@
           </tr>
         </thead>
         <tbody style="text-align: center;">
-          <tr ng-repeat="orderDetails in getAllOrdersList  | filter:{orderStatus:{name: 'Out For Delivery'}}">
+          <tr ng-repeat="orderDetails in getAllOrdersList  | filter:{orderStatus:{name: 'Completed'}}">
             <!-- <td><button class="btn btn-xs btn-success" ng-click="deleteCategory(categoryList._id)">Delete</button></td> -->
             <!-- <td><button class="btn btn-xs btn-success">Edit</button></td> -->
             <!-- <td><i class="fa fa-pencil-square-o fa-3x" style="color: #e40046; cursor:pointer"  aria-hidden="true" ng-click="editCategory(categoryList._id,categoryList.name,categoryList.department._id,categoryList.isActive)"></i></td>
             <td><i class="fa fa-trash-o fa-3x" style="color: #e40046; cursor:pointer"  ng-click="deleteCategory(categoryList._id)" aria-hidden="true"></i></td> -->
             <td>{{orderDetails._id}}</td>
             <td ng-model="orderdates">{{orderDetails.orderDate | date}}&nbsp;&nbsp;{{orderDetails.orderDate | date : "shortTime" }}</td>
-            <td>{{orderDetails.userID}}</td>
+            <td >{{orderDetails.userID.name}}</td>
+            <td >{{orderDetails.userID.email}}</td>
+            <td >{{orderDetails.userID.mobile_number}}</td>
             <td>{{orderDetails.orderAmount}}</td>
             <td>COD</td>
             <td><i class="fa fa-files-o fa-3x" aria-hidden="true" data-toggle="modal" data-target="#invoiceModal" ng-click="invoiceDetails(orderDetails._id)"></i></td>
-            <td>{{orderDetails.orderStatus.name }}</td>
+            <td>{{orderDetails.orderStatus.description }}</td>
             <!-- <td>
               <select class="form-control" style="width:160px !important;" id="sel1" ng-model="orderStatusSelected" ng-change="orderStatusChangedValue(orderStatusSelected)" >
                 <option ng-repeat="orderStatusNames in getAllOrdersStatusList" value="{{ orderStatusNames._id }}">{{orderStatusNames.name}}</option>
@@ -133,11 +145,13 @@
             <td><i class="fa fa-trash-o fa-3x" style="color: #e40046; cursor:pointer"  ng-click="deleteCategory(categoryList._id)" aria-hidden="true"></i></td> -->
             <td>{{orderDetails._id}}</td>
             <td ng-model="orderdates">{{orderDetails.orderDate | date}}&nbsp;&nbsp;{{orderDetails.orderDate | date : "shortTime" }}</td>
-            <td>{{orderDetails.userID}}</td>
+            <td >{{orderDetails.userID.name}}</td>
+            <td >{{orderDetails.userID.email}}</td>
+            <td >{{orderDetails.userID.mobile_number}}</td>
             <td>{{orderDetails.orderAmount}}</td>
             <td>COD</td>
             <td><i class="fa fa-files-o fa-3x" aria-hidden="true" data-toggle="modal" data-target="#invoiceModal" ng-click="invoiceDetails(orderDetails._id)"></i></td>
-            <td>{{orderDetails.orderStatus.name }}</td>
+            <td>{{orderDetails.orderStatus.description }}</td>
             <!-- <td>
               <select class="form-control" style="width:160px !important;" id="sel1" ng-model="orderStatusSelected" ng-change="orderStatusChangedValue(orderStatusSelected)" >
                 <option ng-repeat="orderStatusNames in getAllOrdersStatusList" value="{{ orderStatusNames._id }}">{{orderStatusNames.name}}</option>
