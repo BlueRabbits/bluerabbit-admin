@@ -33,8 +33,8 @@
   <!-- tabs -->
   <ul class="nav nav-tabs">
   <!-- <li class="active"><a data-toggle="tab" href="#home">Home</a></li> -->
-  <li><a data-toggle="tab" data-target="#menu1" class="active" style="color: #e40046;">Live Orders</a></li>
-  <li><a data-toggle="tab" data-target="#menu2"  style="color: #e40046;">Past Orders</a></li>
+  <li><a data-toggle="tab" data-target="#menu1" class="active" ng-style="liveOrders" style="color: #e40046;">Live Orders</a></li>
+  <li><a data-toggle="tab" data-target="#menu2"  style="color: #e40046;"  ng-click="pastOrders()">Past Orders</a></li>
 </ul>
 
 <div class="tab-content">
@@ -62,7 +62,7 @@
           </tr>
         </thead>
         <tbody style="text-align: center;">
-          <tr ng-repeat="orderDetails in getAllOrdersList | filter:{orderStatus:{name: 'Booked'}} | filter:searchFilter">
+          <tr ng-repeat="orderDetails in getAllOrdersList | filter:{orderStatus:{name: 'Booked'}} | filter:searchFilter | filter:dateList | orderBy : '-orderDate'">
             <td >{{orderDetails._id}}</td>
             <td ng-model="orderdates">{{orderDetails.orderDate | date}}&nbsp;&nbsp;{{orderDetails.orderDate | date : "shortTime" }}</td>
             <!-- <td >{{orderDetails.userID._id}}</td> -->
@@ -83,7 +83,7 @@
               <button type="button" style="color: white;background-color: #e40046; cursor:pointer" class="btn" ng-disabled="!orderStatusSelected" ng-click="editOrderStatus(orderDetails._id, orderDetails.orderStatus._id, orderDetails.orderStatus.name)">Update</button>
             </td>
           </tr>
-          <tr ng-repeat="orderDetails in getAllOrdersList | filter:{orderStatus:{name: 'Processed'}} | filter:searchFilter">
+          <tr ng-repeat="orderDetails in getAllOrdersList | filter:{orderStatus:{name: 'Processed'}} | filter:searchFilter | filter:dateList | orderBy : '-orderDate'">
             <td>{{orderDetails._id}}</td>
             <td ng-model="orderdates">{{orderDetails.orderDate | date}}&nbsp;&nbsp;{{orderDetails.orderDate | date : "shortTime" }}</td>
             <td >{{orderDetails.userID.name}}</td>
@@ -127,7 +127,7 @@
           </tr>
         </thead>
         <tbody style="text-align: center;">
-          <tr ng-repeat="orderDetails in getAllOrdersList  | filter:{orderStatus:{name: 'Completed'}} | filter:searchFilter">
+          <tr ng-repeat="orderDetails in getAllOrdersList  | filter:{orderStatus:{name: 'Completed'}} | filter:searchFilter | orderBy : '-orderDate'">
             <!-- <td><button class="btn btn-xs btn-success" ng-click="deleteCategory(categoryList._id)">Delete</button></td> -->
             <!-- <td><button class="btn btn-xs btn-success">Edit</button></td> -->
             <!-- <td><i class="fa fa-pencil-square-o fa-3x" style="color: #e40046; cursor:pointer"  aria-hidden="true" ng-click="editCategory(categoryList._id,categoryList.name,categoryList.department._id,categoryList.isActive)"></i></td>
@@ -150,7 +150,7 @@
               <button type="button" style="color: white;background-color: #e40046; cursor:pointer" class="btn" ng-disabled="!orderStatusSelected" ng-click="editOrderStatus(orderDetails._id, orderDetails.orderStatus._id, orderDetails.orderStatus.name)">Update</button>
             </td> -->
           </tr>
-          <tr ng-repeat="orderDetails in getAllOrdersList  | filter:{orderStatus:{name: 'Cancelled'}} | filter:searchFilter">
+          <tr ng-repeat="orderDetails in getAllOrdersList  | filter:{orderStatus:{name: 'Cancelled'}} | filter:searchFilter | orderBy : '-orderDate'">
             <!-- <td><button class="btn btn-xs btn-success" ng-click="deleteCategory(categoryList._id)">Delete</button></td> -->
             <!-- <td><button class="btn btn-xs btn-success">Edit</button></td> -->
             <!-- <td><i class="fa fa-pencil-square-o fa-3x" style="color: #e40046; cursor:pointer"  aria-hidden="true" ng-click="editCategory(categoryList._id,categoryList.name,categoryList.department._id,categoryList.isActive)"></i></td>

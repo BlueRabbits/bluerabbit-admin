@@ -31,7 +31,7 @@
   <div id="page-wrapper" ng-class="{'open': toggle}" ng-cloak >
 
     <!-- Sidebar -->
-    <div id="sidebar-wrapper"  ng-show="showDashboard">
+    <div id="sidebar-wrapper" ng-hide="hideDashboard"  ng-show="showDashboard">
       <ul class="sidebar" style="background-color: white;">
         <li class="sidebar-main">
           <a ng-click="toggleSidebar()" style="background-color: #e40046;">

@@ -14,7 +14,15 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
       window.location.href = '#/login';
       $scope.showDashboard = false;
     }
-    
+
+    if ($cookieStore.get("AdminloggedIn") === false) {
+        $scope.showDashboard = false;
+        window.location.href = '#/login';
+    }
+    var currentLocation = window.location;
+    console.log("currentLocation",currentLocation.hash);
+
+
     if ($cookieStore.get('AdminToken')) {
         $scope.showDashboard = true;
 
@@ -331,6 +339,19 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
 
         }
     }
+
+    $scope.liveOrders = {
+        "cursor": "default",
+        "background-color": "#fff",
+        "border": "1px solid #ddd",
+        "border-bottom-color": "transparent"
+    }
+
+    $scope.pastOrders = function(){
+        $scope.liveOrders = {};
+        
+    }
+
     console.log("$state.current.name", window.location.hash);
     /**
      * Sidebar Toggle & Cookie Control
@@ -430,8 +451,9 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
         $cookieStore.remove("AdminToken");
         $cookieStore.remove("adminEmailId");
         $cookieStore.put('AdminloggedIn', false);
-        location.reload(true);
+        $scope.showDashboard = false;
         window.location.href = '#/login';
+        location.reload(true);
 
     };
 
