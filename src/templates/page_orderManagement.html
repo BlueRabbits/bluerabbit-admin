@@ -278,7 +278,7 @@
       								<td>{{items.product.name}}</td>
       								<td class="text-center">AED {{items.product.salePrice}}</td>
       								<td class="text-center">{{items.quantity}}</td>
-      								<td class="text-right">AED {{items.totalProductAmount}}</td>
+      								<td ng-init="getTotalProductAmount(items.totalProductAmount,items.quantity,getByorderId.orderAmount)" class="text-right">AED {{items.totalProductAmount}}</td>
       							</tr>
       							<!-- <tr>
       								<td class="thick-line"></td>
@@ -286,18 +286,18 @@
       								<td class="thick-line text-center"><strong>Subtotal</strong></td>
       								<td class="thick-line text-right">AED 670.99</td>
       							</tr> -->
-      							<!-- <tr>
+      							<tr >
       								<td class="no-line"></td>
       								<td class="no-line"></td>
       								<td class="no-line text-center"><strong>Shipping</strong></td>
-      								<td class="no-line text-right">AED 15</td>
-      							</tr> -->
+      								<td  class="no-line text-right">AED {{getOrderDeliveryCost}}</td>
+      							</tr>
       							<tr>
       								<td class="no-line"></td>
       								<td class="no-line"></td>
       								<td class="no-line"></td>
       								<!-- <td class="no-line"></td> -->
-                      
+
       								<td class="no-line text-center"><strong>Total</strong></td>
       								<td class="no-line text-right">AED {{getByorderId.orderAmount}}</td>
       							</tr>

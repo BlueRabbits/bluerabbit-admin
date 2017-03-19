@@ -1142,6 +1142,15 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
                     "<hr />config: " + config;
             });
     }
+    //getShipping cost
+    $scope.getTotalProductAmount = function (totalProductCost, prodQty, totalOrderCost){
+        console.log("totalProductCost",totalProductCost, totalOrderCost, prodQty);
+        $scope.thistotalProductCost = totalProductCost;
+        var totalItemCost = totalProductCost * prodQty;
+        $scope.shippingDeliveryCost = totalOrderCost - totalItemCost;
+
+        console.log();
+    }
     //print invoive
     $scope.printInvoice = function() {
         var contents = $('#printArea').html();
@@ -1472,8 +1481,14 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
         $http.get(BASE_URL + '/api/admin/config', config)
             .success(function(data, status, headers, config) {
                 $scope.getDeliveryCost = data;
+                $scope.getOrderDeliveryCost = data[0].deliveryOrderAmount;
+                $scope.getOrderMinCost = data[0].minimumOrderAmount;
 
                 console.log("get getDeliveryCost", data);
+                console.log("cond",$scope.getOrderMinCost,$scope.thistotalProductCost);
+                if ($scope.getOrderMinCost <= $scope.thistotalProductCost) {
+                    $scope.showDeliveryCost = true;
+                }
 
             })
             .error(function(data, status, header, config) {
