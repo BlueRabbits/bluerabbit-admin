@@ -1021,6 +1021,11 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
             .success(function(data, status, headers, config) {
                 $scope.getAllOrdersList = data;
                 $scope.getAllOrdersListLength = data.length;
+                for (var i = 0; i < $scope.getAllOrdersList.length; i++) {
+                    $scope.getInProgress = $scope.getAllOrdersList[i].orderStatus.name;
+                    $scope.getInProgressLength = $scope.getInProgress.length;
+                    console.log("$scope.getInProgressLength",$scope.getInProgressLength);
+                }
                 console.log("get getAllOrdersList", data);
                 $scope.getAllUsers();
 

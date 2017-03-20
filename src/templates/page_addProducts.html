@@ -2,17 +2,17 @@
   <div class="col-lg-4">
       <form ng-submit="postProduct()">
         <div class="form-group">
-          <label for="sel1">Select Category (Select One):<span style="color: #e40046;font-size: 10px;" class="glyphicon glyphicon-asterisk" aria-hidden="true"></span></label>
+          <label for="sel1">Select Category (Select One):<span style="color: #e40046;font-size: 10px;font-family: Roboto Condensed;" class="glyphicon glyphicon-asterisk" aria-hidden="true"></span></label>
           <select class="form-control" id="sel1" ng-model="categorySelected" ng-change="getCategoryName(categorySelected)">
             <option ng-repeat="category in getCategoriesList"  ng-model="categoryName">{{category.name}}</option>
           </select>
         </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">Product Name <span style="color: #e40046;font-size: 10px;" class="glyphicon glyphicon-asterisk" aria-hidden="true"></span></label>
+            <label for="exampleInputEmail1">Product Name <span style="color: #e40046;font-size: 10px;font-family: Roboto Condensed;" class="glyphicon glyphicon-asterisk" aria-hidden="true"></span></label>
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productName" placeholder="Enter Product Name" required>
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">Product Description <span style="color: #e40046;font-size: 10px;" class="glyphicon glyphicon-asterisk" aria-hidden="true"></span></label>
+            <label for="exampleInputEmail1">Product Description <span style="color: #e40046;font-size: 10px;font-family: Roboto Condensed;" class="glyphicon glyphicon-asterisk" aria-hidden="true"></span></label>
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productDescription" placeholder="Enter Product description" required>
           </div>
           <!-- <div class="form-group">

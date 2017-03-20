@@ -32,7 +32,7 @@
     transform: rotate(-40deg);
     text-shadow: 1px 0 #ddd;color: #e40046;"></i>
         </div>
-        <div class="details" style="    font-size: 27px;font-weight: bolder;color: #e40046;">
+        <div class="details" style="    font-size: 27px;font-weight: bolder;color: #e40046;font-family: Roboto Condensed;">
           <span class="title">Total Users</span>
           <span class="sub">{{allusersLength}}</span>
         </div><!--/details-->
@@ -69,14 +69,14 @@
     transform: rotate(-40deg);
     text-shadow: 1px 0 #ddd; color: #e40046;"></i>
         </div>
-        <div class="details" style="    font-size: 27px;font-weight: bolder;color: #e40046;">
+        <div class="details" style="    font-size: 27px;font-weight: bolder;color: #e40046;font-family: Roboto Condensed;">
           <span class="title">Total Orders</span>
           <span class="sub">{{getAllOrdersListLength}}</span>
         </div><!--/details-->
 
       </a><!--/dashboard-block3-->
     </div>
-    <div class="col-md-3 col-sm-6" >
+    <div class="col-md-3 col-sm-6" style="  position:relative;  right: 326px;">
       <a href="#/feedbacks" class="dashboard-block" style="    /* z-index: 8; */
     /* float: right; */
     height: 160px;
@@ -104,7 +104,42 @@
     transform: rotate(-40deg);
     text-shadow: 1px 0 #ddd; color: #e40046;"></i>
         </div>
-        <div class="details" style="    font-size: 27px;font-weight: bolder;color: #e40046;">
+        <div class="details" style="    font-size: 27px;font-weight: bolder;color: #e40046;font-family: Roboto Condensed;">
+          <span class="title">In Progress</span>
+          <span class="sub" >{{getInProgressLength}}</span>
+        </div><!--/details-->
+
+      </a><!--/dashboard-block3-->
+    </div>
+    <div class="col-md-3 col-sm-6" style="position: relative;right: 58px;">
+      <a href="#/feedbacks" class="dashboard-block" style="    /* z-index: 8; */
+    /* float: right; */
+    height: 160px;
+    position: relative;
+    display: block;
+    padding: 30px 23px;
+    background-color: #eae8e8;
+    /* opacity: 0.9; */
+    overflow: hidden;
+    margin-bottom: 7px;
+    width: 500px; border-radius: 5%;">
+        <div class="rotate">
+          <i class="fa fa-list-ol" style="position: absolute;
+    left: 0;
+    left: auto;
+    right: 0;
+    bottom: 0;
+    display: block;
+    height: 65px;
+    font-size: 75px;
+    -webkit-transform: rotate(-40deg);
+    -moz-transform: rotate(-40deg);
+    -o-transform: rotate(-40deg);
+    -ms-transform: rotate(-40deg);
+    transform: rotate(-40deg);
+    text-shadow: 1px 0 #ddd; color: #e40046;"></i>
+        </div>
+        <div class="details" style="    font-size: 27px;font-weight: bolder;color: #e40046;font-family: Roboto Condensed;">
           <span class="title">Total Feedbacks</span>
           <span class="sub">{{getAllFeedbacksLength}}</span>
         </div><!--/details-->
