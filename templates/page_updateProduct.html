@@ -5,7 +5,7 @@
         <tr>
           <th style="text-align:center;font-size: 16px">Edit</th>
           <th style="text-align:center;font-size: 16px">Delete</th>
-          <th style="text-align:center;font-size: 16px">Product ID</th>
+          <th style="text-align:center;font-size: 16px"> ID</th>
           <th style="text-align:center;font-size: 16px">Product Name</th>
           <!-- <th>Product Description</th> -->
           <th style="text-align:center;font-size: 16px">Product Category</th>
@@ -46,7 +46,7 @@
     </tbody>
     </table>
   </div>
-  <div class="col-lg-4" ng-show="showProductButton" style="border: 4px solid #e40046!important">
+  <div class="col-lg-4" ng-show="showProductButton" style="border: 3px solid grey!important">
       <form ng-submit="updateProduct()">
         <div class="form-group">
           <label for="sel1">Select Category (select one):</label>
@@ -127,8 +127,8 @@
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productisActive" placeholder="Enter isActive true/false">
           </div>
 
-          <button type="submit" class="btn" style="background-color: #e40046">Update</button>
-          <button type="button" class="btn" style="background-color: #e40046" ng-click="cancelProduct()">Cancel</button>
+          <button type="submit" class="btn" style="background-color: #e40046;color:white">Update</button>
+          <button type="button" class="btn" style="background-color: #e40046;color:white" ng-click="cancelProduct()">Cancel</button>
     </form>
 </div>
 
