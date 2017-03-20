@@ -25,7 +25,9 @@
   <!-- endbuild -->
   <!-- Custom Scripts -->
   <script type="text/javascript" src="js/dashboard.min.js"></script>
-  <style>ul.sidebar .sidebar-list a {    color: black; text-indent: 35px!important;}</style>
+  <style>ul.sidebar .sidebar-list a {    color: black; text-indent: 35px!important;}
+  ul.sidebar .sidebar-list a:hover{    color: #fff;}
+  </style>
 </head>
 <body ng-controller="MasterCtrl">
   <div id="page-wrapper" ng-class="{'open': toggle}" ng-cloak >
@@ -72,17 +74,17 @@
           </li>
           <!-- <li class="sidebar-title" ng-hide="showOrderManagement" style="font-size: 17px;color: rgb(45, 62, 99);"><span>User Details</span></li> -->
           <li class="sidebar-list" ng-hide="showOrderManagement" ng-style="myUpdateUser" ng-class="{'active':activeUpdateUser}" ng-click="updateUserHighlight()">
-            <a href="#/userDetails" style="color: black;font-family: SANS-SERIF;" >User Management <span class="menu-icon fa fa-user"></span></a>
+            <a href="#/userDetails" style="font-family: SANS-SERIF;" >User Management <span class="menu-icon fa fa-user"></span></a>
           </li>
           <li class="sidebar-list" ng-hide="showOrderManagement" ng-style="myUpdateShipping" ng-class="{'active':activeUpdateShipping}" ng-click="updateShippingHighlight()">
-            <a href="#/updateDeliveryCost" style="color: black;font-family: SANS-SERIF;" >Shipping Cost <span class="menu-icon fa fa-list-ol"></span></a>
+            <a href="#/updateDeliveryCost" style="font-family: SANS-SERIF;" >Shipping Cost <span class="menu-icon fa fa-list-ol"></span></a>
           </li>
           <li class="sidebar-title" ng-hide="showOrderManagement" style="font-size: 17px;color: rgb(45, 62, 99); font-family: SANS-SERIF;    font-weight: bold;"><span>Location Details</span></li>
           <li class="sidebar-list" ng-hide="showOrderManagement" ng-style="myUpdateLoc" ng-class="{'active':activeUpdateLoc}" ng-click="locationHighlight()">
-            <a href="#/locationDeliver" style="color: black;font-family: SANS-SERIF; " >Location Deliver<span class="menu-icon fa fa-map-marker"></span></a>
+            <a href="#/locationDeliver" style="font-family: SANS-SERIF; " >Location Deliver<span class="menu-icon fa fa-map-marker"></span></a>
           </li>
           <li class="sidebar-list" ng-hide="showOrderManagement" ng-style="myUpdateScoutLoc" ng-class="{'active':activeUpdateScoutLoc}" ng-click="ScoutlocationHighlight()">
-            <a href="#/scoutLoc" style="color: black;font-family: SANS-SERIF; " >Scout Location<span class="menu-icon fa fa-map-marker"></span></a>
+            <a href="#/scoutLoc" style="font-family: SANS-SERIF; " >Scout Location<span class="menu-icon fa fa-map-marker"></span></a>
           </li>
       </ul>
       <div class="sidebar-footer" style="background-color: #e40046;">

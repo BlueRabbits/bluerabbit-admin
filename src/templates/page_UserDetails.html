@@ -30,7 +30,7 @@
         <td ng-if="!userList.mobile_number">NA</td>
         <!-- <td>{{userList.isactive}}</td> -->
         <td ng-if="userList.isactive">Active</td>
-        <td ng-if="!userList.isactive">InActive</td>
+        <td ng-if="!userList.isactive">Inactive</td>
         <td>
 
             <select  ng-model="sel" style="width:160px !important;" >
@@ -40,7 +40,7 @@
              </select>
 
         </td>
-        <td><button class="btn btn-xs" style="background-color: #e40046;" ng-disabled="!sel" ng-click="updateUser(userList._id,sel)">Update</button></td>
+        <td><button class="btn btn-xs" style="background-color: #e40046;color:white;" ng-disabled="!sel" ng-click="updateUser(userList._id,sel)">Update</button></td>
       </tr>
 
     </tbody>

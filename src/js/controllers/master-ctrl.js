@@ -76,7 +76,9 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
         $scope.myUpdateLoc = {};
         $scope.myUpdateScoutLoc = {};
         $scope.myUpdateShipping = {};
-
+        $scope.myUpdateUser = {};
+        $scope.myUpdateCat = {};
+        $scope.myUpdateProd = {};
         $scope.myoverViewObj = {
             "color": "white",
             "border-left": "3px solid #e99d1a",
@@ -101,6 +103,11 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
         $scope.myUpdateLoc = {};
         $scope.myUpdateScoutLoc = {};
         $scope.myUpdateShipping = {};
+        $scope.myUpdateOrder = {};
+        $scope.myUpdateUser = {};
+        $scope.myUpdateLoc ={};
+        $scope.myUpdateScoutLoc = {};
+        $scope.myoverViewObj = {};
 
         $scope.myObj = {
             "color": "white",
@@ -125,6 +132,11 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
         $scope.myUpdateLoc = {};
         $scope.myUpdateScoutLoc = {};
         $scope.myUpdateShipping = {};
+        $scope.myUpdateOrder = {};
+        $scope.myUpdateUser = {};
+        $scope.myUpdateLoc ={};
+        $scope.myUpdateScoutLoc = {};
+
         // if (window.location.hash == '#/addProduct') {
         $scope.myObjProd = {
             "color": "white",
@@ -174,6 +186,8 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
         $scope.myUpdateLoc = {};
         $scope.myUpdateScoutLoc = {};
         $scope.myUpdateShipping = {};
+        $scope.myUpdateUser = {};
+        $scope.myoverViewObj = {};
         $scope.myUpdateCat = {
             "color": "white",
             "border-left": "3px solid #e99d1a",
@@ -199,6 +213,13 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
         $scope.myUpdateLoc = {};
         $scope.myUpdateScoutLoc = {};
         $scope.myUpdateShipping = {};
+        $scope.myUpdateUser = {};
+        $scope.myUpdateOrder = {};
+        $scope.myUpdateUser = {};
+        $scope.myUpdateLoc ={};
+        $scope.myUpdateScoutLoc = {};
+        $scope.myUpdateShipping = {};
+        $scope.myoverViewObj = {};
         $scope.myUpdateProd = {
             "color": "white",
             "border-left": "3px solid #e99d1a",
@@ -1117,6 +1138,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
                 console.log("updateCategory", data);
                 $scope.getAllOrders();
                 alert("OrderNo" + order_id + " is Updated");
+                window.location.reload(true);
 
             })
             .error(function(data, status, header, config) {
