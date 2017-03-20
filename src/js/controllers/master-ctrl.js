@@ -549,6 +549,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
             .success(function(data, status, headers, config) {
                 $scope.PostDataResponse = data;
                 console.log("dataa", data);
+                window.location.reload(true);
                 alert("New Category Added!!");
             })
             .error(function(data, status, header, config) {
@@ -655,6 +656,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
             .success(function(data, status, headers, config) {
                 $scope.PostDataResponse = data;
                 console.log("dataa", data);
+                window.location.reload(true);
                 alert("New Product Added");
                 $scope.updateAutocomplete();
 
@@ -760,6 +762,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
             .success(function(data, status, headers, config) {
                 $scope.postBanner = data;
                 console.log("dataa", data);
+                window.location.reload(true);
                 alert("Banner Created");
             })
             .error(function(data, status, header, config) {
@@ -994,7 +997,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
         $http.delete(BASE_URL + '/api/banner/' + dealId, config)
             .success(function(data, status, headers, config) {
                 console.log("delete product", data);
-
+                window.location.reload(true);
                 $scope.getBanner();
 
             })
