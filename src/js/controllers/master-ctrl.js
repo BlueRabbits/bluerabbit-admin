@@ -892,7 +892,8 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
     }
     //edit and delete product
     $scope.editProduct = function(id) {
-        $scope.showProductButton = true;
+        $scope.showProductButton = false;
+        $('#editModal').modal('show');
         $scope.productId = id;
         for (var i = 0; i < $scope.getProductList.length; i++) {
             if ($scope.getProductList[i]._id === id) {
@@ -914,6 +915,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
 
             }
         }
+        $scope.productSalePrice = $scope.productlistPrice - $scope.discountedPrice;
 
     }
     //update product api
@@ -1565,13 +1567,9 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
             .success(function(data, status, headers, config) {
                 $scope.updatedDeliverycost = data;
                 console.log("dataa", data);
-                $scope.getDeliveryCost();
+                //$scope.getDeliveryCost();
                 alert("DeliveryCost Updated ");
-                $scope.minimumCost ="";
-                $scope.deliveryCost ="";
-
-
-                // window.location.reload(true);
+                window.location.reload(true);
             })
             .error(function(data, status, header, config) {
                 $scope.ResponseDetails = "Data: " + data +
