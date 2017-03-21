@@ -82,8 +82,8 @@
             <td>
               <select class="form-control" style="width:160px !important;" id="sel1" ng-model="orderStatusSelected" ng-change="orderStatusChangedValue(orderStatusSelected)" >
                 <!-- <option ng-repeat="orderStatusNames in getAllOrdersStatusList  | filter:{name: Processed, name :Cancelled} " value="{{ orderStatusNames._id }}">{{orderStatusNames.description }}</option> -->
-                <option value="2">Accepted Order</option>
-                <option value="4">Cancelled Order</option>
+                <option value="2">Accept Order</option>
+                <option value="4">Cancel Order</option>
               </select>
             </td>
             <td>
@@ -242,7 +242,7 @@
             <select class="form-control" style="width:160px !important;" id="sel1" ng-model="orderStatusSelected" ng-change="orderStatusChangedValue(orderStatusSelected)" >
               <!-- <option ng-repeat="orderStatusNames in getAllOrdersStatusList" value="{{ orderStatusNames._id }}">{{orderStatusNames.description}}</option> -->
               <option value="6">Out For Delivery</option>
-              <option value="4">Cancelled Order</option>
+              <option value="4">Cancel Order</option>
             </select>
           </td>
           <td>
@@ -291,8 +291,8 @@
           <td>
             <select class="form-control" style="width:160px !important;" id="sel1" ng-model="orderStatusSelected" ng-change="orderStatusChangedValue(orderStatusSelected)" >
               <!-- <option ng-repeat="orderStatusNames in getAllOrdersStatusList" value="{{ orderStatusNames._id }}">{{orderStatusNames.description}}</option> -->
-              <option value="3">Completed Order</option>
-              <option value="4">Cancelled Order</option>
+              <option value="3">Complete The Order</option>
+              <option value="4">Cancel Order</option>
             </select>
           </td>
           <td>
