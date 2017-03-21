@@ -49,5 +49,41 @@
           <button type="submit" class="btn" style="background-color: #e40046;" >Update</button>
     </form>
 </div>
+<!-- load image modal windo  -->
+<div class="modal fade" id="editModalCategory" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" >
+    <div class="modal-content">
+      <div class="modal-body">
+      	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <div class="">
+          <form ng-submit="updateCategory()">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Category Name</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="categoryName" placeholder="Enter Category Name">
+              </div>
+              <!-- <div class="form-group">
+                <label for="exampleInputEmail1">Department Id</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="categoryId" placeholder="Enter Department Id">
+              </div> -->
+              <!-- <div class="form-group">
+                <label for="exampleInputEmail1">isActive</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="categoryIsActive" placeholder="Enter isActive">
+              </div> -->
+              <!-- <div class="form-group">
+                <label for="sel1">Select is Active</label>
+                <select class="form-control" id="sel1" ng-model="categoryIsActive">
+                  <option  value="true">true</option>
+                  <option  value="false" >false</option>
+                </select>
+              </div> -->
+              <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+              <button type="submit" class="btn" style="background-color: #e40046;" >Update</button>
+        </form>
+</div>
+
+      </div>
+    </div>
+  </div>
+</div>
 
 </div>

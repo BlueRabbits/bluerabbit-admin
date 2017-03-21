@@ -822,6 +822,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
     }
     //edit aand delete category
     $scope.editCategory = function(id, name, departmentId, IsActive) {
+        $('#editModalCategory').modal('show');
         console.log(id, name, departmentId, IsActive);
         $scope.cat_Id = id;
         $scope.categoryName = name;
@@ -832,7 +833,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
     }
     $scope.updateCategory = function() {
         //show category Edit button
-        $scope.showCategoryButton = true;
+        $scope.showCategoryButton = false;
         var data = {
             name: $scope.categoryName,
             department: 1,
@@ -1183,6 +1184,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
             .success(function(data, status, headers, config) {
                 $scope.getByorderId = data;
                 console.log("$scope.getByorderId", $scope.getByorderId);
+                //$('#invoiceModal').modal('show');
 
             })
             .error(function(data, status, header, config) {
