@@ -108,6 +108,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
         $scope.myUpdateLoc ={};
         $scope.myUpdateScoutLoc = {};
         $scope.myoverViewObj = {};
+        $scope.myUpdateCat = {};
 
         $scope.myObj = {
             "color": "white",
@@ -136,6 +137,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
         $scope.myUpdateUser = {};
         $scope.myUpdateLoc ={};
         $scope.myUpdateScoutLoc = {};
+        $scope.myUpdateCat = {};
 
         // if (window.location.hash == '#/addProduct') {
         $scope.myObjProd = {
@@ -162,6 +164,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
         $scope.myUpdateLoc = {};
         $scope.myUpdateScoutLoc = {};
         $scope.myUpdateShipping = {};
+        $scope.myUpdateCat = {};
         $scope.myObjBanner = {
             "color": "white",
             "border-left": "3px solid #e99d1a",
@@ -829,7 +832,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
         $scope.categoryId = departmentId;
         $scope.categoryIsActive = IsActive;
         //show category Edit button
-        $scope.showCategoryButton = true;
+        $scope.showCategoryButton = false;
     }
     $scope.updateCategory = function() {
         //show category Edit button
@@ -890,6 +893,9 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
                     "<hr />config: " + config;
             });
         }
+    }
+    $scope.cancelCat = function(){
+        $('#editModalCategory').modal('hide');
     }
     //edit and delete product
     $scope.editProduct = function(id) {
@@ -986,6 +992,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
         $scope.instock = "";
         $scope.productisActive = "";
         $scope.showProductButton = false;
+        $('#editModal').modal('hide');
     }
     $scope.deleteProduct = function(productId) {
         console.log("productId", productId);
