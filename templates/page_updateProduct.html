@@ -48,6 +48,15 @@
   </div>
   <div class="col-lg-4" ng-show="showProductButton" style="border: 3px solid grey!important">
       <form ng-submit="updateProduct()">
+        <div class="form-group" ng-if="productisActive">
+          <label for="exampleInputEmail1">Product isActive</label>
+          <!-- <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productisActive" placeholder="Enter isActive true/false"> -->
+          <select class="form-control" ng-model="productisActive">
+              <!-- <option ng-selected="true" value="true">Select yes/no</option> -->
+              <option value="yes">yes</option>
+              <option value="no">no</option>
+           </select>
+        </div>
         <div class="form-group">
           <label for="sel1">Select Category (select one):</label>
           <select class="form-control" id="sel1" ng-model="categorySelected" ng-change="getCategoryName(categorySelected)">
@@ -62,26 +71,12 @@
             <label for="exampleInputEmail1">Product description</label>
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productDescription" placeholder="Enter Product description">
           </div>
-          <!-- <div class="form-group">
-            <label for="exampleInputEmail1">Product deparment</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productDepartment" placeholder="Enter Product deparment">
-          </div> -->
-          <!-- <div class="form-group">
-            <label for="exampleInputEmail1">Product Category</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productCategory" placeholder="Enter Product Category">
-          </div> -->
-          <!-- <div class="form-group">
-            <label for="sel1">Select Department (select one):</label>
-            <select class="form-control" id="sel1" ng-model="departmentSelected" ng-change="getdepartmentId(departmentSelected)">
-              <option ng-repeat="departments in getDepartmentList"  ng-model="categoryName">{{departments.name}}</option>
-            </select>
-          </div> -->
 
           <div class="form-group">
             <label for="exampleInputEmail1">Product to be listed in Offer</label>
             <!-- <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productOffer" placeholder="yes/no"> -->
             <select class="form-control" ng-model="productOffer">
-                <option ng-selected="true" value="true">Select yes/no</option>
+                <!-- <option ng-selected="true" value="true">Select yes/no</option> -->
                 <option value="yes">yes</option>
                 <option value="no">no</option>
              </select>
@@ -122,16 +117,97 @@
             <label for="exampleInputEmail1">Product instock</label>
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="instock" placeholder="instock yes/no" required>
           </div>
-          <div class="form-group" ng-if="productisActive">
-            <label for="exampleInputEmail1">Product isActive</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productisActive" placeholder="Enter isActive true/false">
-          </div>
-
           <button type="submit" class="btn" style="background-color: #e40046;color:white">Update</button>
           <button type="button" class="btn" style="background-color: #e40046;color:white" ng-click="cancelProduct()">Cancel</button>
     </form>
 </div>
 
+<!-- load image modal windo  -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+      	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <div class="">
+        <form ng-submit="updateProduct()">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Product isActive</label>
+            <!-- <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productisActive" placeholder="Enter isActive true/false"> -->
+            <select class="form-control" ng-model="productisActive">
+                <!-- <option ng-selected="true" value="true">Select yes/no</option> -->
+                <option value="yes">yes</option>
+                <option value="no">no</option>
+             </select>
+          </div>
+          <div class="form-group">
+            <label for="sel1">Select Category (select one):</label>
+            <select class="form-control" id="sel1" ng-model="categorySelected" ng-change="getCategoryName(categorySelected)">
+              <option ng-repeat="category in getCategoriesList" ng-model="categoryName">{{category.name}}</option>
+            </select>
+          </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Product Name</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productName" placeholder="Enter Product Name">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Product description</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productDescription" placeholder="Enter Product description">
+            </div>
+
+            <div class="form-group">
+              <label for="exampleInputEmail1">Product to be listed in Offer</label>
+              <!-- <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productOffer" placeholder="yes/no"> -->
+              <select class="form-control" ng-model="productOffer">
+                  <!-- <option ng-selected="true" value="true">Select yes/no</option> -->
+                  <option value="yes">yes</option>
+                  <option value="no">no</option>
+               </select>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Product Image</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productImageUrl" placeholder="Enter Product Image Url">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Product Image 1</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productImageUrl1" placeholder="Enter Product Image Url1">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Product Image 2</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productImageUrl2" placeholder="Enter Product Image Url2">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Product Image 3</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productImageUrl3" placeholder="Enter Product Image Url3">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Product quantity</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productquantity" placeholder="Enter Product quantity">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Product list Price</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productlistPrice" placeholder="Enter Product listPrice">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Product discounted Price</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="discountedPrice" placeholder="Enter Product discountedPrice">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Product sale Price</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productSalePrice" placeholder="Enter Product salePrice">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Product instock</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="instock" placeholder="instock yes/no" required>
+            </div>
+            <button type="submit" class="btn" style="background-color: #e40046;color:white">Update</button>
+            <button type="button" class="btn" style="background-color: #e40046;color:white" ng-click="cancelProduct()">Cancel</button>
+      </form>
+</div>
+
+      </div>
+    </div>
+  </div>
+</div>
 
 
 </div>
