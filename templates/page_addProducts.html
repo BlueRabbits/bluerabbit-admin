@@ -35,8 +35,8 @@
             <!-- <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productOffer" placeholder="yes/no" required> -->
             <select class="form-control" ng-model="productOffer" required="">
                 <option ng-selected="true" value="true">Select yes/no</option>
-                <option value="yes">yes</option>
-                <option value="no">no</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
              </select>
           </div>
           <div class="form-group">
@@ -64,13 +64,14 @@
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productlistPrice" placeholder="Enter Product listPrice" required>
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">Product Sale Price<span style="color: #e40046;font-size: 10px" class="glyphicon glyphicon-asterisk" aria-hidden="true"></span></label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productSalePrice" placeholder="Enter Product salePrice" required>
-          </div>
-          <div class="form-group">
             <label for="exampleInputEmail1">Product Discounted Price</label>
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="discountedPrice" placeholder="Enter Product discountedPrice">
           </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Product Sale Price<span style="color: #e40046;font-size: 10px" class="glyphicon glyphicon-asterisk" aria-hidden="true"></span></label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="productSalePrice" ng-value="productlistPrice - discountedPrice" placeholder="Enter Product salePrice" required>
+          </div>
+
           <div class="form-group">
             <label for="exampleInputEmail1">Product In Stock<span style="color: #e40046;font-size: 10px" class="glyphicon glyphicon-asterisk" aria-hidden="true"></span></label>
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="instock" placeholder="instock yes/no" required>
