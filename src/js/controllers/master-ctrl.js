@@ -1518,6 +1518,14 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
             });
     }
     $scope.getListScoutLoc();
+    //get scout name count
+    $scope.scoutNamesCount = function(name){
+        for (var i = 0; i < $scope.getListScoutLoc.length; i++) {
+            if ($scope.getListScoutLoc[i].name = name) {
+                return $scope.getListScoutLoc[i].name.length;
+            }
+        }
+    }
     //get delivery cost
     $scope.getDeliveryCost = function() {
         var config = {
