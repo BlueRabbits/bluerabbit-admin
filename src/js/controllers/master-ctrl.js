@@ -416,6 +416,23 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
 
     }
 
+    $scope.acceptedOrders = function(){
+      $scope.liveOrders = {};
+      $scope.pastOrders= {};
+    }
+    $scope.outfordeliveryOrders = function(){
+      $scope.liveOrders = {};
+      $scope.pastOrders= {};
+    }
+    $scope.completedOrders = function(){
+      $scope.liveOrders = {};
+      $scope.pastOrders= {};
+    }
+    $scope.cancelledOrders = function(){
+      $scope.liveOrders = {};
+      $scope.pastOrders= {};
+    }
+
     console.log("$state.current.name", window.location.hash);
     /**
      * Sidebar Toggle & Cookie Control
