@@ -1165,7 +1165,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
                 console.log("updateCategory", data);
                 $scope.getAllOrders();
                 alert("OrderNo" + order_id + " is Updated");
-                window.location.reload(true);
+              //  window.location.reload(true);
 
             })
             .error(function(data, status, header, config) {
