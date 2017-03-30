@@ -26,6 +26,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
 
     if ($cookieStore.get('AdminToken')) {
         $scope.showDashboard = true;
+        window.location.href = '#/orderManagement';
 
     } else {
         $scope.showDashboard = false;
@@ -35,6 +36,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
         $scope.showOrderManagement = true;
         $scope.orderHeight = '0px';
         $scope.orderColor = '#2d3e63';
+        window.location.href = '#/orderManagement';
     } else {
         $scope.showOrderManagement = false;
     }
