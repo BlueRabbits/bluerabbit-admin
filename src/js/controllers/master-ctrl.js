@@ -27,12 +27,12 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
     if ($cookieStore.get('AdminToken')) {
         $scope.showDashboard = true;
         window.location.href = '#/orderManagement';
-
+        
     } else {
         $scope.showDashboard = false;
     }
     //allow two logins
-    if ($cookieStore.get('adminName') === 'admin') {
+    if ($cookieStore.get('adminName') === 'Admin') {
         $scope.showOrderManagement = true;
         $scope.orderHeight = '0px';
         $scope.orderColor = '#2d3e63';
@@ -510,11 +510,11 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
                 location.reload(true);
 
                 //  window.location.href = '#/category';
-                if ($cookieStore.get('adminName') === 'admin') {
+                if ($cookieStore.get('adminName') === 'Admin') {
 
                     window.location.href = '#/orderManagement';
                 }
-                if ($cookieStore.get('adminName') === 'superadmin') {
+                if ($cookieStore.get('adminName') === 'Super Admin') {
 
                     window.location.href = '#/overView';
                 }
