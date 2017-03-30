@@ -661,9 +661,15 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
         $scope.deptName = deptName;
     }
     //Post product
+    $scope.calcDiscount = function (){
+        $scope.productSalePrice = Math.round($scope.productlistPrice - ($scope.productlistPrice * $scope.discountedPrice/100));
+        console.log("$scope.productSalePrice",$scope.productSalePrice);
+    }
+
     $scope.postProduct = function() {
         // use $.param jQuery function to serialize data from JSON
         var subcat = "no subcat";
+        //$scope.productSalePrice = $scope.productlistPrice - ($scope.productlistPrice - $scope.discountedPrice/100);
         var data = {
             name: $scope.productName,
             description: $scope.productDescription,
@@ -923,9 +929,10 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
 
             }
         }
-        $scope.productSalePrice = $scope.productlistPrice - $scope.discountedPrice;
+    
 
     }
+
     //update product api
     $scope.updateProduct = function() {
         $scope.showProductButton = false;
