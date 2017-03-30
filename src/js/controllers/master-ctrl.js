@@ -704,9 +704,10 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
             .success(function(data, status, headers, config) {
                 $scope.PostDataResponse = data;
                 console.log("dataa", data);
+                $scope.updateAutocomplete();
                 window.location.reload(true);
                 alert("New Product Added");
-                $scope.updateAutocomplete();
+
 
 
             })
@@ -929,7 +930,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
 
             }
         }
-    
+
 
     }
 
@@ -972,6 +973,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
                 $scope.updateProd = data;
                 console.log("updateProduct", data);
                 $scope.getProduct();
+                $scope.updateAutocomplete();
                 // $scope.showToastMessage = true;
                 alert("Updated Product");
                 //location.reload(true);
