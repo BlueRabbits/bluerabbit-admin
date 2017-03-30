@@ -26,8 +26,8 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
 
     if ($cookieStore.get('AdminToken')) {
         $scope.showDashboard = true;
-        window.location.href = '#/orderManagement';
-        
+    //    window.location.href = '#/orderManagement';
+
     } else {
         $scope.showDashboard = false;
     }
