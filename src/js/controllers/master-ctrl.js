@@ -36,7 +36,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
         $scope.showOrderManagement = true;
         $scope.orderHeight = '0px';
         $scope.orderColor = '#2d3e63';
-    
+
     } else {
         $scope.showOrderManagement = false;
     }
@@ -474,7 +474,8 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
     //var BASE_URL = "http://ec2-35-164-152-22.us-west-2.compute.amazonaws.com:9000";
     //var BASE_URL = "http://ec2-54-187-15-116.us-west-2.compute.amazonaws.com:9000";
     //var BASE_URL = "http://ec2-35-164-239-44.us-west-2.compute.amazonaws.com:9000";
-    var BASE_URL = "http://35.161.215.52:9000";
+    //var BASE_URL = "http://35.161.215.52:9000";
+    var BASE_URL = "http://34.206.42.77:9000";
     //var BASE_URL = "http://localhost:9000";
     //var BASE_URL = "http://192.168.0.84:9000";
 
@@ -514,7 +515,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
 
                     window.location.href = '#/orderManagement';
                 }
-                if ($cookieStore.get('adminName') === 'Super Admin') {
+                if ($cookieStore.get('adminName') === 'SuperAdmin') {
 
                     window.location.href = '#/overView';
                 }
