@@ -929,7 +929,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
                 $scope.productSalePrice = $scope.getProductList[i].salePrice;
                 $scope.discountedPrice = $scope.getProductList[i].discountedPrice;
                 $scope.instock = $scope.getProductList[i].instock;
-                $scope.productisActive = $scope.getProductList[i].isactive;
+                $scope.productisActive = $scope.getProductList[i].isactive.toString();
             }
         }
 
