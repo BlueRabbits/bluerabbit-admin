@@ -1105,6 +1105,13 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
             });
     };
     $scope.getAllOrders();
+
+    //clear serahc result of orders
+    $scope.clearSearchResult = function(){
+      $scope.searchFilter = "";
+      $scope.getAllOrders();
+    }
+
     //usersdetails of that order
     $scope.getUserinfoOrders = function(userId){
         console.log("$scope.",$scope.getAllUserList);
