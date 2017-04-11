@@ -34,12 +34,20 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
 
     } else {
         $scope.showDashboard = false;
+        $cookieStore.remove("adminId");
+        $cookieStore.remove("AdminToken");
+        $cookieStore.remove("adminEmailId");
+        $cookieStore.put('AdminloggedIn', false);
+        window.location.href = '#/login';
     }
     //allow two logins
     if ($cookieStore.get('adminName') === 'Admin') {
         $scope.showOrderManagement = true;
         $scope.orderHeight = '0px';
         $scope.orderColor = '#2d3e63';
+        $scope.marginHeight = {
+            "margin-top": "-50px"
+        }
 
     } else {
         $scope.showOrderManagement = false;
@@ -544,8 +552,9 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
         $cookieStore.remove("adminEmailId");
         $cookieStore.put('AdminloggedIn', false);
         $scope.showDashboard = false;
+        window.location.reload(true);
         window.location.href = '#/login';
-        location.reload(true);
+
 
     };
 
@@ -654,6 +663,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
                     "<hr />status: " + status +
                     "<hr />headers: " + header +
                     "<hr />config: " + config;
+                    window.location.href = '#/login';
             });
     };
 
