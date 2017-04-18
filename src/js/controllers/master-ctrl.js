@@ -8,7 +8,7 @@ angular.module('RDash')
 function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $stateParams, $filter) {
     $scope.showToastMessage = false;
     $scope.adminName = $cookieStore.get('adminName');
-    console.log("$cookieStore.get('AdminToken')", $cookieStore.get('AdminToken'));
+    //console.log("$cookieStore.get('AdminToken')", $cookieStore.get('AdminToken'));
     if (!$cookieStore.get("AdminToken") ) {
       // no logged user, we should be going to #login
       window.location.href = '#/login';
@@ -1021,6 +1021,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
                 // $scope.showToastMessage = true;
                 alert("Updated Product");
                 //location.reload(true);
+                $('#editModal').modal('hide');
             })
             .error(function(data, status, header, config) {
                 $scope.ResponseDetails = "Data: " + data +
