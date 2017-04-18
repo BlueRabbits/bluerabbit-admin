@@ -63,7 +63,7 @@
             <th style="text-align: center">Invoice</th>
             <th style="text-align: center">Order Status</th>
             <th style="text-align: center">Change Order Status</th>
-            <th></th>
+            <th style="text-align: center">Update</th>
           </tr>
         </thead>
         <tbody style="text-align: center">
@@ -82,6 +82,7 @@
             <td>
               <select class="form-control" style="width:160px !important" id="sel1" ng-model="orderStatusSelected" ng-change="orderStatusChangedValue(orderStatusSelected)">
                 <!-- <option ng-repeat="orderStatusNames in getAllOrdersStatusList  | filter:{name: Processed, name :Cancelled} " value="{{ orderStatusNames._id }}">{{orderStatusNames.description }}</option> -->
+                <option ng-selected="true" value="true">Select status</option>
                 <option value="2">Accept Order</option>
                 <option value="4">Cancel Order</option>
               </select>
@@ -129,9 +130,9 @@
               <button type="button" style="color: white;background-color: #e40046; cursor:pointer" class="btn" ng-disabled="!orderStatusSelected" ng-click="editOrderStatus(orderDetails._id, orderDetails.orderStatus._id, orderDetails.orderStatus.name)">Update</button>
             </td>
           </tr> -->
-
         </tbody>
         </table>
+        <div ng-show="(getAllOrdersList | filter:searchFilter).length == 0">No Result Found</div>
     </div>
   </div>
   <div id="menu2" class="tab-pane fade">
@@ -203,6 +204,7 @@
 
         </tbody>
         </table>
+        <div ng-show="(getAllOrdersList | filter:searchFilter).length == 0">No Result Found</div>
     </div>
 </div>
 <!-- accepted tab -->
@@ -221,8 +223,8 @@
           <th style="text-align: center">Payment Mode</th>
           <th style="text-align: center">Invoice</th>
           <th style="text-align: center">Order Status</th>
-          <!-- <th>Change Order Status</th>
-          <th></th> -->
+          <th style="text-align: center">Change Order Status</th>
+          <th style="text-align: center">Update</th>
         </tr>
       </thead>
       <tbody style="text-align: center">
@@ -241,6 +243,7 @@
           <td>
             <select class="form-control" style="width:160px !important" id="sel1" ng-model="orderStatusSelected" ng-change="orderStatusChangedValue(orderStatusSelected)">
               <!-- <option ng-repeat="orderStatusNames in getAllOrdersStatusList" value="{{ orderStatusNames._id }}">{{orderStatusNames.description}}</option> -->
+              <option ng-selected="true" value="true">Select status</option>
               <option value="5">Out For Delivery</option>
               <option value="4">Cancel Order</option>
             </select>
@@ -252,6 +255,7 @@
 
       </tbody>
       </table>
+        <div ng-show="(getAllOrdersList | filter:searchFilter).length == 0">No Result Found</div>
   </div>
 </div>
 <!-- accepted tab -->
@@ -271,8 +275,8 @@
           <th style="text-align: center">Payment Mode</th>
           <th style="text-align: center">Invoice</th>
           <th style="text-align: center">Order Status</th>
-          <!-- <th>Change Order Status</th>
-          <th></th> -->
+          <th style="text-align: center">Change Order Status</th>
+          <th style="text-align: center">Update</th>
         </tr>
       </thead>
       <tbody style="text-align: center">
@@ -291,6 +295,7 @@
           <td>
             <select class="form-control" style="width:160px !important" id="sel1" ng-model="orderStatusSelected" ng-change="orderStatusChangedValue(orderStatusSelected)">
               <!-- <option ng-repeat="orderStatusNames in getAllOrdersStatusList" value="{{ orderStatusNames._id }}">{{orderStatusNames.description}}</option> -->
+              <option ng-selected="true" value="true">Select status</option>
               <option value="3">Complete The Order</option>
               <option value="4">Cancel Order</option>
             </select>
@@ -302,6 +307,7 @@
 
       </tbody>
       </table>
+        <div ng-show="(getAllOrdersList | filter:searchFilter).length == 0">No Result Found</div>
   </div>
 </div>
 <!-- outForDelivery tab -->
@@ -350,6 +356,7 @@
 
       </tbody>
       </table>
+        <div ng-show="(getAllOrdersList | filter:searchFilter).length == 0">No Result Found</div>
   </div>
 </div>
 <!-- COmpleted tab -->
@@ -398,6 +405,7 @@
 
       </tbody>
       </table>
+        <div ng-show="(getAllOrdersList | filter:searchFilter).length == 0">No Result Found</div>
   </div>
 </div>
 <!-- COmpleted tab -->

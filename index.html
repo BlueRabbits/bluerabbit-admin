@@ -67,7 +67,7 @@
           </li>
           <li class="sidebar-title" ng-hide="showOrderManagement" style="font-size: 17px;color: rgb(45, 62, 99); font-family: SANS-SERIF;    font-weight: bold;"><span>Location Details</span></li>
           <li class="sidebar-list" ng-hide="showOrderManagement">
-            <a href="#/locationDeliver" style="font-family: SANS-SERIF; "  ng-style="myUpdateLoc" ng-class="{'active':activeUpdateLoc}" ng-click="locationHighlight()">Location Deliver<span class="menu-icon fa fa-map-marker"></span></a>
+            <a href="#/locationDeliver" style="font-family: SANS-SERIF; "  ng-style="myUpdateLoc" ng-class="{'active':activeUpdateLoc}" ng-click="locationHighlight()">Location We Deliver<span class="menu-icon fa fa-map-marker"></span></a>
           </li>
           <li class="sidebar-list" ng-hide="showOrderManagement" >
             <a href="#/scoutLoc" style="font-family: SANS-SERIF; " ng-style="myUpdateScoutLoc" ng-class="{'active':activeUpdateScoutLoc}" ng-click="ScoutlocationHighlight()">Scout Location<span class="menu-icon fa fa-map-marker"></span></a>
@@ -84,8 +84,8 @@
             Support
           </a>
         </div> -->
-        <div class="col-xs-12" style="cursor:pointer;">
-          <a  ng-click="logout()">
+        <div class="col-xs-12" style="cursor:pointer; color:white !important;"  ng-click="logout()">
+          <a  ng-click="logout()" style="cursor:pointer; color:white !important;" >
             LogOut
           </a>
         </div>
