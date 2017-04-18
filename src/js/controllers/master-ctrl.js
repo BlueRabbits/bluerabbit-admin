@@ -16,9 +16,11 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
     }
 
     if ($cookieStore.get("AdminloggedIn") === false) {
-        $scope.showDashboard = false;
+
         window.location.href = '#/login';
+        $scope.showDashboard = false;
         $scope.hideDashboard = true;
+
     }
     if ($cookieStore.get("AdminloggedIn") === true) {
         $scope.showDashboard = true;
@@ -74,6 +76,29 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
     //    $scope.myObj ="";
     //    $scope.myObj2 ="";
     // }
+
+    if (window.location.hash == '#/overView') {
+        $scope.myObjProd = {};
+        $scope.myUpdateOrder = {};
+        $scope.myObjBanner = {};
+        $scope.myObj = {};
+        $scope.myUpdateBan = {};
+        $scope.myUpdateOrder = {};
+        $scope.myUpdateProd = {};
+        $scope.myUpdateLoc = {};
+        $scope.myUpdateScoutLoc = {};
+        $scope.myUpdateShipping = {};
+        $scope.myUpdateUser = {};
+        $scope.myUpdateCat = {};
+        $scope.myUpdateProd = {};
+        $scope.myoverViewObj = {
+            "color": "white",
+            "border-left": "3px solid #e99d1a",
+            "text-indent": "22px",
+            "background": "#2d3e63"
+
+        }
+    }
 
     $scope.dashHighlight = function() {
         $scope.activeDash = 'active';
@@ -547,15 +572,18 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
 
     $scope.logout = function() {
 
+        //window.location.href = '#/login';
+        location.reload(true);
         $cookieStore.remove("adminId");
         $cookieStore.remove("AdminToken");
         $cookieStore.remove("adminEmailId");
+        $cookieStore.remove("adminName");
         $cookieStore.put('AdminloggedIn', false);
         $scope.showDashboard = false;
-        window.location.reload(true);
-        window.location.href = '#/login';
-
-
+        //window.location.href = '#/login';
+          $location.path('/login');
+        $window.location.reload();
+        location.reload();
     };
 
     //Post Departments
