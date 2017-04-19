@@ -1615,6 +1615,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
     $scope.loadGoogleMap();
     //postLocation
     $scope.postLocation = function() {
+        $scope.loadingIcon = true;
         var data = {
             lat: $scope.latitude,
             lng: $scope.longitude,
@@ -1633,6 +1634,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
             .success(function(data, status, headers, config) {
                 $scope.postLocationDeliver = data;
                 console.log("dataa", data);
+                $scope.loadingIcon = false;
                 alert("Places we deliver added ");
                 window.location.reload(true);
             })
@@ -1647,6 +1649,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
     //delete location deliver
     $scope.deleteLocactionDeliver = function(locId) {
         console.log("locId", locId);
+        $scope.loadingIcon = true;
         var config = {
             headers: {
                 'Authorization': 'Bearer ' + AdminToken,
@@ -1660,6 +1663,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
         $http.delete(BASE_URL + '/api/deliver/Location/' + locId, config)
             .success(function(data, status, headers, config) {
                 console.log("delete deleteLocactionDeliver", data);
+                $scope.loadingIcon = false;
                 window.location.reload(true);
             })
             .error(function(data, status, header, config) {
@@ -1738,6 +1742,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
     $scope.getDeliveryCost();
     //update delivery cost
     $scope.updateDeliveryCost = function() {
+        $scope.loadingIcon = true;
         var data = {
             minimumOrderAmount: $scope.minimumCost,
             deliveryOrderAmount: $scope.deliveryCost
@@ -1753,6 +1758,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
         $http.put(BASE_URL + '/api/admin/config/1', data, config)
             .success(function(data, status, headers, config) {
                 $scope.updatedDeliverycost = data;
+                $scope.loadingIcon = false;
                 console.log("dataa", data);
                 //$scope.getDeliveryCost();
                 alert("DeliveryCost Updated ");
