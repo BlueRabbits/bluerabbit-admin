@@ -1022,18 +1022,21 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
                 $scope.updateProd = data;
                 console.log("updateProduct", data);
                 $scope.loadingIcon = false;
+                $('#editModal').modal('hide');
                 $scope.getProduct();
                 $scope.updateAutocomplete();
                 // $scope.showToastMessage = true;
-                alert("Updated Product");
+
+                //alert("Updated Product");
                 //location.reload(true);
-                $('#editModal').modal('hide');
+
             })
             .error(function(data, status, header, config) {
                 $scope.ResponseDetails = "Data: " + data +
                     "<hr />status: " + status +
                     "<hr />headers: " + header +
                     "<hr />config: " + config;
+
             });
     }
     $scope.cancelProduct = function() {
