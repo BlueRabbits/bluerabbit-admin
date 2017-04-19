@@ -1,4 +1,13 @@
 <div class="row" ng-controller="MasterCtrl">
+  <div ng-show="loadingIcon" style="text-align:center;  text-align: left;
+  background-color: rgba(128, 128, 128, 0.2);
+  height: 100%;
+  top: 4%;
+  width: 100%;
+  position: absolute;
+  z-index: 20" class="loader-style">
+    <img src="img/loader.gif" class="loading-Indicator">
+  </div>
   <div class="col-lg-4">
       <form ng-submit="updateDeliveryCost()">
           <div class="form-group">
