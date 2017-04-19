@@ -17,7 +17,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
 
     if ($cookieStore.get("AdminloggedIn") === false) {
 
-        window.location.href = '#/login';
+        location.href = '#/login';
         $scope.showDashboard = false;
         $scope.hideDashboard = true;
 
