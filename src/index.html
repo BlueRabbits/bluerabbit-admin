@@ -26,7 +26,14 @@
   <!-- Custom Scripts -->
   <script type="text/javascript" src="js/dashboard.min.js"></script>
   <style>ul.sidebar .sidebar-list a {    color: black; text-indent: 35px!important;}
-  ul.sidebar .sidebar-list a:hover{    color: #fff;}
+  ul.sidebar .sidebar-list a:hover{
+    color: #fff !important;
+
+  }
+
+  .sidebar-list :hover{
+
+  }
   </style>
 </head>
 <body ng-controller="MasterCtrl">
@@ -43,48 +50,48 @@
           </a>
         </li>
         <li class="sidebar-list" ng-hide="showOrderManagement">
-          <a href="#/overView" style="color: black; background-color:white;font-family: SANS-SERIF;font-size: 17px; " ng-style="myoverViewObj" ng-class="{'active':activeDash}" ng-click="dashHighlight()"> DashBoard <span class="menu-icon fa fa-tachometer"></span></a>
+          <a href="#/overView" style="color: black;font-family: SANS-SERIF;font-size: 17px; " ng-style="myoverViewObj" ng-class="{'active':activeDash}" ng-click="dashHighlight()"> DashBoard <span class="menu-icon fa fa-tachometer"></span></a>
         </li>
         <li class="sidebar-title" ng-hide="showOrderManagement"  style="font-size: 17px;color: rgb(45, 62, 99);font-family: SANS-SERIF;font-weight: bold;"><span>Create</span></li>
         <!-- <li class="sidebar-list">
           <a href="#/department" ng-class="{active:isActive('#/department')}"> Department <span class="menu-icon fa fa-tachometer"></span></a>
         </li> -->
         <li class="sidebar-list" ng-hide="showOrderManagement">
-          <a href="#/category"  style="color: black !important; background-color:white !important;font-family: SANS-SERIF; " ng-style="myObj" ng-class="{'active':activeCat}" ng-click="categoryHighlight()"> Category <span class="menu-icon fa fa-list-alt"></span></a>
+          <a href="#/category"  style="color: black ; font-family: SANS-SERIF; " ng-style="myObj" ng-class="{'active':activeCat}" ng-click="categoryHighlight()"> Category <span class="menu-icon fa fa-list-alt"></span></a>
         </li>
         <li class="sidebar-list" ng-hide="showOrderManagement">
-          <a href="#/addProduct" style="color: black; background-color:white !important;font-family: SANS-SERIF;  "   ng-style="myObjProd"  ng-class="{'active':activeProd}"  ng-click="productHighlight()"> Product <span class="menu-icon fa fa-tasks"></span></a>
+          <a href="#/addProduct" style="color: black; font-family: SANS-SERIF;  "   ng-style="myObjProd"  ng-class="{'active':activeProd}"  ng-click="productHighlight()"> Product <span class="menu-icon fa fa-tasks"></span></a>
         </li>
         <li class="sidebar-list" ng-hide="showOrderManagement">
-          <a href="#/addTodayDeals" style="color: black; background-color:white !important;font-family: SANS-SERIF; "  ng-style="myObjBanner" ng-class="{'active':activeBanner}" ng-click="bannerHighlight()"> Banner<span class="menu-icon fa fa-slideshare"></span></a>
+          <a href="#/addTodayDeals" style="color: black;font-family: SANS-SERIF; "  ng-style="myObjBanner" ng-class="{'active':activeBanner}" ng-click="bannerHighlight()"> Banner<span class="menu-icon fa fa-slideshare"></span></a>
         </li>
           <li class="sidebar-title" ng-hide="showOrderManagement"  style="font-size: 17px;color: rgb(45, 62, 99);font-family: SANS-SERIF;font-weight: bold;"><span>Update/Delete</span></li>
           <li class="sidebar-list">
-            <a href="#/updateCategory" ng-hide="showOrderManagement" style="color: black; background-color:white !important;font-family: SANS-SERIF; "  ng-style="myUpdateCat" ng-class="{'active':activeUpdateCat}" ng-click="updateCategoryHighlight()">Update Category <span class="menu-icon fa fa-list-alt"></span></a>
+            <a href="#/updateCategory" ng-hide="showOrderManagement" style="color: black; font-family: SANS-SERIF; "  ng-style="myUpdateCat" ng-class="{'active':activeUpdateCat}" ng-click="updateCategoryHighlight()">Update Category <span class="menu-icon fa fa-list-alt"></span></a>
           </li>
           <li class="sidebar-list">
-            <a href="#/updateProduct" ng-hide="showOrderManagement" style="color: black; background-color:white;font-family: SANS-SERIF; "  ng-style="myUpdateProd" ng-class="{'active':activeUpdateProd}" ng-click="updateProductHighlight()">Update Product <span class="menu-icon fa fa-tasks"></span></a>
+            <a href="#/updateProduct" ng-hide="showOrderManagement" style="color: black; font-family: SANS-SERIF; "  ng-style="myUpdateProd" ng-class="{'active':activeUpdateProd}" ng-click="updateProductHighlight()">Update Product <span class="menu-icon fa fa-tasks"></span></a>
           </li>
           <!-- <li class="sidebar-list">
             <a href="#/UpdateTodayDeal" ng-hide="showOrderManagement" style="color: black; background-color:white "  ng-style="myUpdateBan" ng-class="{'active':activeUpdateBan}" ng-click="updateBannerHighlight()">Update Banner<span class="menu-icon fa fa-slideshare"></span></a>
           </li> -->
           <li class="sidebar-title" ng-style="marginHeight" style="font-size: 17px;color: rgb(45, 62, 99);font-family: SANS-SERIF;    font-weight: bold;"><span>Management</span></li>
           <li class="sidebar-list">
-            <a  href="#/orderManagement" style="color: black; background-color:white;font-family: SANS-SERIF; "  ng-style="myUpdateOrder" ng-class="{'active':activeUpdateOrder}" ng-click="updateOrderHighlight()">Order Management <span class="menu-icon fa fa-list-ol"></span></a>
+            <a  href="#/orderManagement" style="color: black; font-family: SANS-SERIF; "  ng-style="myUpdateOrder" ng-class="{'active':activeUpdateOrder}" ng-click="updateOrderHighlight()">Order Management <span class="menu-icon fa fa-list-ol"></span></a>
           </li>
           <!-- <li class="sidebar-title" ng-hide="showOrderManagement" style="font-size: 17px;color: rgb(45, 62, 99);"><span>User Details</span></li> -->
           <li class="sidebar-list" ng-hide="showOrderManagement" >
             <a href="#/userDetails" style="font-family: SANS-SERIF;" ng-style="myUpdateUser" ng-class="{'active':activeUpdateUser}" ng-click="updateUserHighlight()">User Management <span class="menu-icon fa fa-user"></span></a>
           </li>
           <li class="sidebar-list" ng-hide="showOrderManagement" >
-            <a href="#/updateDeliveryCost" style="font-family: SANS-SERIF;" ng-style="myUpdateShipping" ng-class="{'active':activeUpdateShipping}" ng-click="updateShippingHighlight()">Shipping Cost <span class="menu-icon fa fa-list-ol"></span></a>
+            <a href="#/updateDeliveryCost" style="color: black;font-family: SANS-SERIF;" ng-style="myUpdateShipping" ng-class="{'active':activeUpdateShipping}" ng-click="updateShippingHighlight()">Shipping Cost <span class="menu-icon fa fa-list-ol"></span></a>
           </li>
           <li class="sidebar-title" ng-hide="showOrderManagement" style="font-size: 17px;color: rgb(45, 62, 99); font-family: SANS-SERIF;    font-weight: bold;"><span>Location Details</span></li>
           <li class="sidebar-list" ng-hide="showOrderManagement">
-            <a href="#/locationDeliver" style="font-family: SANS-SERIF; "  ng-style="myUpdateLoc" ng-class="{'active':activeUpdateLoc}" ng-click="locationHighlight()">Location We Deliver<span class="menu-icon fa fa-map-marker"></span></a>
+            <a href="#/locationDeliver" style="color: black;font-family: SANS-SERIF; "  ng-style="myUpdateLoc" ng-class="{'active':activeUpdateLoc}" ng-click="locationHighlight()">Location We Deliver<span class="menu-icon fa fa-map-marker"></span></a>
           </li>
           <li class="sidebar-list" ng-hide="showOrderManagement" >
-            <a href="#/scoutLoc" style="font-family: SANS-SERIF; " ng-style="myUpdateScoutLoc" ng-class="{'active':activeUpdateScoutLoc}" ng-click="ScoutlocationHighlight()">Scout Location<span class="menu-icon fa fa-map-marker"></span></a>
+            <a href="#/scoutLoc" style="color: black;font-family: SANS-SERIF; " ng-style="myUpdateScoutLoc" ng-class="{'active':activeUpdateScoutLoc}" ng-click="ScoutlocationHighlight()">Scout Location<span class="menu-icon fa fa-map-marker"></span></a>
           </li>
       </ul>
       <div class="sidebar-footer" style="background-color: #db3857;">
