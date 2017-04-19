@@ -889,6 +889,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
     }
     $scope.updateCategory = function() {
         //show category Edit button
+        $scope.loadingIcon = true;
         $scope.showCategoryButton = false;
         var data = {
             name: $scope.categoryName,
@@ -907,6 +908,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
             .success(function(data, status, headers, config) {
                 $scope.updateCategory = data;
                 console.log("updateCategory", data);
+                $scope.loadingIcon = false;
                 $scope.getCategory();
                 location.reload(true);
                 alert("Updated Category");
@@ -920,6 +922,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
             });
     }
     $scope.deleteCategory = function(catId) {
+        $scope.loadingIcon = true;
         console.log("catId", catId);
         var config = {
             headers: {
@@ -937,6 +940,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
             .success(function(data, status, headers, config) {
                 console.log("delete category", data);
                 $scope.getCategory();
+                $scope.loadingIcon = false;
 
             })
             .error(function(data, status, header, config) {
@@ -981,6 +985,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
     //update product api
     $scope.updateProduct = function() {
         $scope.showProductButton = false;
+        $scope.loadingIcon = true;
         var subcat = "no subcat";
         var data = {
             name: $scope.productName,
@@ -1016,6 +1021,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
             .success(function(data, status, headers, config) {
                 $scope.updateProd = data;
                 console.log("updateProduct", data);
+                $scope.loadingIcon = false;
                 $scope.getProduct();
                 $scope.updateAutocomplete();
                 // $scope.showToastMessage = true;
@@ -1207,7 +1213,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
     $scope.editOrderStatus = function(order_id) {
 
 
-
+        $scope.loadingIcon = true;
         var data = {
 
             "orderStatus": $scope.orderStatusObj
@@ -1225,6 +1231,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
             .success(function(data, status, headers, config) {
                 $scope.updateCategory = data;
                 console.log("updateCategory", data);
+                $scope.loadingIcon = false;
                 $scope.getAllOrders();
                 alert("OrderNo" + order_id + " is Updated");
               //  window.location.reload(true);
@@ -1478,6 +1485,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
     // }
     $scope.updateUser = function(userid, sel) {
         console.log("sel", $scope.sel);
+        $scope.loadingIcon = true;
         $scope.selectedValue = $('#sel11 :selected').val();
         var config = {
             headers: {
@@ -1496,6 +1504,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
             .success(function(data, status, headers, config) {
                 $scope.getIsActiveUpdated = data;
                 console.log("get getAllUserList", data);
+                $scope.loadingIcon = false;
                 $scope.getAllUsers();
 
             })
