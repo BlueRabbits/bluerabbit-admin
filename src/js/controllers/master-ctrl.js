@@ -696,7 +696,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
     };
 
     $scope.getCategory();
-
+    $scope.categorySelected = "Recommended";
     $scope.getCategoryName = function(categoryName) {
         console.log("categoryName", categoryName);
         $scope.categoryName = categoryName;
