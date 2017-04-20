@@ -1124,7 +1124,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
     //get all orders
 
     $scope.getAllOrders = function() {
-
+        $scope.loadingIcon = true;
         var config = {
             headers: {
                 'Authorization': 'Bearer ' + AdminToken,
@@ -1136,6 +1136,7 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
             .success(function(data, status, headers, config) {
                 $scope.getAllOrdersList = data;
                 $scope.getAllOrdersListLength = data.length;
+                $scope.loadingIcon = false;
                 for (var i = 0; i < $scope.getAllOrdersList.length; i++) {
                     $scope.getInProgress = $scope.getAllOrdersList[i].orderStatus.name;
                     $scope.getInProgressLength = $scope.getInProgress.length;
