@@ -1510,6 +1510,9 @@ function MasterCtrl($scope, $cookieStore, $http, $route, $location, $state, $sta
                 console.log("get getAllUserList", data);
                 $scope.loadingIcon = false;
                 $scope.getAllUsers();
+                if (data.isactive === false) {
+                    alert("De-Activation of User will be Applicable on Next Login");
+                }
 
             })
             .error(function(data, status, header, config) {
