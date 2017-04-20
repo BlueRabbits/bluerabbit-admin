@@ -84,7 +84,8 @@
             <!-- <td >{{orderDetails.userID._id}}</td> -->
             <td >{{orderDetails.userID.name}}</td>
             <td >{{orderDetails.userID.email}}</td>
-            <td >{{orderDetails.userID.mobile_number}}</td>
+            <!-- <td >{{orderDetails.userID.mobile_number}}</td> -->
+             <td >{{orderDetails.address.mobileNumber}}</td>
             <td ng-repeat="">{{userByOrder.name}}</td>
             <td>{{orderDetails.orderAmount}}</td>
             <td>COD</td>
@@ -175,7 +176,8 @@
             <td ng-model="orderdates">{{orderDetails.orderDate | date}}&nbsp;&nbsp;{{orderDetails.orderDate | date : "shortTime" }}</td>
             <td >{{orderDetails.userID.name}}</td>
             <td >{{orderDetails.userID.email}}</td>
-            <td >{{orderDetails.userID.mobile_number}}</td>
+            <!-- <td >{{orderDetails.userID.mobile_number}}</td> -->
+            <td >{{orderDetails.address.mobileNumber}}</td>
             <td>{{orderDetails.orderAmount}}</td>
             <td>COD</td>
             <td><i class="fa fa-files-o fa-3x" aria-hidden="true" data-toggle="modal" data-target="#invoiceModal" ng-click="invoiceDetails(orderDetails._id,orderDetails.userID.email,orderDetails.userID.mobile_number)"></i></td>
@@ -198,7 +200,8 @@
             <td ng-model="orderdates">{{orderDetails.orderDate | date}}&nbsp;&nbsp;{{orderDetails.orderDate | date : "shortTime" }}</td>
             <td >{{orderDetails.userID.name}}</td>
             <td >{{orderDetails.userID.email}}</td>
-            <td >{{orderDetails.userID.mobile_number}}</td>
+            <!-- <td >{{orderDetails.userID.mobile_number}}</td> -->
+            <td >{{orderDetails.address.mobileNumber}}</td>
             <td>{{orderDetails.orderAmount}}</td>
             <td>COD</td>
             <td><i class="fa fa-files-o fa-3x" aria-hidden="true" data-toggle="modal" data-target="#invoiceModal" ng-click="invoiceDetails(orderDetails._id,orderDetails.userID.email,orderDetails.userID.mobile_number)"></i></td>
@@ -245,7 +248,8 @@
           <!-- <td >{{orderDetails.userID._id}}</td> -->
           <td >{{orderDetails.userID.name}}</td>
           <td >{{orderDetails.userID.email}}</td>
-          <td >{{orderDetails.userID.mobile_number}}</td>
+          <!-- <td >{{orderDetails.userID.mobile_number}}</td> -->
+          <td >{{orderDetails.address.mobileNumber}}</td>
           <td ng-repeat="">{{userByOrder.name}}</td>
           <td>{{orderDetails.orderAmount}}</td>
           <td>COD</td>
@@ -297,7 +301,8 @@
           <!-- <td >{{orderDetails.userID._id}}</td> -->
           <td >{{orderDetails.userID.name}}</td>
           <td >{{orderDetails.userID.email}}</td>
-          <td >{{orderDetails.userID.mobile_number}}</td>
+          <!-- <td >{{orderDetails.userID.mobile_number}}</td> -->
+          <td >{{orderDetails.address.mobileNumber}}</td>
           <td ng-repeat="">{{userByOrder.name}}</td>
           <td>{{orderDetails.orderAmount}}</td>
           <td>COD</td>
@@ -349,7 +354,8 @@
           <!-- <td >{{orderDetails.userID._id}}</td> -->
           <td >{{orderDetails.userID.name}}</td>
           <td >{{orderDetails.userID.email}}</td>
-          <td >{{orderDetails.userID.mobile_number}}</td>
+          <!-- <td >{{orderDetails.userID.mobile_number}}</td> -->
+          <td >{{orderDetails.address.mobileNumber}}</td>
           <td ng-repeat="">{{userByOrder.name}}</td>
           <td>{{orderDetails.orderAmount}}</td>
           <td>COD</td>
@@ -398,7 +404,8 @@
           <!-- <td >{{orderDetails.userID._id}}</td> -->
           <td >{{orderDetails.userID.name}}</td>
           <td >{{orderDetails.userID.email}}</td>
-          <td >{{orderDetails.userID.mobile_number}}</td>
+          <!-- <td >{{orderDetails.userID.mobile_number}}</td> -->
+          <td >{{orderDetails.address.mobileNumber}}</td>
           <td ng-repeat="">{{userByOrder.name}}</td>
           <td>{{orderDetails.orderAmount}}</td>
           <td>COD</td>
@@ -449,7 +456,7 @@
       					{{getByorderId.address.city}}{{getByorderId.address.country}}
       				</address>
               Mail : {{user_email}}<br>
-              Number : {{user_phone}}
+              Number : {{getByorderId.address.mobileNumber}}
       			</div>
       			<div class="col-xs-6 text-right">
               <address>
