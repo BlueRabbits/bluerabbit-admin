@@ -24,18 +24,26 @@
           <div><label>fromTime</label> <input type="time" ng-model="fromTime"></div>
           <div><label>toTime</label> <input type="time" ng-model="toTime" ></div>
       </div> -->
+      <!-- search -->
+      <div class="search-box">
+        <input type="text" class="form-control" style="width: 360px" ng-model="searchFilter" placeholder="Search ">
+        <span class="input-group-btn" style="float: right;left: 20px;bottom: 34px">
+          <button class="btn btn-default" style="color: white;background-color: #e40046; cursor:pointer" ng-click="clearSearchResult()" type="button">Clear</button>
+        </span>
+      </div><!-- /input-group -->
+      <!-- search -->
   </div>
   <!-- searchbox -->
-  <div class="row">
+  <!-- <div class="row">
   <div class="col-lg-4">
     <div class="">
-      <input type="text" class="form-control" style="width: 360px" ng-model="searchFilter" placeholder="Search ">
-      <span class="input-group-btn" style="float: right;left: 20px;bottom: 34px">
+      <input type="text" class="form-control" style="width: 360px;" ng-model="searchFilter" placeholder="Search ">
+      <span class="input-group-btn" style=" float: right;left: 20px;bottom: 34px;">
         <button class="btn btn-default" style="color: white;background-color: #e40046; cursor:pointer" ng-click="clearSearchResult()" type="button">Clear</button>
       </span>
-    </div><!-- /input-group -->
-  </div><!-- /.col-lg-6 -->
-</div>
+    </div>
+  </div>
+</div> -->
   <!-- searchbox -->
 
   <!-- tabs -->
